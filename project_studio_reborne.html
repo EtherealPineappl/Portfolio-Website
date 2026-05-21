@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Reborne — Corvin Erdos</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#97A4A6;--magenta:#D9C7B8;--cyan:#80AAB0;--bg:#232526;--bg2:#3A3D40;--text:#F2F2F2}
+  *{box-sizing:border-box;margin:0;padding:0}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .skip-link{position:absolute;top:-40px;left:0;background:var(--green);color:var(--bg);font-family:'Press Start 2P',monospace;font-size:10px;padding:8px 16px;z-index:9999;text-decoration:none;transition:top .2s}
+  .skip-link:focus{top:0}
+  body{background:var(--bg);color:var(--text);font-family:'Courier New',Courier,monospace;font-size:14px;line-height:1.7;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.07) 2px,rgba(0,0,0,.07) 4px);pointer-events:none;z-index:9998}
+  h1,h2,h3{font-family:'Press Start 2P',monospace}
+  a:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+  nav{background:var(--bg2);border-bottom:3px solid var(--green);padding:16px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;font-family:'Press Start 2P',monospace}
+  .nav-logo{color:var(--green);font-size:10px;text-decoration:none}
+  .nav-links{display:flex;gap:24px}
+  .nav-links a{color:var(--cyan);text-decoration:none;font-size:10px;border:2px solid transparent;padding:4px 8px;transition:all .2s}
+  .nav-links a:hover{border-color:var(--cyan);color:var(--bg);background:var(--cyan)}
+  .divider{color:var(--green);text-align:center;overflow:hidden;white-space:nowrap;font-size:12px;padding:6px 0;opacity:.5}
+  .section-title{color:var(--magenta);font-size:clamp(10px,2vw,16px);margin-bottom:40px;text-shadow:0 0 10px var(--magenta)}
+  .content-wrap{padding:60px 40px;max-width:1100px;margin:0 auto}
+  footer{background:var(--bg2);border-top:4px solid var(--green);text-align:center;padding:24px}
+  .footer-text{font-family:'Press Start 2P',monospace;font-size:10px;color:var(--green)}
+  .back-btn{font-family:'Press Start 2P',monospace;font-size:10px;color:var(--cyan);text-decoration:none;border:2px solid var(--cyan);padding:8px 14px;display:inline-block;margin-bottom:40px;transition:all .2s}
+  .back-btn:hover{background:var(--cyan);color:var(--bg)}
+  .proj-hero{background-color:var(--bg);background-image:radial-gradient(rgba(0,255,65,.1) 1px,transparent 1px);background-size:20px 20px;border-bottom:4px solid var(--green);padding:60px 40px 50px}
+  .proj-hero-inner{max-width:1100px;margin:0 auto}
+  .proj-title{font-size:clamp(14px,3vw,28px);color:var(--green);text-shadow:0 0 20px var(--green);margin-bottom:16px}
+  .proj-meta{color:var(--magenta);font-family:'Press Start 2P',monospace;font-size:10px;margin-bottom:28px}
+  .proj-overview{font-size:15px;color:var(--text);max-width:720px;line-height:1.85}
+  .stats-row{display:flex;flex-wrap:wrap;gap:16px;margin-top:28px}
+  .stat-chip{border:2px solid var(--green);color:var(--green);font-family:'Press Start 2P',monospace;font-size:9px;padding:8px 16px}
+  .cta-btn{font-family:'Press Start 2P',monospace;font-size:10px;background:transparent;color:var(--green);border:3px solid var(--green);padding:12px 24px;text-decoration:none;display:inline-block;transition:all .2s}
+  .cta-btn:hover{background:var(--green);color:var(--bg);box-shadow:0 0 20px var(--green)}
+  .video-placeholder{border:3px dashed var(--cyan);background:var(--bg2);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:360px;color:var(--cyan);font-family:'Press Start 2P',monospace;font-size:9px;text-align:center;padding:40px;gap:20px}
+  .video-placeholder p{line-height:2;max-width:500px}
+  .video-placeholder code{font-size:11px;color:var(--green);background:var(--bg);padding:10px 16px;border:1px solid var(--green);display:block;max-width:100%;word-break:break-all;font-family:'Courier New',monospace;text-align:left;margin-top:8px}
+  .yt-embed{width:100%;aspect-ratio:16/9;border:3px solid var(--green);display:block}
+  .resp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+  .resp-card{border:3px solid var(--cyan);background:var(--bg2);padding:28px}
+  .resp-card-title{font-family:'Press Start 2P',monospace;font-size:10px;color:var(--cyan);margin-bottom:16px;line-height:1.6}
+  .resp-card p{font-size:13px;color:var(--text);line-height:1.85}
+  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+  .gallery-img{width:100%;aspect-ratio:16/9;object-fit:cover;border:3px solid var(--magenta);display:block;transition:border-color .2s}
+  .gallery-img:hover{border-color:var(--cyan)}
+  @media(max-width:640px){nav{padding:12px 16px;flex-direction:column;gap:12px}.content-wrap,.proj-hero{padding:40px 16px}}
+
+  /* LIGHTBOX */
+  .lightbox-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:10000;align-items:center;justify-content:center;cursor:zoom-out}
+  .lightbox-overlay.active{display:flex}
+  .lightbox-img{max-width:95vw;max-height:95vh;object-fit:contain;border:3px solid var(--green);box-shadow:0 0 40px rgba(0,255,65,.3)}
+  .lightbox-close{position:fixed;top:20px;right:24px;font-family:'Press Start 2P',monospace;font-size:12px;color:var(--green);background:var(--bg);border:2px solid var(--green);padding:6px 14px;cursor:pointer;z-index:10001}
+  .lightbox-close:hover{background:var(--green);color:var(--bg)}
+  .gallery-img{cursor:zoom-in}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">SKIP TO CONTENT</a>
+<nav aria-label="Main navigation">
+  <a href="portfolio.html" class="nav-logo">CORVIN ERDOS</a>
+  <div class="nav-links">
+    <a href="portfolio.html#projects">PORTFOLIO</a>
+    <a href="portfolio.html#contact">CONTACT</a>
+    <a href="https://www.linkedin.com/in/corvin-erdos/" target="_blank" rel="noopener">LINKEDIN<span class="sr-only"> (opens in new tab)</span></a>
+  </div>
+</nav>
+<main id="main-content">
+
+<div class="proj-hero">
+  <div class="proj-hero-inner">
+    <a href="portfolio.html" class="back-btn">&lt;&lt; BACK TO PORTFOLIO</a>
+    <h1 class="proj-title">STUDIO REBORNE</h1>
+    <p class="proj-meta">2022 – PRESENT &nbsp;|&nbsp; WRITER / EDITOR &nbsp;|&nbsp; YOUTUBE</p>
+    <p class="proj-overview">A game design-focused YouTube channel where I write, film, and edit video essays on game design, development, and creative process. Built from zero to a real audience through consistent output and genuine craft — every video written and edited solo.</p>
+    <div class="stats-row">
+      <span class="stat-chip">4K+ SUBSCRIBERS</span>
+      <span class="stat-chip">40K+ VIEWS</span>
+    </div>
+    <br>
+    <a href="https://www.youtube.com/@Studio_Reborne" target="_blank" rel="noopener" class="cta-btn">&gt;&gt; VISIT CHANNEL<span class="sr-only"> (opens in new tab)</span></a>
+  </div>
+</div>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<div class="content-wrap">
+  <h2 class="section-title">// FEATURED_VIDEO</h2>
+  <!--
+    HOW TO ADD YOUR VIDEO:
+    Replace the placeholder div below with your best or most recent video:
+    <iframe class="yt-embed" src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+      title="[Video title]" frameborder="0" allowfullscreen></iframe>
+  -->
+  <div class="video-placeholder" role="img" aria-label="Video slot — add your best video essay here">
+    <p>[ VIDEO SLOT ]</p>
+    <p>Add your best or most recent video essay here.</p>
+    <code>&lt;iframe class="yt-embed" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Studio Reborne — [video title]" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</code>
+  </div>
+</div>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<div class="content-wrap">
+  <h2 class="section-title">// KEY_RESPONSIBILITIES</h2>
+  <div class="resp-grid">
+
+    <div class="resp-card">
+      <div class="resp-card-title">WRITING &amp; SCRIPTING</div>
+      <p>Wrote every script solo — researching topics, forming a thesis, and structuring arguments for a game design audience. [ADD YOUR TEXT HERE — describe your writing process, how you pick topics, how long a typical script takes, or what your most-watched video covered.]</p>
+    </div>
+
+    <div class="resp-card">
+      <div class="resp-card-title">FILMING &amp; EDITING</div>
+      <p>Shot, edited, and color graded every video using [ADD YOUR SOFTWARE — Premiere Pro, DaVinci Resolve, etc.]. Responsible for all motion graphics, pacing decisions, and audio mix. [ADD SPECIFICS — average production time per video, any techniques you're proud of, tools/plugins used.]</p>
+    </div>
+
+    <div class="resp-card">
+      <div class="resp-card-title">CHANNEL GROWTH &amp; AUDIENCE</div>
+      <p>Grew the channel from zero to 4k+ subscribers through consistent publishing and honest game design commentary. [ADD YOUR TEXT HERE — describe your upload cadence, what topics resonate with your audience, any viral moments, or how the channel reflects your design philosophy.]</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<div class="content-wrap">
+  <h2 class="section-title">// SCREENSHOT_LOG</h2>
+  <div class="gallery-grid">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/e1b35718-aa65-4d92-a518-b368ac95355f/image_2025-06-02_153847335.png" alt="Studio Reborne YouTube channel banner" class="gallery-img">
+  </div>
+  <p style="color:var(--cyan);font-size:9px;margin-top:20px;font-family:'Press Start 2P',monospace">[ ADD MORE — video thumbnails, behind-the-scenes setup photos, channel analytics screenshots ]</p>
+</div>
+
+</main>
+<footer><div class="footer-text">© CORVIN ERDOS — INSERT COIN TO CONTINUE</div></footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Fullscreen image viewer">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close fullscreen view">[ X ]</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+</div>
+<script>
+(function(){
+  var lb=document.getElementById('lightbox');
+  var lbImg=document.getElementById('lightboxImg');
+  var lbClose=document.getElementById('lightboxClose');
+  function openLb(src,alt){lbImg.src=src;lbImg.alt=alt;lb.classList.add('active');document.body.style.overflow='hidden';lbClose.focus();}
+  function closeLb(){lb.classList.remove('active');document.body.style.overflow='';}
+  document.querySelectorAll('.gallery-img').forEach(function(img){
+    img.addEventListener('click',function(){openLb(img.src,img.alt);});
+  });
+  lb.addEventListener('click',function(e){if(e.target!==lbImg)closeLb();});
+  lbClose.addEventListener('click',closeLb);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('active'))closeLb();});
+})();
+</script>
+</body>
+</html>

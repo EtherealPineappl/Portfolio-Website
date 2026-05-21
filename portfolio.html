@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Corvin Erdos — Game Developer & Digital Creator</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #97A4A6;
+    --magenta: #D9C7B8;
+    --cyan: #80AAB0;
+    --bg: #232526;
+    --bg2: #3A3D40;
+    --text: #F2F2F2;
+    --border: 3px solid var(--green);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .sr-only {
+    position: absolute; width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+  }
+  .skip-link {
+    position: absolute; top: -40px; left: 0;
+    background: var(--green); color: var(--bg);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px; padding: 8px 16px;
+    z-index: 9999; text-decoration: none;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    position: relative;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.07) 2px,
+      rgba(0,0,0,0.07) 4px
+    );
+    pointer-events: none;
+    z-index: 9998;
+  }
+  h1, h2, h3, .pixel-font { font-family: 'Press Start 2P', monospace; }
+  a:focus-visible, button:focus-visible {
+    outline: 3px solid var(--cyan);
+    outline-offset: 3px;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--bg2);
+    border-bottom: var(--border);
+    padding: 16px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    font-family: 'Press Start 2P', monospace;
+  }
+  .nav-logo { color: var(--green); font-size: 10px; text-decoration: none; }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a {
+    color: var(--cyan);
+    text-decoration: none;
+    font-size: 10px;
+    border: 2px solid transparent;
+    padding: 4px 8px;
+    transition: all 0.2s;
+  }
+  .nav-links a:hover { border-color: var(--cyan); color: var(--bg); background: var(--cyan); }
+
+  /* HERO */
+  #hero {
+    background-color: var(--bg);
+    background-image: radial-gradient(#3A3D40 1px, transparent.1px);
+    background-size: 12px 12px;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+    padding: 50px 40px;
+    border-bottom: 4px solid var(--green);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-avatar {
+    position: absolute;
+    bottom: 0;
+    right: 0px;
+    height:80%;
+    width: auto;
+    opacity: 0.5;
+    image-rendering: pixelated;
+    pointer-events: none;
+    user-select: none;
+  }
+  .hero-name {
+    color: var(--green);
+    font-size: clamp(18px, 4vw, 36px);
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px var(--green);
+  }
+  .hero-tagline {
+    color: var(--cyan);
+    font-size: clamp(10px, 1.5vw, 14px);
+    font-family: 'Press Start 2P', monospace;
+    margin-bottom: 10px;
+  }
+  .hero-positioning {
+    color: var(--text);
+    font-size: 14px;
+    max-width: 560px;
+    margin: 6px 0 0;
+    font-style: italic;
+  }
+  .hero-sub {
+    color: var(--text);
+    font-size: 13px;
+    max-width: 600px;
+    margin: 16px 0 30px;
+  }
+  .blink-cursor-wrap { position: relative; display: inline-block; }
+  .blink-cursor-wrap::after {
+    content: '_';
+    color: var(--green);
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+  .rotating-title {
+    color: var(--magenta);
+    font-size: 11px;
+    margin-bottom: 24px;
+    font-family: 'Press Start 2P', monospace;
+  }
+  .cta-btn {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    background: transparent;
+    color: var(--green);
+    border: 3px solid var(--green);
+    padding: 14px 28px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+  .cta-btn:hover {
+    background: var(--green);
+    color: var(--bg);
+    box-shadow: 0 0 20px var(--green), 0 0 40px rgba(0,255,65,0.4);
+  }
+
+  /* DIVIDERS */
+  .divider {
+    color: var(--green);
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 12px;
+    padding: 6px 0;
+    opacity: 0.5;
+  }
+
+  /* SECTIONS */
+  section { padding: 60px 40px; max-width: 1100px; margin: 0 auto; }
+  .section-title {
+    color: var(--magenta);
+    font-size: clamp(10px, 2vw, 24px);
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px var(--magenta);
+  }
+  .divider-wrap { position: relative; overflow: visible; }
+  .sitting {
+    position: absolute;
+    bottom: -80%;
+    right: 25%;
+    height: 140px;
+    width: auto;
+    image-rendering: pixelated;
+    pointer-events: none;
+    transform: scaleX(-1);
+  }
+
+  /* ABOUT */
+  #about { border-bottom: 3px solid var(--bg2); }
+  .about-grid { display: grid; grid-template-columns: 200px 1fr; gap: 40px; align-items: center; }
+  .headshot {
+    width: 200px; height: 200px;
+    object-fit: cover;
+    border: 4px solid var(--green);
+  }
+  .about-text { font-size: 14px; color: var(--text); }
+
+  /* SKILLS */
+  #skills { background: var(--bg2); max-width: 100%; padding: 60px; }
+  .skills-inner { max-width: 1100px; margin: 0 auto; }
+  .skill-tree { width: 100%; }
+  .st-section { margin-bottom: 36px; }
+  .st-section:last-child { margin-bottom: 0; }
+  .st-root {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    color: var(--green);
+    border: 3px solid var(--green);
+    padding: 10px 18px;
+    display: inline-block;
+    margin-bottom: 16px;
+    text-shadow: 0 0 10px var(--green);
+  }
+  .st-mids {
+    border-left: 2px solid var(--green);
+    margin-left: 18px;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .st-mid-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    position: relative;
+    padding-left: 24px;
+  }
+  .st-mid-row::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 50%;
+    width: 20px; height: 2px;
+    background: var(--green);
+    transform: translateY(-1px);
+  }
+  .st-mid {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    color: var(--cyan);
+    border: 2px solid var(--cyan);
+    padding: 7px 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .st-arrow { color: var(--green); font-size: 14px; flex-shrink: 0; line-height: 1; }
+  .st-leaves { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .st-leaf {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 9px;
+    color: var(--magenta);
+    border: 2px solid var(--magenta);
+    padding: 5px 9px;
+    white-space: nowrap;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .project-card {
+    border: 3px solid var(--magenta);
+    background: var(--text);
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .project-card:hover { border-color: var(--cyan); box-shadow: 0 0 16px rgba(0,255,255,0.2); }
+  .project-thumb {
+    width: 100%; height: 180px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 3px solid var(--magenta);
+  }
+  .project-body { padding: 16px; flex: 1; display: flex; flex-direction: column; }
+  .project-title {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    color: var(--bg2);
+    margin-bottom: 8px;
+  }
+  .project-meta { color: var(--bg2); font-size: 11px; margin-bottom: 8px; }
+  .project-desc { font-size: 12px; color: var(--bg); flex: 1; margin-bottom: 12px; }
+  .project-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+  .btn-view {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    color: var(--bg);
+    background: var(--green);
+    border: 2px solid var(--green);
+    padding: 8px 12px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-view:hover { background: transparent; color: var(--green); }
+  .btn-ext {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    color: var(--cyan);
+    background: transparent;
+    border: 2px solid var(--cyan);
+    padding: 8px 12px;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+  .btn-ext:hover { background: var(--cyan); color: var(--bg); }
+
+  /* TESTIMONIALS */
+  #testimonials { background: var(--bg2); max-width: 100%; padding: 60px; }
+  .test-inner { max-width: 1100px; margin: 0 auto; }
+  .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+  .dialog-box { border: 3px solid var(--green); background: var(--bg); padding: 24px; }
+  .dialog-quote { font-size: 13px; color: var(--text); font-style: italic; margin-bottom: 16px; }
+  .dialog-name {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    color: var(--magenta);
+  }
+
+  /* CONTACT */
+  #contact { border-top: 3px solid var(--green); }
+  .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 860px) { .contact-grid { grid-template-columns: repeat(2, 1fr); } }
+  .contact-item { border: 2px solid var(--cyan); padding: 16px; background: var(--bg2); }
+  .contact-label {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    color: var(--cyan);
+    margin-bottom: 8px;
+  }
+  .contact-value { font-size: 13px; }
+  .contact-value a { color: var(--green); text-decoration: none; }
+  .contact-value a:hover { text-decoration: underline; }
+
+  /* FOOTER */
+  footer { background: var(--bg2); border-top: 4px solid var(--green); text-align: center; padding: 24px; }
+  .footer-text { font-family: 'Press Start 2P', monospace; font-size: 10px; color: var(--green); }
+
+  @media (max-width: 640px) {
+    nav { padding: 12px 16px; flex-direction: column; gap: 12px; font-size: 9px; }
+    section { padding: 40px 16px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    #skills, #testimonials { padding: 40px 16px; }
+  }
+
+  /* LIGHTBOX */
+  .lightbox-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:10000;align-items:center;justify-content:center;cursor:zoom-out}
+  .lightbox-overlay.active{display:flex}
+  .lightbox-img{max-width:95vw;max-height:95vh;object-fit:contain;border:3px solid var(--green);box-shadow:0 0 40px rgba(0,255,65,.3)}
+  .lightbox-close{position:fixed;top:20px;right:24px;font-family:'Press Start 2P',monospace;font-size:12px;color:var(--green);background:var(--bg);border:2px solid var(--green);padding:6px 14px;cursor:pointer;z-index:10001}
+  .lightbox-close:hover{background:var(--green);color:var(--bg)}
+  .gallery-img{cursor:zoom-in}
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link">SKIP TO CONTENT</a>
+
+<!-- NAV -->
+<nav aria-label="Main navigation">
+  <a href="#hero" class="nav-logo">CORVIN ERDOS</a>
+  <div class="nav-links">
+    <a href="#projects">PORTFOLIO</a>
+    <a href="#contact">CONTACT</a>
+    <a href="https://www.linkedin.com/in/corvin-erdos/" target="_blank" rel="noopener">LINKEDIN<span class="sr-only"> (opens in new tab)</span></a>
+  </div>
+</nav>
+
+<main id="main-content">
+
+<!-- HERO -->
+<section id="hero">
+  <p class="rotating-title" aria-live="polite">GAME DESIGNER</p>
+  <h1 class="hero-name">HI! I'M CORVIN.</h1>
+  <p class="hero-tagline"><span class="blink-cursor-wrap">GAME DESIGNER &amp; CREATIVE</span></p>
+  <p class="hero-positioning">I design the spreasheets that make players stay up too late.</p>
+  <p class="hero-sub">Game designer with a foundation in level design, systems design, and narrative design. Bonus: I have the technical ability to prototype and ship what I conceive.</p>
+  <a href="#projects" class="cta-btn">&gt;&gt; PRESS START &lt;&lt;</a>
+  <img src="images/HeadshotMasked.png" alt="" class="hero-avatar" aria-hidden="true">
+</section>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <h2 class="section-title">// ABOUT_ME</h2>
+  <div class="about-grid">
+    <img
+      src="images/Headshot2.jpg"
+      alt="Corvin Erdos headshot"
+      class="headshot"
+    >
+    <div class="about-text">
+      <p>Hi. I'm Corvin. I'm a game designer whose ideal Friday night would be spent buried in a design document with a coke zero in my hand.</p>
+      <br>
+      <p>I prototype and ship my own designs: Branching dialogue systems, bestselling plugins, and whatever else keeps me awake. If the problem is worth solving, I'm already inside it. The technical ability to build what I design means nothing gets lost in translation.</p>
+      <br>
+      <p>Design tools: <strong style="color:var(--cyan)">GDD authoring, systems mapping, blockout & greybox, Unreal Engine 5, GameMaker Studio 2, C++, PaperZD</strong></p>
+    </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<!-- SKILLS -->
+<section id="skills" style="background:var(--bg2);max-width:100%;padding:60px;">
+  <div class="skills-inner">
+    <h2 class="section-title">// SKILL_TREE</h2>
+    <div class="skill-tree" role="region" aria-label="Skill tree">
+
+      <!-- GAME DESIGN -->
+      <div class="st-section">
+        <div class="st-root">▶ GAME DESIGN</div>
+        <div class="st-mids">
+          <div class="st-mid-row">
+            <span class="st-mid">LEVEL DESIGN</span>
+            <span class="st-arrow">→</span>
+            <div class="st-leaves">
+              <span class="st-leaf">BLOCKOUT &amp; GREYBOX</span>
+              <span class="st-leaf">ENVIRONMENTAL ART</span>
+            </div>
+          </div>
+          <div class="st-mid-row">
+            <span class="st-mid">GAMEPLAY SYSTEMS</span>
+            <span class="st-arrow">→</span>
+            <div class="st-leaves">
+              <span class="st-leaf">ROGUELIKE DESIGN</span>
+              <span class="st-leaf">COMBAT DESIGN</span>
+            </div>
+          </div>
+          <div class="st-mid-row">
+            <span class="st-mid">NARRATIVE DESIGN</span>
+            <span class="st-arrow">→</span>
+            <div class="st-leaves">
+              <span class="st-leaf">WORLD BUILDING</span>
+              <span class="st-leaf">DIALOGUE SYSTEMS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GAME DEVELOPMENT -->
+      <div class="st-section">
+        <div class="st-root">▶ GAME DEVELOPMENT</div>
+        <div class="st-mids">
+          <div class="st-mid-row">
+            <span class="st-mid">UNREAL ENGINE 5</span>
+            <span class="st-arrow">→</span>
+            <div class="st-leaves">
+              <span class="st-leaf">C++</span>
+              <span class="st-leaf">BLUEPRINTS</span>
+              <span class="st-leaf">METAHUMAN</span>
+              <span class="st-leaf">MOTION CAPTURE</span>
+              <span class="st-leaf">CHARACTER TECH ART</span>
+            </div>
+          </div>
+          <div class="st-mid-row">
+            <span class="st-mid">GAMEMAKER STUDIO 2</span>
+            <span class="st-arrow">→</span>
+            <div class="st-leaves">
+              <span class="st-leaf">GML</span>
+              <span class="st-leaf">PROCEDURAL SYSTEMS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- DIGITAL CREATION -->
+      <div class="st-section">
+        <div class="st-root">▶ DIGITAL CREATION</div>
+        <div class="st-mids">
+          <div class="st-mid-row">
+            <span class="st-mid">FILM DIRECTION</span>
+            <span class="st-arrow">→</span>
+            <div class="st-leaves">
+              <span class="st-leaf">WRITING &amp; DIRECTING</span>
+              <span class="st-leaf">VIDEO EDITING</span>
+            </div>
+          </div>
+          <div class="st-mid-row">
+            <span class="st-mid">CONTENT CREATION</span>
+            <span class="st-arrow">→</span>
+            <div class="st-leaves">
+              <span class="st-leaf">YOUTUBE</span>
+              <span class="st-leaf">1.6M+ VIEWS</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider-wrap">
+  <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+  <img src="images/sitting.png" alt="" class="sitting" aria-hidden="true">
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">	
+<h2 class="section-title">// PROJECT_LOG</h2>
+</div>
+  <div class="projects-grid">
+	  
+<div class="project-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/492648c6-2e93-4ec6-875b-12897e7f1dc2/wishlist-banner.png" alt="Axima game banner" class="project-thumb">
+      <div class="project-body">
+        <div class="project-title">AXIMA (ZYNDRAX)</div>
+        <div class="project-meta">2025 – PRESENT &nbsp;|&nbsp;  LEVEL DESIGNER</div>
+        <p class="project-desc">Contracted level design on an in-production UE5 open-world monster tamer.&nbsp;</p>
+        <p class="project-desc">Designed exploration flow and pacing across blockout phases, built procedural level design tooling to accelerate iteration, and crafted traversal puzzles that give players agency over how they discover the world.</p>
+<div class="project-actions">
+  <a href="project_axima.html" class="btn-view">&gt; VIEW PROJECT</a>
+
+</div>
+      </div>
+    </div>
+	  
+    <div class="project-card">
+      <img src="images/spr_thumb.png" alt="Salt Sweeper game screenshot" class="project-thumb">
+      <div class="project-body">
+        <div class="project-title">SALT SWEEPER</div>
+        <div class="project-meta">2024 – PRESENT &nbsp;|&nbsp; DESIGNER / DEVELOPER</div>
+        <p class="project-desc">A minesweeper roguelike with its own language, history, and magic system woven into every mechanic.&nbsp;</p>
+        <p class="project-desc">Designed from scratch: turn-based combat, a data-driven dialogue system, countless items and statistics, and a progression loop built for replayability.</p>
+<div class="project-actions">
+  <a href="project_salt_sweeper.html" class="btn-view">&gt; VIEW PROJECT</a>
+
+</div>
+      </div>
+    </div>
+	  
+	  <div class="project-card">
+      <img src="images/MC.jpg" alt="Studio Reborne YouTube channel" class="project-thumb">
+      <div class="project-body">
+        <div class="project-title">STUDIO REBORNE</div>
+        <div class="project-meta">2022 – PRESENT &nbsp;|&nbsp; WRITER / EDITOR</div>
+        <p class="project-desc">Long-form game design video essays — 7k+ subscribers, 1.6M+ views.&nbsp;</p>
+        <p class="project-desc">Researching, writing, and producing deep-dives on systems design, player psychology, and design philosophy. The channel exists because the thinking behind the work matters as much as the work itself.</p>
+<div class="project-actions">
+  <a href="project_studio_reborne.html" class="btn-view">&gt; VIEW PROJECT</a>
+
+</div>
+      </div>
+    </div>
+
+	  
+<div class="project-card">
+      <img src="images/SNG.jpg" alt="Simple Noise Generators plugin screenshot" class="project-thumb">
+      <div class="project-body">
+        <div class="project-title">SIMPLE NOISE GENERATORS</div>
+        <div class="project-meta">2024 &nbsp;|&nbsp; DEVELOPER</div>
+        <p class="project-desc">Unreal Engine 5 Plugin with <strong style="color:var(--green)">75,000+ downloads</strong> on Fab.&nbsp;</p>
+        <p class="project-desc">Procedural generation matters in level design — understanding it at the implementation level changes how you design with it. Built the tool, shipped it solo, and let 75k developers validate the usefulness of the design.</p>
+<div class="project-actions">
+  <a href="project_noise_generators.html" class="btn-view">&gt; VIEW PROJECT</a>
+
+</div>
+      </div>
+    </div>
+  
+
+    <div class="project-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/7f479709-68a1-4e15-a5fa-ae480e54412b/HighresScreenshot00000.png" alt="Bravo Media digital human in Unreal Engine" class="project-thumb">
+      <div class="project-body">
+        <div class="project-title">BRAVO MEDIA</div>
+        <div class="project-meta">2023, 2024 &nbsp;|&nbsp; CHARACTER TECH ARTIST / UE5</div>
+        <p class="project-desc">Production-grade real-time digital human built in UE5 for Usher's 2025 US tour.&nbsp;</p>
+        <p class="project-desc">17 iterations of facial mesh sculpting, Groom hair, cloth physics, and real-time performance optimization. Understanding the character tech pipeline at this level directly informs what's designable and what's actually shippable.</p>
+<div class="project-actions">
+  <a href="project_bravo_media.html" class="btn-view">&gt; VIEW PROJECT</a>
+</div>
+      </div>
+    </div>
+
+    
+
+    <div class="project-card">
+      <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/1e0e7acc-39c3-4636-a045-773665b79115/Gloom+8.png" alt="The Age of Gloom roguelike screenshot" class="project-thumb">
+      <div class="project-body">
+        <div class="project-title">UNDISCLOSED ROGUELIKE&nbsp;</div>
+        <div class="project-meta">2022 – 2024 &nbsp;|&nbsp; DESIGNER / DEVELOPER (CONTRACT)</div>
+        <p class="project-desc">Contracted roguelike based on snake x civilization.</p>
+        <p class="project-desc">Designed eight wagon classes with distinct mechanical identities, a procedural hex world built for emergent exploration, and a 2.5D visual style  Every technical decision (multi-threaded Level Instances, PaperZD, custom post-process shaders) was made in service of a design goal.</p>
+<div class="project-actions">
+  <a href="project_age_of_gloom.html" class="btn-view">&gt; VIEW PROJECT</a>
+</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="images/Alabastard.png" alt="Alabastard game screenshot" class="project-thumb">
+      <div class="project-body">
+        <div class="project-title">ALABASTARD</div>
+        <div class="project-meta">2022 &nbsp;|&nbsp; DESIGNER / DEVELOPER</div>
+		  <p class="project-desc"><strong style="color:var(--green)">Kitbasher Award winner</strong> — Unreal MegaJam 2022.</p>
+        <p class="project-desc">Concepted, designed, and shipped a full game in one week: you're a rock solving your own murder.&nbsp;</p>
+<p class="project-desc">I handled puzzle design, dialogue, character, cinematics — complete from concept to playable. <strong style="color:var(--green)">&nbsp;</strong></p>
+<div class="project-actions">
+  <a href="project_alabastard.html" class="btn-view">&gt; VIEW PROJECT</a>
+</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="images/PHASE 1.png" alt="PHASE game screenshot" class="project-thumb">
+      <div class="project-body">
+        <div class="project-title">PHASE</div>
+        <div class="project-meta">2021 – 2022 &nbsp;|&nbsp; DESIGNER / DEVELOPER</div>
+		  <p class="project-desc"><strong style="color:var(--green)">2nd place nationally</strong> — TSA Game Design Competition.&nbsp;</p>
+        <p class="project-desc">Puzzle-adventure where traversal mechanics and bullet-hell combat layer on top of each other as players move through living paintings.&nbsp;</p>
+<p class="project-desc">Designed the full system: movement, combat rhythm, puzzle logic, and difficulty curve. <strong style="color:var(--green)">&nbsp;</strong></p>
+<div class="project-actions">
+  <a href="project_phase.html" class="btn-view">&gt; VIEW PROJECT</a>
+
+</div>
+      </div>
+    </div>
+
+  </div>
+  <p style="text-align:center;margin-top:48px;font-size:24px;color:var(--text)">Seen enough? <a href="#contact" style="color:var(--green);text-decoration:none;border-bottom:1px solid var(--green);">Let's talk.</a></p>
+</section>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="background:var(--bg2);max-width:100%;padding:60px;">
+  <div class="test-inner">
+    <h2 class="section-title">// NPC_REVIEWS</h2>
+    <div class="testimonials-grid">
+      <div class="dialog-box">
+        <p class="dialog-quote">"A tremendously talented individual who thrives in both solo and group projects. His authentic work ethic and excellent communication make him an invaluable member to any team!"</p>
+        <div class="dialog-name">▶ ETHAN CUSIMANO &nbsp;/&nbsp; CLIENT</div>
+      </div>
+      <div class="dialog-box">
+        <p class="dialog-quote">"He is so incredibly talented and important to me, and without his time, input, and consistency, there is no chance that the joys and successes of my life would have played out."</p>
+        <div class="dialog-name">▶ BENJAMIN BROWN &nbsp;/&nbsp; POINT LINK FORCE</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="section-title">// CONTACT.EXE</h2>
+  <p style="margin-bottom:32px;font-size:14px;color:var(--text)">Building a world worth playing in? I design the systems and spaces that make it feel real — let's talk.</p>
+  <div class="contact-grid">
+    <div class="contact-item">
+      <div class="contact-label">EMAIL</div>
+      <div class="contact-value"><a href="mailto:corvin.erdos@gmail.com">corvin.erdos@gmail.com</a></div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-label">PHONE</div>
+      <div class="contact-value"><a href="tel:+17205902077">(720) 590-2077</a></div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-label">LINKEDIN</div>
+      <div class="contact-value"><a href="https://www.linkedin.com/in/corvin-erdos/" target="_blank" rel="noopener">corvin-erdos<span class="sr-only"> (opens in new tab)</span></a></div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-label">ITCH.IO</div>
+      <div class="contact-value"><a href="https://studio-reborne.itch.io/" target="_blank" rel="noopener">studio-reborne<span class="sr-only"> (opens in new tab)</span></a></div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-label">YOUTUBE</div>
+      <div class="contact-value"><a href="https://www.youtube.com/@Studio_Reborne" target="_blank" rel="noopener">@Studio_Reborne<span class="sr-only"> (opens in new tab)</span></a></div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-label">FAB PLUGIN</div>
+      <div class="contact-value"><a href="https://www.fab.com/listings/a3eac058-8a8a-4d0d-b3e7-9c8620340d04" target="_blank" rel="noopener">Simple Noise Generators<span class="sr-only"> (opens in new tab)</span></a></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-text">© CORVIN ERDOS — INSERT COIN TO CONTINUE</div>
+</footer>
+
+<script>
+  const titles = ['GAME DESIGNER', 'SYSTEMS DESIGNER', 'LEVEL DESIGNER'];
+  let i = 0;
+  const el = document.querySelector('.rotating-title');
+  el.style.transition = 'opacity 0.3s';
+  setInterval(() => {
+    i = (i + 1) % titles.length;
+    el.style.opacity = '0';
+    setTimeout(() => { el.textContent = titles[i]; el.style.opacity = '1'; }, 300);
+  }, 2500);
+</script>
+
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Fullscreen image viewer">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close fullscreen view">[ X ]</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+</div>
+<script>
+(function(){
+  var lb=document.getElementById('lightbox');
+  var lbImg=document.getElementById('lightboxImg');
+  var lbClose=document.getElementById('lightboxClose');
+  function openLb(src,alt){lbImg.src=src;lbImg.alt=alt;lb.classList.add('active');document.body.style.overflow='hidden';lbClose.focus();}
+  function closeLb(){lb.classList.remove('active');document.body.style.overflow='';}
+  document.querySelectorAll('.gallery-img').forEach(function(img){
+    img.addEventListener('click',function(){openLb(img.src,img.alt);});
+  });
+  lb.addEventListener('click',function(e){if(e.target!==lbImg)closeLb();});
+  lbClose.addEventListener('click',closeLb);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('active'))closeLb();});
+  lb.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('active'))return;
+    if(e.key!=='Tab')return;
+    var focusable=lb.querySelectorAll('button,a,[tabindex]:not([tabindex="-1"])');
+    var first=focusable[0],last=focusable[focusable.length-1];
+    if(e.shiftKey){if(document.activeElement===first){e.preventDefault();last.focus();}}
+    else{if(document.activeElement===last){e.preventDefault();first.focus();}}
+  });
+})();
+</script>
+</body>
+</html>

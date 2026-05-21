@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bravo Media — Corvin Erdos</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#97A4A6;--magenta:#D9C7B8;--cyan:#80AAB0;--bg:#232526;--bg2:#3A3D40;--text:#F2F2F2}
+  *{box-sizing:border-box;margin:0;padding:0}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .skip-link{position:absolute;top:-40px;left:0;background:var(--green);color:var(--bg);font-family:'Press Start 2P',monospace;font-size:10px;padding:8px 16px;z-index:9999;text-decoration:none;transition:top .2s}
+  .skip-link:focus{top:0}
+  body{background:var(--bg);color:var(--text);font-family:'Courier New',Courier,monospace;font-size:14px;line-height:1.7;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.07) 2px,rgba(0,0,0,.07) 4px);pointer-events:none;z-index:9998}
+  h1,h2,h3{font-family:'Press Start 2P',monospace}
+  a:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+  nav{background:var(--bg2);border-bottom:3px solid var(--green);padding:16px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;font-family:'Press Start 2P',monospace}
+  .nav-logo{color:var(--green);font-size:10px;text-decoration:none}
+  .nav-links{display:flex;gap:24px}
+  .nav-links a{color:var(--cyan);text-decoration:none;font-size:10px;border:2px solid transparent;padding:4px 8px;transition:all .2s}
+  .nav-links a:hover{border-color:var(--cyan);color:var(--bg);background:var(--cyan)}
+  .divider{color:var(--green);text-align:center;overflow:hidden;white-space:nowrap;font-size:12px;padding:6px 0;opacity:.5}
+  .section-title{color:var(--magenta);font-size:clamp(10px,2vw,16px);margin-bottom:40px;text-shadow:0 0 10px var(--magenta)}
+  .content-wrap{padding:60px 40px;max-width:1100px;margin:0 auto}
+  footer{background:var(--bg2);border-top:4px solid var(--green);text-align:center;padding:24px}
+  .footer-text{font-family:'Press Start 2P',monospace;font-size:10px;color:var(--green)}
+  .back-btn{font-family:'Press Start 2P',monospace;font-size:10px;color:var(--cyan);text-decoration:none;border:2px solid var(--cyan);padding:8px 14px;display:inline-block;margin-bottom:40px;transition:all .2s}
+  .back-btn:hover{background:var(--cyan);color:var(--bg)}
+  .proj-hero{background-color:var(--bg);background-image:radial-gradient(rgba(0,255,65,.1) 1px,transparent 1px);background-size:20px 20px;border-bottom:4px solid var(--green);padding:60px 40px 50px}
+  .proj-hero-inner{max-width:1100px;margin:0 auto}
+  .proj-title{font-size:clamp(14px,3vw,28px);color:var(--green);text-shadow:0 0 20px var(--green);margin-bottom:16px}
+  .proj-meta{color:var(--magenta);font-family:'Press Start 2P',monospace;font-size:10px;margin-bottom:28px}
+  .proj-overview{font-size:15px;color:var(--text);max-width:720px;line-height:1.85}
+  .context-tag{display:inline-block;border:2px solid var(--cyan);color:var(--cyan);font-family:'Press Start 2P',monospace;font-size:9px;padding:6px 12px;margin-top:24px}
+  .video-placeholder{border:3px dashed var(--cyan);background:var(--bg2);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:360px;color:var(--cyan);font-family:'Press Start 2P',monospace;font-size:9px;text-align:center;padding:40px;gap:20px}
+  .video-placeholder p{line-height:2;max-width:500px}
+  .video-placeholder code{font-size:11px;color:var(--green);background:var(--bg);padding:10px 16px;border:1px solid var(--green);display:block;max-width:100%;word-break:break-all;font-family:'Courier New',monospace;text-align:left;margin-top:8px}
+  .yt-embed{width:100%;aspect-ratio:16/9;border:3px solid var(--green);display:block}
+  .resp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+  .resp-card{border:3px solid var(--cyan);background:var(--bg2);padding:28px}
+  .resp-card-title{font-family:'Press Start 2P',monospace;font-size:10px;color:var(--cyan);margin-bottom:16px;line-height:1.6}
+  .resp-card p{font-size:13px;color:var(--text);line-height:1.85}
+  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+  .gallery-img{width:100%;aspect-ratio:16/9;object-fit:cover;border:3px solid var(--magenta);display:block;transition:border-color .2s}
+  .gallery-img:hover{border-color:var(--cyan)}
+  @media(max-width:640px){nav{padding:12px 16px;flex-direction:column;gap:12px}.content-wrap,.proj-hero{padding:40px 16px}}
+
+  /* LIGHTBOX */
+  .lightbox-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:10000;align-items:center;justify-content:center;cursor:zoom-out}
+  .lightbox-overlay.active{display:flex}
+  .lightbox-img{max-width:95vw;max-height:95vh;object-fit:contain;border:3px solid var(--green);box-shadow:0 0 40px rgba(0,255,65,.3)}
+  .lightbox-close{position:fixed;top:20px;right:24px;font-family:'Press Start 2P',monospace;font-size:12px;color:var(--green);background:var(--bg);border:2px solid var(--green);padding:6px 14px;cursor:pointer;z-index:10001}
+  .lightbox-close:hover{background:var(--green);color:var(--bg)}
+  .gallery-img{cursor:zoom-in}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">SKIP TO CONTENT</a>
+<nav aria-label="Main navigation">
+  <a href="portfolio.html" class="nav-logo">CORVIN ERDOS</a>
+  <div class="nav-links">
+    <a href="portfolio.html#projects">PORTFOLIO</a>
+    <a href="portfolio.html#contact">CONTACT</a>
+    <a href="https://www.linkedin.com/in/corvin-erdos/" target="_blank" rel="noopener">LINKEDIN<span class="sr-only"> (opens in new tab)</span></a>
+  </div>
+</nav>
+<main id="main-content">
+
+<div class="proj-hero">
+  <div class="proj-hero-inner">
+    <a href="portfolio.html" class="back-btn">&lt;&lt; BACK TO PORTFOLIO</a>
+    <h1 class="proj-title">BRAVO MEDIA</h1>
+    <p class="proj-meta">2023, 2024 &nbsp;|&nbsp; CHARACTER TECH ARTIST / UE5 &nbsp;|&nbsp; UNREAL ENGINE 5 + BLENDER</p>
+    <p class="proj-overview">Built a production-ready real-time digital human in Unreal Engine 5 using the full Metahuman pipeline — from base mesh sculpt to in-engine groom assets, cloth simulation, and real-time performance optimization. Every skill demonstrated here maps directly to AAA character tech art: facial rig integration, Groom component workflows, LOD management, and real-time rendering constraints.</p>
+    <div class="context-tag">[ DEPLOYED IN UNREAL ENGINE 5 FOR LIVE REAL-TIME USE ]</div>
+  </div>
+</div>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<div class="content-wrap">
+  <h2 class="section-title">// SHOWCASE_VIDEO</h2>
+  <!--
+    HOW TO ADD YOUR VIDEO:
+    Replace the placeholder div below with:
+    <iframe class="yt-embed" src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+      title="Bravo Media digital human showcase" frameborder="0" allowfullscreen></iframe>
+  -->
+  <div class="video-placeholder" role="img" aria-label="Video slot — add character showcase footage here">
+    <p>[ VIDEO SLOT ]</p>
+    <p>Add a real-time character showcase, turntable render, or in-engine demo here.</p>
+    <code>&lt;iframe class="yt-embed" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Digital human showcase" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</code>
+  </div>
+</div>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<div class="content-wrap">
+  <h2 class="section-title">// KEY_RESPONSIBILITIES</h2>
+  <div class="resp-grid">
+
+    <div class="resp-card">
+      <div class="resp-card-title">FACIAL MESH &amp; METAHUMAN INTEGRATION</div>
+      <p>Sculpted a custom facial mesh with topology built specifically to meet Metahuman's rig constraints — ensuring seamless integration into Unreal Engine's facial animation system. 17 iterations over five days to get the base mesh right. Transferred into Metahuman Creator, then hand-edited the skin blending and material parameters for accuracy and real-time performance.</p>
+    </div>
+
+    <div class="resp-card">
+      <div class="resp-card-title">GROOM ASSETS &amp; CLOTH PHYSICS</div>
+      <p>Hand-placed and styled hair and beard groom strands in Blender, then transferred into Unreal's Groom component. Configured clump patterns, roughness curves, and curl dynamics to simulate natural hair behavior at real-time framerates. Added cloth physics to the outfit and optimized constraints for smooth performance under live rendering conditions.</p>
+    </div>
+
+    <div class="resp-card">
+      <div class="resp-card-title">REAL-TIME OPTIMIZATION</div>
+      <p>[ADD YOUR TEXT HERE — describe the LOD setup, groom strand count budget, render performance targets, or any optimization passes you made to hit real-time performance requirements.]</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<div class="content-wrap">
+  <h2 class="section-title">// SCREENSHOT_LOG</h2>
+  <div class="gallery-grid">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/7f479709-68a1-4e15-a5fa-ae480e54412b/HighresScreenshot00000.png" alt="Bravo Media digital human hero render" class="gallery-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/15484c51-4577-447b-b7b5-01933002422d/New+Project+%285%29.png" alt="Bravo Media reference composite" class="gallery-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/539d99f0-a525-4e03-81d2-dabb5c8023b0/image_2025-06-04_004818569.png" alt="Face sculpt iteration 1" class="gallery-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/5a4bd93a-d624-40b6-a450-44bdf2a52a20/image_2025-06-04_005548919.png" alt="Face sculpt iteration 2" class="gallery-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/37df806f-6361-448b-b842-dc26647b7483/image_2025-06-04_005329269.png" alt="Hair grooming in Blender" class="gallery-img">
+  </div>
+</div>
+
+</main>
+<footer><div class="footer-text">© CORVIN ERDOS — INSERT COIN TO CONTINUE</div></footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Fullscreen image viewer">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close fullscreen view">[ X ]</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+</div>
+<script>
+(function(){
+  var lb=document.getElementById('lightbox');
+  var lbImg=document.getElementById('lightboxImg');
+  var lbClose=document.getElementById('lightboxClose');
+  function openLb(src,alt){lbImg.src=src;lbImg.alt=alt;lb.classList.add('active');document.body.style.overflow='hidden';lbClose.focus();}
+  function closeLb(){lb.classList.remove('active');document.body.style.overflow='';}
+  document.querySelectorAll('.gallery-img').forEach(function(img){
+    img.addEventListener('click',function(){openLb(img.src,img.alt);});
+  });
+  lb.addEventListener('click',function(e){if(e.target!==lbImg)closeLb();});
+  lbClose.addEventListener('click',closeLb);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('active'))closeLb();});
+})();
+</script>
+</body>
+</html>

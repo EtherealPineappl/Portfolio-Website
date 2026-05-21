@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Axima — Corvin Erdos</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  :root{--green:#97A4A6;--magenta:#D9C7B8;--cyan:#80AAB0;--bg:#232526;--bg2:#3A3D40;--text:#F2F2F2}
+  *{box-sizing:border-box;margin:0;padding:0}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .skip-link{position:absolute;top:-40px;left:0;background:var(--green);color:var(--bg);font-family:'Press Start 2P',monospace;font-size:10px;padding:8px 16px;z-index:9999;text-decoration:none;transition:top .2s}
+  .skip-link:focus{top:0}
+  body{background:var(--bg);color:var(--text);font-family:'Courier New',Courier,monospace;font-size:14px;line-height:1.7;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.07) 2px,rgba(0,0,0,.07) 4px);pointer-events:none;z-index:9998}
+  h1,h2,h3{font-family:'Press Start 2P',monospace}
+  a:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+  nav{background:var(--bg2);border-bottom:3px solid var(--green);padding:16px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;font-family:'Press Start 2P',monospace}
+  .nav-logo{color:var(--green);font-size:10px;text-decoration:none}
+  .nav-links{display:flex;gap:24px}
+  .nav-links a{color:var(--cyan);text-decoration:none;font-size:10px;border:2px solid transparent;padding:4px 8px;transition:all .2s}
+  .nav-links a:hover{border-color:var(--cyan);color:var(--bg);background:var(--cyan)}
+  .divider{color:var(--green);text-align:center;overflow:hidden;white-space:nowrap;font-size:12px;padding:6px 0;opacity:.5}
+  .section-title{color:var(--magenta);font-size:clamp(10px,2vw,16px);margin-bottom:40px;text-shadow:0 0 10px var(--magenta)}
+  .content-wrap{padding:60px 40px;max-width:1100px;margin:0 auto}
+  footer{background:var(--bg2);border-top:4px solid var(--green);text-align:center;padding:24px}
+  .footer-text{font-family:'Press Start 2P',monospace;font-size:10px;color:var(--green)}
+  .back-btn{font-family:'Press Start 2P',monospace;font-size:10px;color:var(--cyan);text-decoration:none;border:2px solid var(--cyan);padding:8px 14px;display:inline-block;margin-bottom:40px;transition:all .2s}
+  .back-btn:hover{background:var(--cyan);color:var(--bg)}
+  .proj-hero{background-color:var(--bg);background-image:radial-gradient(rgba(0,255,65,.1) 1px,transparent 1px);background-size:20px 20px;border-bottom:4px solid var(--green);padding:60px 40px 50px}
+  .proj-hero-inner{max-width:1100px;margin:0 auto}
+  .proj-title{font-size:clamp(14px,3vw,28px);color:var(--green);text-shadow:0 0 20px var(--green);margin-bottom:16px}
+  .proj-meta{color:var(--magenta);font-family:'Press Start 2P',monospace;font-size:10px;margin-bottom:28px}
+  .proj-overview{font-size:15px;color:var(--text);max-width:720px;line-height:1.85}
+  .cta-btn{font-family:'Press Start 2P',monospace;font-size:10px;background:transparent;color:var(--green);border:3px solid var(--green);padding:12px 24px;text-decoration:none;display:inline-block;transition:all .2s;margin-top:28px}
+  .cta-btn:hover{background:var(--green);color:var(--bg);box-shadow:0 0 20px var(--green)}
+  .video-placeholder{border:3px dashed var(--cyan);background:var(--bg2);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:360px;color:var(--cyan);font-family:'Press Start 2P',monospace;font-size:9px;text-align:center;padding:40px;gap:20px}
+  .video-placeholder p{line-height:2;max-width:500px}
+  .video-placeholder code{font-size:11px;color:var(--green);background:var(--bg);padding:10px 16px;border:1px solid var(--green);display:block;max-width:100%;word-break:break-all;font-family:'Courier New',monospace;text-align:left;margin-top:8px}
+  .yt-embed{width:100%;aspect-ratio:16/9;border:3px solid var(--green);display:block}
+  .resp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+  .resp-card{border:3px solid var(--cyan);background:var(--bg2);padding:28px}
+  .resp-card-title{font-family:'Press Start 2P',monospace;font-size:10px;color:var(--cyan);margin-bottom:16px;line-height:1.6}
+  .resp-card p{font-size:13px;color:var(--text);line-height:1.85}
+  .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+  .gallery-img{width:100%;aspect-ratio:16/9;object-fit:cover;border:3px solid var(--magenta);display:block;transition:border-color .2s}
+  .gallery-img:hover{border-color:var(--cyan)}
+  @media(max-width:640px){nav{padding:12px 16px;flex-direction:column;gap:12px}.content-wrap,.proj-hero{padding:40px 16px}}
+
+  /* LIGHTBOX */
+  .lightbox-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:10000;align-items:center;justify-content:center;cursor:zoom-out}
+  .lightbox-overlay.active{display:flex}
+  .lightbox-img{max-width:95vw;max-height:95vh;object-fit:contain;border:3px solid var(--green);box-shadow:0 0 40px rgba(0,255,65,.3)}
+  .lightbox-close{position:fixed;top:20px;right:24px;font-family:'Press Start 2P',monospace;font-size:12px;color:var(--green);background:var(--bg);border:2px solid var(--green);padding:6px 14px;cursor:pointer;z-index:10001}
+  .lightbox-close:hover{background:var(--green);color:var(--bg)}
+  .gallery-img{cursor:zoom-in}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">SKIP TO CONTENT</a>
+<nav aria-label="Main navigation">
+  <a href="portfolio.html" class="nav-logo">CORVIN ERDOS</a>
+  <div class="nav-links">
+    <a href="portfolio.html#projects">PORTFOLIO</a>
+    <a href="portfolio.html#contact">CONTACT</a>
+    <a href="https://www.linkedin.com/in/corvin-erdos/" target="_blank" rel="noopener">LINKEDIN<span class="sr-only"> (opens in new tab)</span></a>
+  </div>
+</nav>
+<main id="main-content">
+
+<div class="proj-hero">
+  <div class="proj-hero-inner">
+    <a href="portfolio.html" class="back-btn">&lt;&lt; BACK TO PORTFOLIO</a>
+    <h1 class="proj-title">AXIMA (ZYNDRAX)</h1>
+    <p class="proj-meta">2025 – PRESENT &nbsp;|&nbsp; CONTRACTED LEVEL DESIGNER &nbsp;|&nbsp; UNREAL ENGINE 5</p>
+    <p class="proj-overview">Contracted level design on Axima — a fast-paced open-world monster tamer with 100+ creatures and multiplayer. Designed hand-crafted level blockouts, decorated scenes, and traversal-based puzzles for the Ruins area. Also built custom level design tooling that made the workflow significantly more efficient.</p>
+    <a href="https://store.steampowered.com/app/2058000/Axima/" target="_blank" rel="noopener" class="cta-btn">&gt;&gt; WISHLIST ON STEAM<span class="sr-only"> (opens in new tab)</span></a>
+  </div>
+</div>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<div class="content-wrap">
+  <h2 class="section-title">// GAMEPLAY_VIDEO</h2>
+  <!--
+    HOW TO ADD YOUR VIDEO:
+    Replace the placeholder div below with:
+    <iframe class="yt-embed" src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+      title="Axima level design showcase" frameborder="0" allowfullscreen></iframe>
+  -->
+  <div class="video-placeholder" role="img" aria-label="Video slot — add level design showcase footage here">
+    <p>[ VIDEO SLOT ]</p>
+    <p>Add a walkthrough or flythrough of your Ruins level design here.</p>
+    <code>&lt;iframe class="yt-embed" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Axima level design showcase" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</code>
+  </div>
+</div>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<div class="content-wrap">
+  <h2 class="section-title">// KEY_RESPONSIBILITIES</h2>
+  <div class="resp-grid">
+
+    <div class="resp-card">
+      <div class="resp-card-title">PLANNING &amp; LEVEL BLOCKOUT</div>
+      <p>Designed the full Ruins area from concept map to blocked-out, playable geometry in Unreal Engine 5. Translated exploration and pacing goals into spatial decisions — establishing sight lines, chokepoints, and traversal routes before any environmental art was placed.</p>
+    </div>
+
+    <div class="resp-card">
+      <div class="resp-card-title">LEVEL DESIGN TOOLING</div>
+      <p>Drafted custom level design tools to speed up the environmental art pass — procedural walls built from static mesh instances, scalable decals, and tileable textures. These tools masked seams in the provided asset library and made iterating on the level significantly faster and cleaner.</p>
+    </div>
+
+    <div class="resp-card">
+      <div class="resp-card-title">TRAVERSAL PUZZLE DESIGN</div>
+      <p>Designed traversal-based puzzles integrated into the Ruins layout to support Axima's exploration loop. Each puzzle was built around the game's movement system and paced to give players moments of discovery and reward without breaking flow. [ADD YOUR SPECIFIC PUZZLE DETAILS HERE]</p>
+    </div>
+
+  </div>
+</div>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<div class="content-wrap">
+  <h2 class="section-title">// SCREENSHOT_LOG</h2>
+  <div class="gallery-grid">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/0343d448-38f5-4fc1-bd1d-7dd831a53c28/ss_0cb8e94fb030098b197f89c5bd52187e923605e0.1920x1080.jpg" alt="Axima hero screenshot" class="gallery-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/48ec3cfe-251c-4ee4-95e8-a969f27915ff/HighresScreenshot00004.png" alt="Axima level overview" class="gallery-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/8a17ae2a-549b-4e5e-baa5-07566660fc9d/Ruins-Map.png" alt="Axima Ruins concept map" class="gallery-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/f6606eb7-abe7-443d-9d18-0b0a02e1febd/HighresScreenshot00003.png" alt="Axima Ruins screenshot 1" class="gallery-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/5ad9dd93-4a08-4bf4-9e63-3cc423d8b12e/HighresScreenshot00001.png" alt="Axima Ruins screenshot 2" class="gallery-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/37d9225c-1423-40b7-99b4-bfd70bbea8f0/Screenshot+2025-09-19+213610.png" alt="Axima Ruins screenshot 3" class="gallery-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/e0f58830-bee8-49ce-be5f-483b234da475/HighresScreenshot00002.png" alt="Axima Ruins screenshot 4" class="gallery-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/802ed0d6-d3e0-416e-af39-3d8252336c6a/HighresScreenshot00000.png" alt="Axima Ruins blockout" class="gallery-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/2596ec42-14ec-4181-b9d7-d2e312ca2292/Screenshot+2025-08-05+215920.png" alt="Axima planning document" class="gallery-img">
+  </div>
+</div>
+
+</main>
+<footer><div class="footer-text">© CORVIN ERDOS — INSERT COIN TO CONTINUE</div></footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Fullscreen image viewer">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close fullscreen view">[ X ]</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+</div>
+<script>
+(function(){
+  var lb=document.getElementById('lightbox');
+  var lbImg=document.getElementById('lightboxImg');
+  var lbClose=document.getElementById('lightboxClose');
+  function openLb(src,alt){lbImg.src=src;lbImg.alt=alt;lb.classList.add('active');document.body.style.overflow='hidden';lbClose.focus();}
+  function closeLb(){lb.classList.remove('active');document.body.style.overflow='';}
+  document.querySelectorAll('.gallery-img').forEach(function(img){
+    img.addEventListener('click',function(){openLb(img.src,img.alt);});
+  });
+  lb.addEventListener('click',function(e){if(e.target!==lbImg)closeLb();});
+  lbClose.addEventListener('click',closeLb);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('active'))closeLb();});
+})();
+</script>
+</body>
+</html>
