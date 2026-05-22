@@ -94,22 +94,6 @@
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
 
 <div class="content-wrap">
-  <h2 class="section-title">// GAMEPLAY_VIDEO</h2>
-  <!--
-    HOW TO ADD YOUR VIDEO:
-    Replace the placeholder div below with:
-    <iframe class="yt-embed" src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-      title="Axima level design showcase" frameborder="0" allowfullscreen></iframe>
-  -->
-  <div class="video-placeholder" role="img" aria-label="Video slot — add level design showcase footage here">
-    <p>[ I can't include a gameplay video here until the project launches.  ]</p>
-    <p>Until then, check out the screenshots!&nbsp; &nbsp;&nbsp;</p>
-</div>
-</div>
-
-<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
-
-<div class="content-wrap">
   <h2 class="section-title">// KEY_RESPONSIBILITIES</h2>
   <div class="resp-grid">
 
@@ -140,7 +124,7 @@
   <div class="ld-section">
     <div class="ld-step-label">01 —</div>
     <h3 class="ld-step-title">INITIAL SKETCH</h3>
-    <p class="ld-step-text">Planned the Ruins layout in Aseprite before touching Unreal — two separate layers because the upper and lower sections of the ruins overlap spatially. Working flat first let me map the full traversal logic without the noise of 3D geometry getting in the way.</p>
+    <p class="ld-step-text">I began planning the ruins in Aseprite. Here is where I amde a base that I could submit to the project lead for feedback. We wanted a pretty linear level that would take the player to a mythical Axima to collect.</p>
     <div class="ld-imgs cols-1">
       <!-- replace src with your sketch image path -->
       <img class="gallery-img" src="images/axima-01-sketch.png" alt="Initial Ruins sketch in Aseprite, two-layer overlap layout">
@@ -153,7 +137,8 @@
   <div class="ld-section">
     <div class="ld-step-label">02 —</div>
     <h3 class="ld-step-title">ANNOTATED SKETCH</h3>
-    <p class="ld-step-text">The main patch traces the intended player route as a loop — entering low, sweeping outward, and returning elevated. The circular flow minimizes backtracking while letting the player read the same space from multiple angles as they progress.</p>
+    <p class="ld-step-text">The main patch traces the intended player route as a loopk, I wanted progression to always be circling to the left. It's introduced early for the player to grasp on to, then they can begin to expect to always go left if they want progression in this level.. The circular flow minimizes backtracking while letting the player read the same space from multiple angles as they progress.</p>
+	  <p class="ld-step-text">The optional path explores extra pathways and puzzles I included. I wanted the ruins to be pretty easily explored and finished, but if they wanted to get some good loot along they way, they could explore and solve more challenging puzzles.</p>
     <div class="ld-imgs cols-1">
       <!-- replace src with your annotated sketch image path -->
       <img class="gallery-img" src="images/axima-02-annotated.png" alt="Annotated Ruins sketch with player route marked as a loop">
@@ -166,7 +151,7 @@
   <div class="ld-section">
     <div class="ld-step-label">03 —</div>
     <h3 class="ld-step-title">LEVEL BLOCKOUT</h3>
-    <p class="ld-step-text">Rough geometry only — no art, no decoration. The blockout locked in traversal feel, scale, and sight lines before any environmental work began. Every pacing and verticality decision was made here, so the art pass had a stable foundation to build on.</p>
+    <p class="ld-step-text">After approval, I started to build out each of the areas of the ruins. I knew that I wanted to have a lot of veritcallity in the entire design, so progression is always upwards. After a couple iterations and walkthoughs with the project lead we decided to include more side passages and puzzle rooms (which you can see aren't in the original diagram).</p>
     <div class="ld-imgs cols-2">
       <!-- replace srcs with your blockout image paths -->
       <img class="gallery-img" src="images/axima-03-blockout-a.png" alt="Ruins blockout overview, grey-box geometry">
@@ -180,7 +165,7 @@
   <div class="ld-section">
     <div class="ld-step-label">04 —</div>
     <h3 class="ld-step-title">VERTICALITY</h3>
-    <p class="ld-step-text">Progression moves upward throughout the Ruins. Secrets and side passages were kept at or below the player's current elevation — reward-seeking never punishes forward momentum. Progress doors and stairs exclusively lead up, so players always have a spatial read on where they are in the arc.</p>
+    <p class="ld-step-text">I took a very From Software approach to the design of this level, and verticallity is something I think they always execute very well. Progression moves upward throughout the Ruins. Secrets and side passages were kept at or below the player's current elevation. Repeating this throughout the dungeon allows the players to adapt and know where they should go to progress vs explore.</p>
     <div class="ld-imgs cols-2">
       <!-- replace srcs with your verticality diagram/screenshot paths -->
       <img class="gallery-img" src="images/axima-04-verticality-a.png" alt="Cross-section showing upward progression through the Ruins">
@@ -194,7 +179,7 @@
   <div class="ld-section">
     <div class="ld-step-label">05 —</div>
     <h3 class="ld-step-title">GOLDEN LIGHTING, BREADCRUMBS, SECRETS</h3>
-    <p class="ld-step-text">Architecture, lighting, and prop placement guide the player's eye toward the intended route without explicit waypoints. Secrets are hinted at through deliberate breaks in visual rhythm — a gap in a wall, a slightly different texture — rewarding curiosity without telegraphing the reward outright.</p>
+    <p class="ld-step-text">Along with the verticallity, I wanted to include a couple other things to guide the player. I wanted the ruins to look <em>vast</em> but not feel confusing, so I created large rooms and dead ends, but directed the player to the correct route with golden lighting, breadcrumbs, and some peaks into the secret rooms.</p>
     <div class="ld-imgs cols-1">
       <!-- replace srcs with your leading lines / breadcrumb / secret screenshot paths -->
       <img class="gallery-img" src="images/axima-05-leading-lines.png" alt="Leading lines in Ruins architecture directing player gaze">
@@ -209,7 +194,7 @@
   <div class="ld-section">
     <div class="ld-step-label">06 —</div>
     <h3 class="ld-step-title">BEFORE / AFTER</h3>
-    <p class="ld-step-text">The same area before and after the environmental art pass. Traversal geometry and spatial design are unchanged — the art pass adds material variation, atmospheric read, and visual interest without touching any of the underlying design decisions.</p>
+    <p class="ld-step-text">The same area before and after the environmental art pass. General geometry is unchainged, but now there is the addition of the puzzles, lighting, and environment dressing.</p>
     <div class="ld-imgs cols-2">
       <!-- replace srcs with your before/after screenshot paths -->
       <img class="gallery-img" src="images/axima-06-before.png" alt="Ruins area before art pass — raw blockout geometry">
@@ -223,7 +208,7 @@
   <div class="ld-section">
     <div class="ld-step-label">07 —</div>
     <h3 class="ld-step-title">VISUAL CUES — PUZZLE HINT USING LIGHTING</h3>
-    <p class="ld-step-text">Lighting doubles as puzzle instruction. A single directed light source draws the eye to the interactive element before the player consciously registers why. The solution becomes intuitive before it becomes explicit — no UI, no waypoint, just the environment doing the teaching.</p>
+    <p class="ld-step-text">We didn't want much hand holding, and wanted to stray away from tutorial screens overall, so instead of explicitly telling the player "You should pay attention to this" I used light to communicate that. The ruins are dark, so the player will subconciously feel like these lit up components are important.</p>
     <div class="ld-imgs cols-2">
       <!-- replace srcs with your lighting puzzle hint screenshot paths -->
       <img class="gallery-img" src="images/axima-07-light-hint-a.png" alt="Directed light drawing attention to puzzle interactive element">
