@@ -70,6 +70,21 @@
   .lightbox-close{position:fixed;top:20px;right:24px;font-family:'Press Start 2P',monospace;font-size:12px;color:var(--green);background:var(--bg);border:2px solid var(--green);padding:6px 14px;cursor:pointer;z-index:10001}
   .lightbox-close:hover{background:var(--green);color:var(--bg)}
   .gallery-img{cursor:zoom-in}
+
+  /* DESIGN PROCESS BREAKDOWN */
+  .ld-section{margin-bottom:60px}
+  .ld-section:last-child{margin-bottom:0}
+  .ld-step-label{font-family:'Press Start 2P',monospace;font-size:8px;color:var(--cyan);margin-bottom:10px;letter-spacing:.08em}
+  .ld-step-title{font-family:'Press Start 2P',monospace;font-size:clamp(9px,1.5vw,13px);color:var(--green);margin-bottom:20px;line-height:1.7;text-shadow:0 0 8px var(--green)}
+  .ld-step-text{font-size:14px;color:var(--text);line-height:1.9;margin-bottom:28px;max-width:720px}
+  .ld-imgs{display:grid;gap:16px}
+  .ld-imgs.cols-1{grid-template-columns:1fr;max-width:680px}
+  .ld-imgs.cols-2{grid-template-columns:repeat(2,1fr)}
+  .ld-sep{border-top:1px solid var(--bg2);margin:0 0 60px}
+  .ld-sub{margin-bottom:32px}
+  .ld-sub:last-child{margin-bottom:0}
+  .ld-sub-text{font-size:14px;color:var(--text);line-height:1.9;margin-bottom:16px;max-width:720px}
+  @media(max-width:640px){.ld-imgs.cols-2{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -92,9 +107,10 @@
     <a href="index.html" class="back-btn">&lt;&lt; BACK TO PORTFOLIO</a>
     <h1 class="proj-title">SALT SWEEPER</h1>
     <p class="proj-meta">2024 – PRESENT &nbsp;|&nbsp; DESIGNER / DEVELOPER &nbsp;|&nbsp; GAMEMAKER STUDIO 2</p>
-    <p class="proj-overview">A minesweeper roguelike built in GameMaker Studio 2, set in a world five years in the making — complete with its own language, deep-rooted history, and a unique magic system woven into every corner of its design. A labor of craft that started as a small idea and became an entire living world.</p>
+    <p class="proj-overview">A minesweeper-inspired roguelike with fantasy roots. Authored GDD, implemented combat mechanics, designed diverse systems, balanced weapons and enemies, and conducted group playtesting sessions.</p>
     <a href="https://studio-reborne.itch.io/salt-sweeper" target="_blank" rel="noopener" class="cta-btn">&gt;&gt; PLAY ON ITCH.IO<span class="sr-only"> (opens in new tab)</span></a>
-	<a href="https://docs.google.com/document/d/1mQKpipsYBcGk87HuIOT07WiJMesgtJFB_X7KJQYSKSQ/edit?usp=sharing" target="_blank" rel="noopener" class="cta-btn">&gt;&gt; CHECK OUT THE GDD<span class="sr-only"> (opens in new tab)</span></a>
+	<a href="https://docs.google.com/document/d/1mQKpipsYBcGk87HuIOT07WiJMesgtJFB_X7KJQYSKSQ/edit?usp=sharing" target="_blank" rel="noopener" class="cta-btn">&gt;&gt; GDD<span class="sr-only"> (opens in new tab)</span></a>
+	  <a href="https://docs.google.com/spreadsheets/d/1VjowOf9-aIEU_zm1QUyFE8WRoMndtbDI5_y9QjwIqqs/edit?usp=sharing" target="_blank" rel="noopener" class="cta-btn">&gt;&gt; Systems Sheet<span class="sr-only"> (opens in new tab)</span></a>
   </div>
 </div>
 
@@ -139,20 +155,126 @@
 
     <div class="resp-card">
       <div class="resp-card-title">GAMEPLAY SYSTEMS DESIGN</div>
-      <p>One of my proudest achievements: creating efficient, robust dialogue and inventory systems. Built modular, data-driven tools supported by easily editable spreadsheets that allowed me to define item behavior, balance individual statistics, and write NPC dialogue all from single sources. This streamlined iteration of new content and dramatically reduced the manual work required to add anything new to the world.</p>
+      <p>One of my proudest achievements: creating efficient, robust dialogue and inventory systems. Built modular tools and easily editable spreadsheets that allowed me to define item behavior, balance individual statistics, and write NPC dialogue all from single sources.</p>
     </div>
 
     <div class="resp-card">
-      <div class="resp-card-title">COMBAT SYSTEM DESIGN</div>
-      <p>Balancing the fast-paced exploration of the sweeper floor against turn-based combat was no easy task. Took countless hours of refinement and rewriting to become satisfying while preserving the pace of the sweeper gameplay. The final system rewards risk and resource management — integrating spell, weapon, and armor types into a robust loop that earns its weight in the overall design.</p>
+      <div class="resp-card-title">COMBAT DESIGN</div>
+      <p>Minesweeper is fast paced. Turn-based combat can be a slog.</p>
+		<p>Matching the complexity of the combat to the speed of exploration included many iterations, prototypes, and balances according to testing team feedback.</p>
     </div>
 
     <div class="resp-card">
       <div class="resp-card-title">WORLD BUILDING &amp; NARRATIVE DESIGN</div>
-      <p>[ADD YOUR TEXT HERE — describe your approach to the world's language system, lore writing, or the design decisions that shaped the setting. What makes this world feel alive and distinct?]</p>
+      <p>I drafted and wrote Salt Sweeper's in-depth world building that presents itself in the dialogue and environmental design.</p>
+	  <p>I also wrote each character, from their storyline, to evey individual line of dialogue.</p>
     </div>
 
   </div>
+</div>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<!-- DESIGN PROCESS BREAKDOWN -->
+<div class="content-wrap">
+  <h2 class="section-title">// DESIGN_PROCESS</h2>
+
+  <!-- 01 — WRITING THE GDD -->
+  <div class="ld-section">
+    <div class="ld-step-label">01 —</div>
+    <h3 class="ld-step-title">WRITING THE GDD</h3>
+    <p class="ld-step-text">All good games begin with an in-depth game design document. Over the years, I have learned that the GDD isn't some place to create the entire game and detail evey mechanic. Its somewhere to start and iterate on throughout development.</p>
+	      <p class="ld-step-text">I began by writing what I knew I needed: a core gameplay loop flowchart, specifics on the world generation, combat specifications, and UI drafts. This gave me a basis to begin my prototype with, and would be iterated on throughout my development.</p>
+    <div class="ld-imgs cols-1">
+      <!-- replace src with your GDD screenshot path -->
+      <img class="gallery-img" src="images/ss-01-gdd.png" alt="Salt Sweeper GDD document open, showing systems overview">
+    </div>
+  </div>
+
+  <div class="ld-sep"></div>
+
+  <!-- 02 — CREATING THE FLOWCHART -->
+  <div class="ld-section">
+    <div class="ld-step-label">02 —</div>
+    <h3 class="ld-step-title">CREATING THE FLOWCHART</h3>
+    <p class="ld-step-text">One thing in pre-production I'd like to highlight is the flowchart for the main gameplay. This was the <em>most important</em> thing in the entire document to nail down because it is really a complete overview of the game and gave a basis for development. This was something that I continued to iterate on throughout development.</p>
+    <div class="ld-imgs cols-2">
+      <!-- replace srcs with your flowchart image paths -->
+      <img class="gallery-img" src="images/ss-02-flowchart-a.png" alt="Salt Sweeper game loop flowchart, original">
+      <img class="gallery-img" src="images/ss-02-flowchart-b.png" alt="Salt Sweeper game loop flowchart, current">
+    </div>
+  </div>
+
+  <div class="ld-sep"></div>
+
+  <!-- 03 — UI CONCEPT TO REALITY -->
+  <div class="ld-section">
+    <div class="ld-step-label">03 —</div>
+    <h3 class="ld-step-title">UI CONCEPT -> REALITY</h3>
+    <p class="ld-step-text">I mocked up a lot of the UI in aseprite, making everything in rough shapes and titles. IT WAS VERY IMPORTANT TO DO THIS because UI in Gamemaker is notoriously difficult to make edits to (editing would mean a lot of work). With a good plan in place, there shouldn't need to be too many changes made besides general positioning... I made the mistake of not doing this for a couple sections of UI in this game.</p>
+    <div class="ld-imgs cols-2">
+      <!-- replace srcs with your UI concept and final screenshot paths -->
+      <img class="gallery-img" src="images/ss-03-ui-concept.png" alt="Salt Sweeper UI concept sketch, early layout mockup">
+      <img class="gallery-img" src="images/ss-03-ui-final.png" alt="Salt Sweeper UI in-game, final implementation">
+    </div>
+  </div>
+
+  <div class="ld-sep"></div>
+
+  <!-- 04 — SYSTEM DESIGN -->
+  <div class="ld-section">
+    <div class="ld-step-label">04 —</div>
+    <h3 class="ld-step-title">SYSTEM DESIGN</h3>
+
+    <div class="ld-sub">
+      <p class="ld-sub-text">I knew that I wanted to have a lot of diverse weapons, items, and spells -- which presents the problem "how did I manage it all?"</p>
+		<p class="ld-sub-text">To begin, I contemplated working with a json that I could pull from, but I found that it would be simpler and nearly as efficient to just use a .csv to store all the data.</p>
+		<p class="ld-sub-text">I designed the sheets to be easy to read and edit, making adding new items trivial -- the only thing I acutally needed to do in engine was to upload the sprite.</p>
+      <!-- replace src with your system design screenshot 1 path -->
+      <img class="gallery-img" src="images/ss-04-system-a.png" alt="Salt Sweeper data spreadsheet showing item system rows">
+    </div>
+
+    <div class="ld-sub">
+      <p class="ld-sub-text">The dialogue system uses the same data-driven approach — NPC lines, conditions, and branching flags are authored externally and parsed at runtime. This made writing and iterating on story content entirely separate from engineering work.</p>
+      <!-- replace src with your system design screenshot 2 path -->
+      <img class="gallery-img" src="images/ss-04-system-b.png" alt="Salt Sweeper dialogue system spreadsheet with NPC branches">
+    </div>
+
+    <div class="ld-sub">
+      <p class="ld-sub-text">The minesweeper floor generation ties into both systems — tile state, enemy spawns, and loot drops are all resolved through the same data pipeline, keeping the roguelike loop tightly coupled without being brittle.</p>
+      <!-- replace src with your system design screenshot 3 path -->
+      <img class="gallery-img" src="images/ss-04-system-c.png" alt="Salt Sweeper floor generation logic, tile and spawn data overview">
+    </div>
+  </div>
+
+  <div class="ld-sep"></div>
+
+  <!-- 05 — COMBAT DESIGN -->
+  <div class="ld-section">
+    <div class="ld-step-label">05 —</div>
+    <h3 class="ld-step-title">COMBAT DESIGN</h3>
+    <p class="ld-step-text">Fitting turn-based combat into a fast-paced sweep loop took serious iteration — early versions either slowed the game to a crawl or felt disconnected from the minesweeper layer. The final design integrates spell, weapon, and armor types into a rock-paper-scissors layer that resolves quickly and rewards planning ahead.</p>
+    <div class="ld-imgs cols-2">
+      <!-- replace srcs with your combat design screenshot paths -->
+      <img class="gallery-img" src="images/ss-05-combat-a.png" alt="Salt Sweeper combat encounter in progress">
+      <img class="gallery-img" src="images/ss-05-combat-b.png" alt="Salt Sweeper combat system UI showing spell and weapon options">
+    </div>
+  </div>
+
+  <div class="ld-sep"></div>
+
+  <!-- 06 — PLAYTESTING -->
+  <div class="ld-section">
+    <div class="ld-step-label">06 —</div>
+    <h3 class="ld-step-title">PLAYTESTING</h3>
+    <p class="ld-step-text">Playtests were run with a consistent structure: testers played a defined session with no guidance, then I debriefed with targeted questions rather than open feedback. Watching where players hesitated or made wrong assumptions told me more than what they said afterward — confusion is always visible before it's speakable.</p>
+    <div class="ld-imgs cols-2">
+      <!-- replace srcs with your playtesting screenshot/photo paths -->
+      <img class="gallery-img" src="images/ss-06-playtest-a.png" alt="Playtesting session in progress, player at screen">
+      <img class="gallery-img" src="images/ss-06-playtest-b.png" alt="Playtest notes or feedback document from a session">
+    </div>
+  </div>
+
 </div>
 
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
