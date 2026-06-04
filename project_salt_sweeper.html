@@ -235,13 +235,14 @@
     </div>
 
     <div class="ld-sub">
-      <p class="ld-sub-text">The dialogue system uses the same data-driven approach — NPC lines, conditions, and branching flags are authored externally and parsed at runtime. This made writing and iterating on story content entirely separate from engineering work.</p>
+      <p class="ld-sub-text">The dialogue system uses the same data-driven approach. I needed to manage hundreds, if not thousands of lines in the final game, so I made an indexing method to keep everything organized. For example, Freya's second story dialogue could would be under the index F-1, but an optional event would be indexed F-E1.</p>
+	<p class="ld-sub-text">Combining this with some cells to host the dialogue choices and to call events, made this system robust, and made the creation of events simple.</p>
       <!-- replace src with your system design screenshot 2 path -->
       <img class="gallery-img" src="images/ss-04-system-b.png" alt="Salt Sweeper dialogue system spreadsheet with NPC branches">
     </div>
 
     <div class="ld-sub">
-      <p class="ld-sub-text">The minesweeper floor generation ties into both systems — tile state, enemy spawns, and loot drops are all resolved through the same data pipeline, keeping the roguelike loop tightly coupled without being brittle.</p>
+      <p class="ld-sub-text">Another little bonus that I'm proud of is the item drop calculations. At first I was just using a simple random number generator that would shuffle an array, but that would mean every item has an equal chance of being spawned in a chest. My solution to this was to create an easily editable sheet of percentiles for each item!</p>
       <!-- replace src with your system design screenshot 3 path -->
       <img class="gallery-img" src="images/ss-04-system-c.png" alt="Salt Sweeper floor generation logic, tile and spawn data overview">
     </div>
@@ -253,12 +254,13 @@
   <div class="ld-section">
     <div class="ld-step-label">05 —</div>
     <h3 class="ld-step-title">COMBAT DESIGN</h3>
-    <p class="ld-step-text">Fitting turn-based combat into a fast-paced sweep loop took serious iteration — early versions either slowed the game to a crawl or felt disconnected from the minesweeper layer. The final design integrates spell, weapon, and armor types into a rock-paper-scissors layer that resolves quickly and rewards planning ahead.</p>
-    <div class="ld-imgs cols-2">
-      <!-- replace srcs with your combat design screenshot paths -->
-      <img class="gallery-img" src="images/ss-05-combat-a.png" alt="Salt Sweeper combat encounter in progress">
-      <img class="gallery-img" src="images/ss-05-combat-b.png" alt="Salt Sweeper combat system UI showing spell and weapon options">
-    </div>
+    <p class="ld-step-text">Turn based combat often feels slow, and that didn't mesh well with the feel of minesweeper. During playtests I learned that players would quickly get really fast at traversing areas, but would be slowed down and have to wait for combat. They was a complete disagreement between the two paces, and I chose to adapt the turn-based combat to a faster pace to compensate for this wanting from the player.</p>
+    <p class="ld-step-text">I did this by reducing timers and animations, limiting the player's options, and keeping everything at a relatively low health (keeping the weapons balanced to this so the game wouldn't be too trivial). Typical enemies shoukld be able to be killed within a couple turns, and bosses might require a little more than 10 on average.</p>
+<div class="ld-imgs cols-2">
+  <!-- replace srcs with your combat design screenshot paths -->
+  <img class="gallery-img" src="images/ss-05-combat-a.png" alt="Salt Sweeper combat encounter in progress">
+  <img class="gallery-img" src="images/ss-05-combat-b.png" alt="Salt Sweeper combat system UI showing spell and weapon options">
+</div>
   </div>
 
   <div class="ld-sep"></div>
@@ -267,7 +269,7 @@
   <div class="ld-section">
     <div class="ld-step-label">06 —</div>
     <h3 class="ld-step-title">PLAYTESTING</h3>
-    <p class="ld-step-text">Playtests were run with a consistent structure: testers played a defined session with no guidance, then I debriefed with targeted questions rather than open feedback. Watching where players hesitated or made wrong assumptions told me more than what they said afterward — confusion is always visible before it's speakable.</p>
+    <p class="ld-step-text">Playtests were conducted for each major build of the game. The build was released to the team, and they played the build wit no direction or instruction. Then, they would answer targeted questions and fill out bug report sheets. This allowed me to quickly adapt to player feedback following each build.</p>
     <div class="ld-imgs cols-2">
       <!-- replace srcs with your playtesting screenshot/photo paths -->
       <img class="gallery-img" src="images/ss-06-playtest-a.png" alt="Playtesting session in progress, player at screen">
