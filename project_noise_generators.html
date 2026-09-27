@@ -55,6 +55,23 @@
   .lightbox-close{position:fixed;top:20px;right:24px;font-family:'Press Start 2P',monospace;font-size:12px;color:var(--green);background:var(--bg);border:2px solid var(--green);padding:6px 14px;cursor:pointer;z-index:10001}
   .lightbox-close:hover{background:var(--green);color:var(--bg)}
   .gallery-img{cursor:zoom-in}
+  /* DESIGN PROCESS BREAKDOWN */
+  .ld-section{margin-bottom:60px}
+  .ld-section:last-child{margin-bottom:0}
+  .ld-step-label{font-family:'Press Start 2P',monospace;font-size:8px;color:var(--cyan);margin-bottom:10px;letter-spacing:.08em}
+  .ld-step-title{font-family:'Press Start 2P',monospace;font-size:clamp(9px,1.5vw,13px);color:var(--green);margin-bottom:20px;line-height:1.7;text-shadow:0 0 8px var(--green)}
+  .ld-step-text{font-size:14px;color:var(--text);line-height:1.9;margin-bottom:28px;max-width:720px}
+  .ld-imgs{display:grid;gap:16px}
+  .ld-imgs.cols-1{grid-template-columns:1fr;max-width:680px}
+  .ld-imgs.cols-2{grid-template-columns:repeat(2,1fr)}
+  .ld-sep{border-top:1px solid var(--bg2);margin:0 0 60px}
+  .ld-sub{margin-bottom:32px}
+  .ld-sub:last-child{margin-bottom:0}
+  .ld-sub-text{font-size:14px;color:var(--text);line-height:1.9;margin-bottom:16px;max-width:720px}
+  @media(max-width:640px){.ld-imgs.cols-2{grid-template-columns:1fr}}
+
+  /* IMAGE SLOT — empty picture frame. Swap for <img class="gallery-img" src="images/..." alt="..."> */
+  .img-slot{width:100%;aspect-ratio:16/9;border:3px dashed var(--magenta);background:var(--bg2);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--magenta);font-family:'Press Start 2P',monospace;font-size:8px;line-height:2}
 </style>
 </head>
 <body>
@@ -68,17 +85,19 @@
   </div>
 </nav>
 <main id="main-content">
-
 <div class="proj-hero">
   <div class="proj-hero-inner">
     <a href="index.html" class="back-btn">&lt;&lt; BACK TO PORTFOLIO</a>
     <h1 class="proj-title">SIMPLE NOISE GENERATORS</h1>
-    <p class="proj-meta">2024 &nbsp;|&nbsp; DEVELOPER &nbsp;|&nbsp; C++ / UNREAL ENGINE 5</p>
-    <p class="proj-overview">A C++ Unreal Engine 5 plugin providing ready-to-use procedural noise generation nodes for game developers. Built solo with Visual Studio — available on Fab and used by developers worldwide. Market validation doesn't lie: a genuinely useful tool ships its own career.</p>
+    <p class="proj-meta">2024 – PRESENT &nbsp;|&nbsp; DEVELOPER &nbsp;|&nbsp; C++ / UNREAL ENGINE 5 &nbsp;|&nbsp; STUDIO REBORNE</p>
+    <p class="proj-overview">A C++ Unreal Engine plugin providing ready-to-use procedural noise generation nodes for game developers. Built solo in Visual Studio and shipped on Fab, where it has passed 60,000 downloads with a 4.7 star rating — with active updates and an 82-member community Discord behind it.</p>
     <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:24px">
-      <span class="stat-badge">50,000+ DOWNLOADS</span>
-      <a href="https://www.fab.com/listings/a3eac058-8a8a-4d0d-b3e7-9c8620340d04" target="_blank" rel="noopener" class="cta-btn">&gt;&gt; VIEW ON FAB<span class="sr-only"> (opens in new tab)</span></a>
+      <span class="stat-badge">60,000+ DOWNLOADS</span>
+      <span class="stat-badge">4.7★ ON FAB</span>
+      <span class="stat-badge">82-MEMBER DISCORD</span>
     </div>
+    <a href="https://www.fab.com/listings/a3eac058-8a8a-4d0d-b3e7-9c8620340d04" target="_blank" rel="noopener" class="cta-btn">&gt;&gt; VIEW ON FAB<span class="sr-only"> (opens in new tab)</span></a>
+    <!-- [OPTIONAL: Discord invite link — duplicate the button above and point it at the invite] -->
   </div>
 </div>
 
@@ -88,21 +107,18 @@
 
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
 
+<!-- VIDEO -->
 <div class="content-wrap">
   <h2 class="section-title">// DEMO_VIDEO</h2>
-  <!--
-    HOW TO ADD YOUR VIDEO:
-    Replace the placeholder div below with:
-    <iframe class="yt-embed" src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-      title="Simple Noise Generators demo" frameborder="0" allowfullscreen></iframe>
+  <!-- Swap this slot for:
+  <iframe class="yt-embed" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Simple Noise Generators demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   -->
-  <div class="video-placeholder" role="img" aria-label="Video slot — add plugin demo video here">
-    <p>Video Coming Soon</p>
-  </div>
+  <div class="img-slot">[ VIDEO: plugin demo — nodes in Blueprint → noise output in the viewport ]</div>
 </div>
 
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
 
+<!-- RESPONSIBILITIES -->
 <div class="content-wrap">
   <h2 class="section-title">// KEY_RESPONSIBILITIES</h2>
   <div class="resp-grid">
@@ -113,13 +129,13 @@
     </div>
 
     <div class="resp-card">
-      <div class="resp-card-title">MARKETPLACE PUBLISHING &amp; SUPPORT</div>
-      <p>Packaged, documented, and published the plugin to Fab (formerly the Unreal Marketplace). Maintained the listing through UE version updates and community feedback. Over 50,000 downloads demonstrates both the utility of the tool and the ability to ship something that real developers actually rely on.</p>
+      <div class="resp-card-title">NOISE SYSTEMS DESIGN</div>
+      <p>[WHICH NOISE TYPES THE PLUGIN SHIPS WITH — e.g. Perlin / Simplex / Voronoi / fractal] and [HOW YOU DECIDED WHICH PARAMETERS A USER GETS TO TOUCH AND WHICH YOU HID].</p>
     </div>
 
     <div class="resp-card">
-      <div class="resp-card-title">NOISE SYSTEMS DESIGN</div>
-      <p></p>
+      <div class="resp-card-title">PUBLISHING, SUPPORT &amp; COMMUNITY</div>
+      <p>Packaged, documented, and published the plugin to Fab (formerly the Unreal Marketplace). Maintained the listing through UE version updates, and grew an 82-member Discord where bug reports and feature requests turn into releases. 60,000+ downloads and a 4.7 star rating show a tool real developers rely on.</p>
     </div>
 
   </div>
@@ -127,12 +143,86 @@
 
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
 
+<!-- DESIGN PROCESS BREAKDOWN -->
+<div class="content-wrap">
+  <h2 class="section-title">// DESIGN_PROCESS</h2>
+
+  <!-- 01 -->
+  <div class="ld-section">
+    <div class="ld-step-label">01 —</div>
+    <h3 class="ld-step-title">FINDING THE GAP</h3>
+    <p class="ld-step-text">[WHAT YOU WERE BUILDING WHEN YOU NEEDED NOISE, AND WHAT WAS FRUSTRATING ABOUT THE EXISTING OPTIONS]. The moment I decided to build it myself was [THE MOMENT].</p>
+    <p class="ld-step-text">My goal from day one was [THE ONE-SENTENCE DESIGN GOAL — e.g. "a designer with zero math background gets usable terrain noise in under a minute"].</p>
+    <div class="ld-imgs cols-1">
+      <div class="img-slot">[ IMG: sng-01-problem.png — the project / problem that started it ]</div>
+    </div>
+  </div>
+
+  <div class="ld-sep"></div>
+
+  <!-- 02 -->
+  <div class="ld-section">
+    <div class="ld-step-label">02 —</div>
+    <h3 class="ld-step-title">DESIGNING THE NODES (THE PLAYER IS THE DEVELOPER)</h3>
+    <p class="ld-step-text">A plugin's "players" are other developers, and the Blueprint node is their whole interface. I treated every pin as a design decision: [HOW YOU CHOSE NODE NAMES, DEFAULT VALUES, AND WHICH INPUTS TO EXPOSE].</p>
+    <p class="ld-step-text">The trade-off I kept wrestling with was [POWER vs. SIMPLICITY — WHAT YOU CUT OR HID, AND WHY].</p>
+    <div class="ld-imgs cols-2">
+      <div class="img-slot">[ IMG: sng-02-nodes-a.png — Blueprint nodes ]</div>
+      <div class="img-slot">[ IMG: sng-02-nodes-b.png — node details / parameters ]</div>
+    </div>
+  </div>
+
+  <div class="ld-sep"></div>
+
+  <!-- 03 -->
+  <div class="ld-section">
+    <div class="ld-step-label">03 —</div>
+    <h3 class="ld-step-title">BUILDING IT IN C++</h3>
+    <p class="ld-step-text">[HOW THE PLUGIN IS STRUCTURED — MODULES, CLASSES, HOW YOU EXPOSED C++ TO BLUEPRINT]. The hardest technical problem was [PROBLEM], and I solved it by [SOLUTION].</p>
+    <div class="ld-imgs cols-2">
+      <div class="img-slot">[ IMG: sng-03-code.png — C++ source in Visual Studio ]</div>
+      <div class="img-slot">[ IMG: sng-03-output.png — generated noise in engine ]</div>
+    </div>
+  </div>
+
+  <div class="ld-sep"></div>
+
+  <!-- 04 -->
+  <div class="ld-section">
+    <div class="ld-step-label">04 —</div>
+    <h3 class="ld-step-title">SHIPPING TO FAB</h3>
+    <p class="ld-step-text">[WHAT SHIPPING REQUIRED — PACKAGING, DOCUMENTATION, THE LISTING PAGE, ENGINE VERSION SUPPORT]. I wrote the listing and docs with [WHO YOU PICTURED READING THEM] in mind.</p>
+    <div class="ld-imgs cols-1">
+      <div class="img-slot">[ IMG: sng-04-fab-listing.png — Fab listing page ]</div>
+    </div>
+  </div>
+
+  <div class="ld-sep"></div>
+
+  <!-- 05 -->
+  <div class="ld-section">
+    <div class="ld-step-label">05 —</div>
+    <h3 class="ld-step-title">LISTENING TO 60,000 USERS</h3>
+    <p class="ld-step-text">After launch the design didn't stop — it moved into the Discord. [HOW YOU DECIDE WHICH FEATURE REQUESTS BECOME UPDATES AND WHICH YOU TURN DOWN].</p>
+    <p class="ld-step-text">The update I'm proudest of is [UPDATE], because [WHY].</p>
+    <div class="ld-imgs cols-2">
+      <div class="img-slot">[ IMG: sng-05-discord.png — community Discord / feature requests ]</div>
+      <div class="img-slot">[ IMG: sng-05-reviews.png — Fab reviews / rating ]</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<!-- GALLERY -->
 <div class="content-wrap">
   <h2 class="section-title">// SCREENSHOT_LOG</h2>
   <div class="gallery-grid">
     <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/a04ac323-9637-4928-8ec0-5a3d162d3940/Image1.png" alt="Simple Noise Generators plugin screenshot" class="gallery-img">
+    <div class="img-slot">[ IMG: sng-06-example-a.png ]</div>
+    <div class="img-slot">[ IMG: sng-06-example-b.png ]</div>
   </div>
-  <p style="color:var(--cyan);font-size:12px;margin-top:20px;font-family:'Press Start 2P',monospace;font-size:9px">[ ADD MORE SCREENSHOTS — Fab listing preview, Blueprint nodes, in-engine usage examples ]</p>
 </div>
 
 </main>

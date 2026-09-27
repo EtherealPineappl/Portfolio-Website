@@ -52,6 +52,23 @@
   .lightbox-close{position:fixed;top:20px;right:24px;font-family:'Press Start 2P',monospace;font-size:12px;color:var(--green);background:var(--bg);border:2px solid var(--green);padding:6px 14px;cursor:pointer;z-index:10001}
   .lightbox-close:hover{background:var(--green);color:var(--bg)}
   .gallery-img{cursor:zoom-in}
+  /* DESIGN PROCESS BREAKDOWN */
+  .ld-section{margin-bottom:60px}
+  .ld-section:last-child{margin-bottom:0}
+  .ld-step-label{font-family:'Press Start 2P',monospace;font-size:8px;color:var(--cyan);margin-bottom:10px;letter-spacing:.08em}
+  .ld-step-title{font-family:'Press Start 2P',monospace;font-size:clamp(9px,1.5vw,13px);color:var(--green);margin-bottom:20px;line-height:1.7;text-shadow:0 0 8px var(--green)}
+  .ld-step-text{font-size:14px;color:var(--text);line-height:1.9;margin-bottom:28px;max-width:720px}
+  .ld-imgs{display:grid;gap:16px}
+  .ld-imgs.cols-1{grid-template-columns:1fr;max-width:680px}
+  .ld-imgs.cols-2{grid-template-columns:repeat(2,1fr)}
+  .ld-sep{border-top:1px solid var(--bg2);margin:0 0 60px}
+  .ld-sub{margin-bottom:32px}
+  .ld-sub:last-child{margin-bottom:0}
+  .ld-sub-text{font-size:14px;color:var(--text);line-height:1.9;margin-bottom:16px;max-width:720px}
+  @media(max-width:640px){.ld-imgs.cols-2{grid-template-columns:1fr}}
+
+  /* IMAGE SLOT — empty picture frame. Swap for <img class="gallery-img" src="images/..." alt="..."> */
+  .img-slot{width:100%;aspect-ratio:16/9;border:3px dashed var(--magenta);background:var(--bg2);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--magenta);font-family:'Press Start 2P',monospace;font-size:8px;line-height:2}
 </style>
 </head>
 <body>
@@ -65,14 +82,13 @@
   </div>
 </nav>
 <main id="main-content">
-
 <div class="proj-hero">
   <div class="proj-hero-inner">
     <a href="index.html" class="back-btn">&lt;&lt; BACK TO PORTFOLIO</a>
     <span class="award-tag" style="display:block;margin-bottom:20px">★ KITBASHER AWARD — UNREAL MEGAJAM 2022</span>
     <h1 class="proj-title">ALABASTARD</h1>
-    <p class="proj-meta">2022 &nbsp;|&nbsp; DESIGNER / DEVELOPER &nbsp;|&nbsp; UNREAL ENGINE 5 &nbsp;|&nbsp; 1 WEEK BUILD</p>
-    <p class="proj-overview">A metaphysical puzzle game where you solve your own murder after reincarnating as a rock. Built in Unreal Engine 5 in one week for the Unreal MegaJam 2022 — using Metahumans and motion capture to bring the characters to life. A full game loop, a unique premise, and a shipped product in seven days.</p>
+    <p class="proj-meta">2022 &nbsp;|&nbsp; DESIGNER / DEVELOPER &nbsp;|&nbsp; UNREAL ENGINE 5 &nbsp;|&nbsp; 1 WEEK BUILD &nbsp;|&nbsp; POINT LINK FORCE</p>
+    <p class="proj-overview">A metaphysical puzzle game where you solve your own murder after reincarnating as a rock. Built in Unreal Engine 5 in one week for the Unreal MegaJam 2022, earning the Kitbasher Award — a jury prize from the Epic Games team — out of 500+ entries. MetaHumans and motion capture bring the characters to life.</p>
     <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:24px">
       <a href="https://youtu.be/q8HQcwyJ408?si=3tY2O6uhC50ztYsn" target="_blank" rel="noopener" class="cta-btn">&gt;&gt; WATCH TRAILER<span class="sr-only"> (opens in new tab)</span></a>
     </div>
@@ -85,7 +101,6 @@
 
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
 
-<!-- LIVE VIDEO EMBED — trailer available -->
 <div class="content-wrap">
   <h2 class="section-title">// GAMEPLAY_TRAILER</h2>
   <iframe
@@ -106,19 +121,32 @@
 
     <div class="resp-card">
       <div class="resp-card-title">RAPID GAME DEVELOPMENT</div>
-      <p>Designed, built, and shipped a complete game in one week under jam constraints. Scoped the concept specifically to what was achievable solo in seven days — a puzzle loop that was weird enough to stand out and finished enough to actually play. The Kitbasher Award recognized the kitbashing creativity of the approach. [ADD YOUR SPECIFIC DETAILS — how you managed the week, what got cut, what worked immediately.]</p>
+      <p>Designed, built, and shipped a complete game in one week under jam constraints [SOLO / WITH WHO FROM POINT LINK FORCE]. Scoped the concept to a puzzle loop that was weird enough to stand out and finished enough to actually play.</p>
     </div>
 
     <div class="resp-card">
       <div class="resp-card-title">METAHUMAN &amp; MOTION CAPTURE</div>
-      <p>Integrated Unreal Engine 5's Metahuman system for character creation and used motion capture data to drive character animation in-engine. [ADD YOUR SPECIFIC DETAILS — what motion capture pipeline you used (Live Link Face, Rokoko, etc.), how you retargeted the data, and what technical challenges came up with the Metahuman rig during the jam's time pressure.]</p>
+      <p>Integrated Unreal Engine 5's MetaHuman system for character creation and used motion capture data to drive character animation in-engine.</p>
     </div>
 
     <div class="resp-card">
-      <div class="resp-card-title">PUZZLE DESIGN &amp; GAME FEEL</div>
-      <p>[ADD YOUR TEXT HERE — describe the puzzle mechanics, how you designed around the "reincarnated as a rock" concept, what the core game loop felt like, and how you iterated on the design during the week. What would you do differently with more time?]</p>
+      <div class="resp-card-title">PUZZLE &amp; LEVEL DESIGN</div>
+      <p>Blocked out levels, designed the puzzles, and developed physics-based movement for a protagonist who is, technically, a rock.</p>
     </div>
 
+  </div>
+</div>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<!-- DESIGN SPOTLIGHT -->
+<div class="content-wrap">
+  <h2 class="section-title">// DESIGN_SPOTLIGHT</h2>
+  <h3 class="ld-step-title">DESIGNING PUZZLES FOR A ROCK</h3>
+  <p class="ld-step-text">A rock can't do much — so every puzzle had to come out of that limitation. [WHAT THE ROCK CAN DO, HOW THE PHYSICS-BASED MOVEMENT WORKS, AND HOW ONE PUZZLE USES IT].</p>
+  <div class="ld-imgs cols-2">
+    <div class="img-slot">[ IMG: ab-01-puzzle-a.png — puzzle room ]</div>
+    <div class="img-slot">[ IMG: ab-01-puzzle-b.png — puzzle blockout ]</div>
   </div>
 </div>
 
@@ -128,8 +156,9 @@
   <h2 class="section-title">// SCREENSHOT_LOG</h2>
   <div class="gallery-grid">
     <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/20996458-c270-495d-b9ed-1103b9d02e06/0sw8nB.png" alt="Alabastard game screenshot" class="gallery-img">
+    <img src="images/Alabastard.png" alt="Alabastard key art" class="gallery-img">
+    <div class="img-slot">[ IMG: ab-02-screenshot-a.png ]</div>
   </div>
-  <p style="color:var(--cyan);font-size:9px;margin-top:20px;font-family:'Press Start 2P',monospace">[ ADD MORE — in-engine screenshots, puzzle screenshots, Metahuman character shots ]</p>
 </div>
 
 </main>

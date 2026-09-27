@@ -290,6 +290,19 @@
     display: block;
     border-bottom: 3px solid var(--magenta);
   }
+  /* Empty thumbnail frame. Swap the div for <img src="images/..." alt="..." class="project-thumb"> */
+  .thumb-slot {
+    background: var(--bg2);
+    color: var(--magenta);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 8px;
+    line-height: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 16px;
+  }
   .project-body { padding: 16px; flex: 1; display: flex; flex-direction: column; }
   .project-title {
     font-family: 'Press Start 2P', monospace;
@@ -518,17 +531,16 @@
   <img src="images/sitting.png" alt="" class="sitting" aria-hidden="true">
 </div>
 
-<!-- PROJECTS -->
-<section id="projects">	
-<h2 class="section-title">// PROJECT_LOG</h2>
-</div>
+<!-- WORK EXPERIENCE (id stays "projects" so the nav and PRESS START links still land here) -->
+<section id="projects">
+<h2 class="section-title">// WORK_EXPERIENCE</h2>
   <div class="projects-grid">
 	  
 <div class="project-card">
       <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/492648c6-2e93-4ec6-875b-12897e7f1dc2/wishlist-banner.png" alt="Axima game banner" class="project-thumb">
       <div class="project-body">
         <div class="project-title">AXIMA (ZYNDRAX)</div>
-        <div class="project-meta">2025 – PRESENT &nbsp;|&nbsp;  LEVEL DESIGNER</div>
+        <div class="project-meta">2025 – 2026 |&nbsp;  LEVEL DESIGNER</div>
         <p class="project-desc">Contracted level design on an in-production UE5 open-world monster tamer.&nbsp;</p>
         <p class="project-desc">Blocked out levels in greybox, designed puzzles, worked with dev team to integrate current gameplay, developed level design tools.</p>
 <div class="project-actions">
@@ -539,11 +551,11 @@
     </div>
 	  
     <div class="project-card">
-      <img src="images/spr_thumb.png" alt="Salt Sweeper game screenshot" class="project-thumb">
+      <img src="images/ss-thumb.png" alt="Salt Sweeper game screenshot" class="project-thumb">
       <div class="project-body">
         <div class="project-title">SALT SWEEPER</div>
         <div class="project-meta">2024 – PRESENT &nbsp;|&nbsp; DESIGNER / DEVELOPER&nbsp; | STUDIO REBORNE&nbsp;</div>
-        <p class="project-desc">A minesweeper-inspired roguelike with fantasy roots.</p>
+        <p class="project-desc">A minesweeper-inspired roguelike with fantasy roots. <strong style="color:var(--green)">Coming to Steam.</strong></p>
         <p class="project-desc">Authored GDD, implemented combat mechanics, designed diverse systems, balanced weapons and enemies, and conducted group playtesting sessions.</p>
 <div class="project-actions">
   <a href="project_salt_sweeper.html" class="btn-view">&gt; VIEW PROJECT</a>
@@ -586,11 +598,37 @@
       <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/7f479709-68a1-4e15-a5fa-ae480e54412b/HighresScreenshot00000.png" alt="Bravo Media digital human in Unreal Engine" class="project-thumb">
       <div class="project-body">
         <div class="project-title">BRAVO MEDIA</div>
-        <div class="project-meta">2023, 2024 &nbsp;|&nbsp; CHARACTER TECH ARTIST / UE5</div>
+        <div class="project-meta">2023 – 2024 &nbsp;|&nbsp; UNREAL ENGINE DESIGNER</div>
         <p class="project-desc">Production-grade real-time digital human built in UE5 for Usher's 2025 US tour.&nbsp;</p>
         <p class="project-desc">Sculpted facial mesh, groomed hair, created cloth physics, and animated character to be used in real-time animation.</p>
 <div class="project-actions">
   <a href="project_bravo_media.html" class="btn-view">&gt; VIEW PROJECT</a>
+</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb thumb-slot">[ THUMB: gr-thumb.png ]</div>
+      <div class="project-body">
+        <div class="project-title">GAMEREADY.DEV</div>
+        <div class="project-meta">2026 – PRESENT &nbsp;|&nbsp; UNREAL ENGINE DEVELOPER &amp; INSTRUCTOR</div>
+        <p class="project-desc">UE5 gameplay systems for multiple client projects, including scripting and balancing for an undisclosed mobile game.</p>
+        <p class="project-desc">Mentors students 1:1 on game design, level design, Blueprints, C++, and prototyping.</p>
+<div class="project-actions">
+  <a href="project_gameready.html" class="btn-view">&gt; VIEW PROJECT</a>
+</div>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-thumb thumb-slot">[ THUMB: id-thumb.png ]</div>
+      <div class="project-body">
+        <div class="project-title">iD TECH</div>
+        <div class="project-meta">2026 &nbsp;|&nbsp; GAME DESIGN INSTRUCTOR</div>
+        <p class="project-desc">Took classes of 6–12 students from zero experience to a playable multi-level game in 7 weeks.</p>
+        <p class="project-desc">Wrote and taught curriculum on design theory, greyboxing, GDDs, player psychology, and engine fundamentals across GameMaker, Unreal, and Unity.</p>
+<div class="project-actions">
+  <a href="project_id_tech.html" class="btn-view">&gt; VIEW PROJECT</a>
 </div>
       </div>
     </div>
@@ -606,6 +644,30 @@
         <p class="project-desc">Designed wagon classes with distinct mechanical identities, worked with client and team to create a pipeline, designed a procedural hex world, concepted a 2.5D visual style.</p>
 <div class="project-actions">
   <a href="project_age_of_gloom.html" class="btn-view">&gt; VIEW PROJECT</a>
+</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<!-- GAME JAMS & COMPETITIONS -->
+<section id="jams">
+<h2 class="section-title">// GAME_JAMS_&amp;_COMPETITIONS</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <img src="images/cat-keyart.png" alt="Cat-Tastic key art: Mr. Dubois and his cats in the dark" class="project-thumb">
+      <div class="project-body">
+        <div class="project-title">CAT-TASTIC</div>
+        <div class="project-meta">2026 &nbsp;|&nbsp; TEAM LEAD / DESIGNER &nbsp;|&nbsp; STUDIO REBORNE</div>
+        <p class="project-desc"><strong style="color:var(--green)">★ 7th Place — 49th gm(48)</strong></p>
+        <p class="project-desc">Bullet-hell x rhythm couch co-op made in 48 hours for the "Total Darkness" jam. One cat can see. One man cannot.</p>
+        <p class="project-desc">Headed a team of 3, authored the GDD, and designed systems — combat balance, gameplay feel, dialogue, and rhythm tuning.</p>
+<div class="project-actions">
+  <a href="project_cat_tastic.html" class="btn-view">&gt; VIEW PROJECT</a>
 </div>
       </div>
     </div>

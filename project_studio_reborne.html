@@ -56,6 +56,36 @@
   .lightbox-close{position:fixed;top:20px;right:24px;font-family:'Press Start 2P',monospace;font-size:12px;color:var(--green);background:var(--bg);border:2px solid var(--green);padding:6px 14px;cursor:pointer;z-index:10001}
   .lightbox-close:hover{background:var(--green);color:var(--bg)}
   .gallery-img{cursor:zoom-in}
+  /* DESIGN PROCESS BREAKDOWN */
+  .ld-section{margin-bottom:60px}
+  .ld-section:last-child{margin-bottom:0}
+  .ld-step-label{font-family:'Press Start 2P',monospace;font-size:8px;color:var(--cyan);margin-bottom:10px;letter-spacing:.08em}
+  .ld-step-title{font-family:'Press Start 2P',monospace;font-size:clamp(9px,1.5vw,13px);color:var(--green);margin-bottom:20px;line-height:1.7;text-shadow:0 0 8px var(--green)}
+  .ld-step-text{font-size:14px;color:var(--text);line-height:1.9;margin-bottom:28px;max-width:720px}
+  .ld-imgs{display:grid;gap:16px}
+  .ld-imgs.cols-1{grid-template-columns:1fr;max-width:680px}
+  .ld-imgs.cols-2{grid-template-columns:repeat(2,1fr)}
+  .ld-sep{border-top:1px solid var(--bg2);margin:0 0 60px}
+  .ld-sub{margin-bottom:32px}
+  .ld-sub:last-child{margin-bottom:0}
+  .ld-sub-text{font-size:14px;color:var(--text);line-height:1.9;margin-bottom:16px;max-width:720px}
+  @media(max-width:640px){.ld-imgs.cols-2{grid-template-columns:1fr}}
+
+  /* IMAGE SLOT — empty picture frame. Swap for <img class="gallery-img" src="images/..." alt="..."> */
+  .img-slot{width:100%;aspect-ratio:16/9;border:3px dashed var(--magenta);background:var(--bg2);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--magenta);font-family:'Press Start 2P',monospace;font-size:8px;line-height:2}
+  /* SHORTS — vertical videos. Wide screens (>=1560px): pinned in the empty side margins.
+     Narrower: a normal // SHORTS section in the page flow. Same markup either way. */
+  .shorts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;max-width:900px}
+  .shorts-rail{display:contents}
+  .short{width:100%;aspect-ratio:9/16;border:3px solid var(--green);display:block}
+  .img-slot.short-slot{aspect-ratio:9/16}
+  @media(min-width:1560px){
+    .shorts>.divider,.shorts .section-title{display:none}
+    .shorts .content-wrap{padding:0}
+    .shorts-rail{display:flex;flex-direction:column;gap:16px;position:fixed;top:90px;width:calc((100vw - 1100px) / 2 - 48px);max-width:260px;max-height:calc(100vh - 110px);overflow-y:auto;scrollbar-width:thin;z-index:50}
+    .shorts-left{left:24px}
+    .shorts-right{right:24px}
+  }
 </style>
 </head>
 <body>
@@ -69,13 +99,12 @@
   </div>
 </nav>
 <main id="main-content">
-
 <div class="proj-hero">
   <div class="proj-hero-inner">
     <a href="index.html" class="back-btn">&lt;&lt; BACK TO PORTFOLIO</a>
     <h1 class="proj-title">STUDIO REBORNE</h1>
-    <p class="proj-meta">2022 – PRESENT &nbsp;|&nbsp; WRITER / EDITOR &nbsp;|&nbsp; YOUTUBE</p>
-    <p class="proj-overview">Researched, wrote, and edited videos focused on design philosophy, development tricks, and systems design.</p>
+    <p class="proj-meta">2022 – PRESENT &nbsp;|&nbsp; WRITER / PRODUCER &nbsp;|&nbsp; YOUTUBE</p>
+    <p class="proj-overview">Wrote and produced educational game design videos covering design philosophy, systems design, and development techniques — 1.6M total channel views and 7k subscribers.</p>
     <div class="stats-row">
       <span class="stat-chip">7K+ SUBSCRIBERS</span>
       <span class="stat-chip">1.6M+ VIEWS</span>
@@ -93,16 +122,38 @@
 
 <div class="content-wrap">
   <h2 class="section-title">// FEATURED_VIDEO</h2>
-
-    <iframe class="yt-embed" 
-		  src="https://www.youtube.com/embed/VK6BjNI6PFc?si=kP7O2P9tNt4UO6dd" 
-		  title="Salt Sweeper gameplay video" 
-		  frameborder="0" 
-		  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-		  referrerpolicy="strict-origin-when-cross-origin" 
+  <iframe class="yt-embed"
+		  src="https://www.youtube.com/embed/VK6BjNI6PFc?si=kP7O2P9tNt4UO6dd"
+		  title="Studio Reborne featured video"
+		  frameborder="0"
+		  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+		  referrerpolicy="strict-origin-when-cross-origin"
 		  allowfullscreen>
 	</iframe>
 </div>
+
+<!-- SHORTS
+  Replace each .short-slot with:
+  <iframe class="short" src="https://www.youtube.com/embed/SHORT_ID" title="Studio Reborne short — WHAT IT SHOWS" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  SHORT_ID is the part after youtube.com/shorts/ . Left rail = shorts 1 and 3, right rail = 2 and 4.
+  Delete slots you don't need; one short per side looks best on most screens.
+-->
+<section class="shorts" aria-label="Studio Reborne shorts">
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+<div class="content-wrap">
+  <h2 class="section-title">// SHORTS</h2>
+  <div class="shorts-grid">
+    <div class="shorts-rail shorts-left">
+      <iframe class="short" src="https://www.youtube.com/embed/u3xn6q8sXY4" title="The 5 Levels of Water" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe class="short" src="https://www.youtube.com/embed/cprVR8i_iLQ" title="Why do you love your dirt house?" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="shorts-rail shorts-right">
+      <iframe class="short" src="https://www.youtube.com/embed/udTcD2A2WSc" title="a brief history of health bars" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe class="short" src="https://www.youtube.com/embed/YTr42ffCyWI" title="The 5 Levels of Fire" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+</section>
 
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
 
@@ -112,20 +163,76 @@
 
     <div class="resp-card">
       <div class="resp-card-title">WRITING &amp; SCRIPTING</div>
-      <p>Wrote every script from long-form to short form, researching design topics to cover. Concepted original design thesis', presented philosophical conclusions, and gave advice to the YouTube design community.</p>
+      <p>Wrote every script from long-form to short form, researching design topics to cover. Concepted original design theses, presented philosophical conclusions, and gave advice to the YouTube design community.</p>
     </div>
 
     <div class="resp-card">
       <div class="resp-card-title">FILMING &amp; EDITING</div>
-      <p>Shot, edited, and color graded every video using Davinci Resolve. Responsible for all motion graphics, composed a signifigant portion of the music, and filmed most gameplay footage in a cinematic manner.</p>
+      <p>Shot, edited, and color graded every video using DaVinci Resolve. Responsible for all motion graphics, composed a significant portion of the music, and filmed most gameplay footage in a cinematic manner.</p>
     </div>
 
     <div class="resp-card">
       <div class="resp-card-title">CHANNEL GROWTH &amp; AUDIENCE</div>
-      <p>Grew the channel from zero to 7k+ subscribers through unique, creative content. I present content that fills a niche and grew my audience rapidly.</p>
+      <p>Grew the channel from zero to 7k+ subscribers and 1.6M views through unique, creative content that fills a niche in the design community.</p>
     </div>
 
   </div>
+</div>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<!-- DESIGN PROCESS BREAKDOWN -->
+<div class="content-wrap">
+  <h2 class="section-title">// DESIGN_PROCESS</h2>
+
+  <!-- 01 -->
+  <div class="ld-section">
+    <div class="ld-step-label">01 —</div>
+    <h3 class="ld-step-title">CHOOSING A TOPIC</h3>
+    <p class="ld-step-text">Every video starts with a design question. For [VIDEO TITLE], the question was [THE QUESTION]. I knew it was worth a full video when [THE MOMENT / THE TEST YOU USE].</p>
+    <div class="ld-imgs cols-1">
+      <div class="img-slot">[ IMG: sr-01-topic-notes.png — topic list / research notes ]</div>
+    </div>
+  </div>
+
+  <div class="ld-sep"></div>
+
+  <!-- 02 -->
+  <div class="ld-section">
+    <div class="ld-step-label">02 —</div>
+    <h3 class="ld-step-title">WRITING THE ARGUMENT</h3>
+    <p class="ld-step-text">I write a script the way I write a GDD: [HOW YOU STRUCTURE A SCRIPT — THESIS, EXAMPLES, PAYOFF]. The hardest part is usually [WHAT YOU CUT, OR WHERE THE ARGUMENT FIGHTS BACK].</p>
+    <div class="ld-imgs cols-2">
+      <div class="img-slot">[ IMG: sr-02-script-a.png — script draft ]</div>
+      <div class="img-slot">[ IMG: sr-02-script-b.png — script revision / outline ]</div>
+    </div>
+  </div>
+
+  <div class="ld-sep"></div>
+
+  <!-- 03 -->
+  <div class="ld-section">
+    <div class="ld-step-label">03 —</div>
+    <h3 class="ld-step-title">DESIGNING FOR RETENTION</h3>
+    <p class="ld-step-text">A video is a game with one mechanic: keep watching. [HOW YOU THINK ABOUT PACING, HOOKS, AND VISUALS]. The retention graph taught me [LESSON FROM ANALYTICS].</p>
+    <div class="ld-imgs cols-2">
+      <div class="img-slot">[ IMG: sr-03-edit-timeline.png — DaVinci Resolve timeline ]</div>
+      <div class="img-slot">[ IMG: sr-03-retention.png — retention / analytics graph ]</div>
+    </div>
+  </div>
+
+  <div class="ld-sep"></div>
+
+  <!-- 04 -->
+  <div class="ld-section">
+    <div class="ld-step-label">04 —</div>
+    <h3 class="ld-step-title">WHAT TEACHING DESIGN TAUGHT ME</h3>
+    <p class="ld-step-text">[HOW EXPLAINING DESIGN TO 1.6M VIEWERS CHANGED THE WAY YOU DESIGN YOUR OWN GAMES — A CONCRETE EXAMPLE].</p>
+    <div class="ld-imgs cols-1">
+      <div class="img-slot">[ IMG: sr-04-comments.png — community comments / discussion ]</div>
+    </div>
+  </div>
+
 </div>
 
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
@@ -134,8 +241,10 @@
   <h2 class="section-title">// SCREENSHOT_LOG</h2>
   <div class="gallery-grid">
     <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/e1b35718-aa65-4d92-a518-b368ac95355f/image_2025-06-02_153847335.png" alt="Studio Reborne YouTube channel banner" class="gallery-img">
+    <div class="img-slot">[ IMG: sr-05-thumbnail-a.png — video thumbnail ]</div>
+    <div class="img-slot">[ IMG: sr-05-thumbnail-b.png — video thumbnail ]</div>
+    <div class="img-slot">[ IMG: sr-05-setup.png — recording setup ]</div>
   </div>
-  <p style="color:var(--cyan);font-size:9px;margin-top:20px;font-family:'Press Start 2P',monospace">[ ADD MORE — video thumbnails, behind-the-scenes setup photos, channel analytics screenshots ]</p>
 </div>
 
 </main>

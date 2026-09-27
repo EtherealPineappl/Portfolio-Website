@@ -85,6 +85,21 @@
   .ld-sub:last-child{margin-bottom:0}
   .ld-sub-text{font-size:14px;color:var(--text);line-height:1.9;margin-bottom:16px;max-width:720px}
   @media(max-width:640px){.ld-imgs.cols-2{grid-template-columns:1fr}}
+  /* IMAGE SLOT — empty picture frame. Swap for <img class="gallery-img" src="images/..." alt="..."> */
+  .img-slot{width:100%;aspect-ratio:16/9;border:3px dashed var(--magenta);background:var(--bg2);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--magenta);font-family:'Press Start 2P',monospace;font-size:8px;line-height:2}
+  /* SHORTS — vertical videos. Wide screens (>=1560px): pinned in the empty side margins.
+     Narrower: a normal // SHORTS section in the page flow. Same markup either way. */
+  .shorts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;max-width:900px}
+  .shorts-rail{display:contents}
+  .short{width:100%;aspect-ratio:9/16;border:3px solid var(--green);display:block}
+  .img-slot.short-slot{aspect-ratio:9/16}
+  @media(min-width:1560px){
+    .shorts>.divider,.shorts .section-title{display:none}
+    .shorts .content-wrap{padding:0}
+    .shorts-rail{display:flex;flex-direction:column;gap:16px;position:fixed;top:90px;width:calc((100vw - 1100px) / 2 - 48px);max-width:260px;max-height:calc(100vh - 110px);overflow-y:auto;scrollbar-width:thin;z-index:50}
+    .shorts-left{left:24px}
+    .shorts-right{right:24px}
+  }
 </style>
 </head>
 <body>
@@ -107,8 +122,8 @@
     <a href="index.html" class="back-btn">&lt;&lt; BACK TO PORTFOLIO</a>
     <h1 class="proj-title">SALT SWEEPER</h1>
     <p class="proj-meta">2024 – PRESENT &nbsp;|&nbsp; DESIGNER / DEVELOPER &nbsp;|&nbsp; GAMEMAKER STUDIO 2</p>
-    <p class="proj-overview">A minesweeper-inspired roguelike with fantasy roots. Authored GDD, implemented combat mechanics, designed diverse systems, balanced weapons and enemies, and conducted group playtesting sessions.</p>
-    <a href="https://studio-reborne.itch.io/salt-sweeper" target="_blank" rel="noopener" class="cta-btn">&gt;&gt; PLAY ON ITCH.IO<span class="sr-only"> (opens in new tab)</span></a>
+    <p class="proj-overview">A minesweeper-inspired roguelike with fantasy roots — coming to Steam [RELEASE DATE / WINDOW]. Authored the GDD, implemented combat mechanics and loot tables, and balanced weapons, enemies, and the economy across 6 playtesting cycles.</p>
+    <a href="https://store.steampowered.com/app/[APP_ID]/" target="_blank" rel="noopener" class="cta-btn">&gt;&gt; WISHLIST ON STEAM<span class="sr-only"> (opens in new tab)</span></a>
 	<a href="https://docs.google.com/document/d/1mQKpipsYBcGk87HuIOT07WiJMesgtJFB_X7KJQYSKSQ/edit?usp=sharing" target="_blank" rel="noopener" class="cta-btn">&gt;&gt; GDD<span class="sr-only"> (opens in new tab)</span></a>
 	  <a href="https://docs.google.com/spreadsheets/d/1VjowOf9-aIEU_zm1QUyFE8WRoMndtbDI5_y9QjwIqqs/edit?usp=sharing" target="_blank" rel="noopener" class="cta-btn">&gt;&gt; Systems Sheet<span class="sr-only"> (opens in new tab)</span></a>
   </div>
@@ -137,7 +152,7 @@
     ══════════════════════════════════════════════════════
   -->
   <iframe class="yt-embed" 
-		  src="https://www.youtube.com/embed/Jku2RnUtfV4?si=k0Y-LZxpygYHsXLU" 
+		  src="https://www.youtube.com/embed/R3_ICPHjJ1s?si=QW4kUCctx9fFt845" 
 		  title="Salt Sweeper gameplay video" 
 		  frameborder="0" 
 		  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -146,7 +161,32 @@
 	</iframe>
 </div>
 
+<!-- SHORTS
+  Replace each .short-slot with:
+  <iframe class="short" src="https://www.youtube.com/embed/SHORT_ID" title="Salt Sweeper short — WHAT IT SHOWS" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  SHORT_ID is the part after youtube.com/shorts/ . Left rail = shorts 1 and 3, right rail = 2 and 4.
+  Delete slots you don't need; one short per side looks best on most screens.
+-->
+<section class="shorts" aria-label="Salt Sweeper shorts">
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+<div class="content-wrap">
+  <h2 class="section-title">// SHORTS</h2>
+  <div class="shorts-grid">
+    <div class="shorts-rail shorts-left">
+      <iframe class="short" src="https://www.youtube.com/embed/V9-bXZhWepk" title="Why Your Tutorial Text Isn&#x27;t Being Read" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe class="short" src="https://www.youtube.com/embed/0u10dMNNSjs" title="I let strangers play my game..." frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="shorts-rail shorts-right">
+      <iframe class="short" src="https://www.youtube.com/embed/Y3MbVcqu76Y" title="I Hid a Secret in My Game&#x27;s Music" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      <iframe class="short" src="https://www.youtube.com/embed/M4u3s0J-lWw" title="The UI trick that you should steal." frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+</section>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+
 
 <!-- RESPONSIBILITIES -->
 <div class="content-wrap">
@@ -167,7 +207,12 @@
     <div class="resp-card">
       <div class="resp-card-title">WORLD BUILDING &amp; NARRATIVE DESIGN</div>
       <p>I drafted and wrote Salt Sweeper's in-depth world building that presents itself in the dialogue and environmental design.</p>
-	  <p>I also wrote each character, from their storyline, to evey individual line of dialogue.</p>
+	  <p>I also wrote each character, from their storyline, to every individual line of dialogue.</p>
+    </div>
+
+    <div class="resp-card">
+      <div class="resp-card-title">ECONOMY &amp; LOOT TABLES</div>
+      <p>Implemented loot tables and balanced weapons, enemies, and the in-game economy across 6 playtesting cycles, tuning drop rates from an editable percentile sheet.</p>
     </div>
 
   </div>
@@ -183,11 +228,12 @@
   <div class="ld-section">
     <div class="ld-step-label">01 —</div>
     <h3 class="ld-step-title">WRITING THE GDD</h3>
-    <p class="ld-step-text">All good games begin with an in-depth game design document. Over the years, I have learned that the GDD isn't some place to create the entire game and detail evey mechanic. Its somewhere to start and iterate on throughout development.</p>
+    <p class="ld-step-text">All good games begin with an in-depth game design document. Over the years, I have learned that the GDD isn't some place to create the entire game and detail every mechanic. It's somewhere to start and iterate on throughout development.</p>
 	      <p class="ld-step-text">I began by writing what I knew I needed: a core gameplay loop flowchart, specifics on the world generation, combat specifications, and UI drafts. This gave me a basis to begin my prototype with, and would be iterated on throughout my development.</p>
     <div class="ld-imgs cols-1">
       <!-- replace src with your GDD screenshot path -->
       <img class="gallery-img" src="images/ss-01-gdd.png" alt="Salt Sweeper GDD document open, showing systems overview">
+		<img class="gallery-img" src="images/ss-02-gdd.png" alt="Salt Sweeper GDD document open, showing systems overview">
     </div>
   </div>
 
@@ -229,13 +275,13 @@
     <div class="ld-sub">
       <p class="ld-sub-text">I knew that I wanted to have a lot of diverse weapons, items, and spells -- which presents the problem "how did I manage it all?"</p>
 		<p class="ld-sub-text">To begin, I contemplated working with a json that I could pull from, but I found that it would be simpler and nearly as efficient to just use a .csv to store all the data.</p>
-		<p class="ld-sub-text">I designed the sheets to be easy to read and edit, making adding new items trivial -- the only thing I acutally needed to do in engine was to upload the sprite.</p>
+		<p class="ld-sub-text">I designed the sheets to be easy to read and edit, making adding new items trivial -- the only thing I actually needed to do in engine was to upload the sprite.</p>
       <!-- replace src with your system design screenshot 1 path -->
       <img class="gallery-img" src="images/ss-04-system-a.png" alt="Salt Sweeper data spreadsheet showing item system rows">
     </div>
 
     <div class="ld-sub">
-      <p class="ld-sub-text">The dialogue system uses the same data-driven approach. I needed to manage hundreds, if not thousands of lines in the final game, so I made an indexing method to keep everything organized. For example, Freya's second story dialogue could would be under the index F-1, but an optional event would be indexed F-E1.</p>
+      <p class="ld-sub-text">The dialogue system uses the same data-driven approach. I needed to manage hundreds, if not thousands of lines in the final game, so I made an indexing method to keep everything organized. For example, Freya's second story dialogue would be under the index F-1, but an optional event would be indexed F-E1.</p>
 	<p class="ld-sub-text">Combining this with some cells to host the dialogue choices and to call events, made this system robust, and made the creation of events simple.</p>
       <!-- replace src with your system design screenshot 2 path -->
       <img class="gallery-img" src="images/ss-04-system-b.png" alt="Salt Sweeper dialogue system spreadsheet with NPC branches">
@@ -254,12 +300,12 @@
   <div class="ld-section">
     <div class="ld-step-label">05 —</div>
     <h3 class="ld-step-title">COMBAT DESIGN</h3>
-    <p class="ld-step-text">Turn based combat often feels slow, and that didn't mesh well with the feel of minesweeper. During playtests I learned that players would quickly get really fast at traversing areas, but would be slowed down and have to wait for combat. They was a complete disagreement between the two paces, and I chose to adapt the turn-based combat to a faster pace to compensate for this wanting from the player.</p>
-    <p class="ld-step-text">I did this by reducing timers and animations, limiting the player's options, and keeping everything at a relatively low health (keeping the weapons balanced to this so the game wouldn't be too trivial). Typical enemies shoukld be able to be killed within a couple turns, and bosses might require a little more than 10 on average.</p>
+    <p class="ld-step-text">Turn based combat often feels slow, and that didn't mesh well with the feel of minesweeper. During playtests I learned that players would quickly get really fast at traversing areas, but would be slowed down and have to wait for combat. There was a complete disagreement between the two paces, and I chose to adapt the turn-based combat to a faster pace to compensate for this wanting from the player.</p>
+    <p class="ld-step-text">I did this by reducing timers and animations, limiting the player's options, and keeping everything at a relatively low health (keeping the weapons balanced to this so the game wouldn't be too trivial). Typical enemies should be able to be killed within just a couple turns, and bosses might require a little more than 10 on average.</p>
 <div class="ld-imgs cols-2">
   <!-- replace srcs with your combat design screenshot paths -->
-  <img class="gallery-img" src="images/ss-05-combat-a.png" alt="Salt Sweeper combat encounter in progress">
-  <img class="gallery-img" src="images/ss-05-combat-b.png" alt="Salt Sweeper combat system UI showing spell and weapon options">
+  <img class="gallery-img" src="images/ss-05-combat-brinebound.png" alt="Salt Sweeper combat against the Brinebound, with the Attack and Spells options beside the minesweeper board">
+  <img class="gallery-img" src="images/ss-05-combat-saltborne.png" alt="Salt Sweeper combat against the Saltborne, mid-attack with the timing bar active">
 </div>
   </div>
 
@@ -269,7 +315,7 @@
   <div class="ld-section">
     <div class="ld-step-label">06 —</div>
     <h3 class="ld-step-title">PLAYTESTING</h3>
-    <p class="ld-step-text">Playtests were conducted for each major build of the game. The build was released to the team, and they played the build wit no direction or instruction. Then, they would answer targeted questions and fill out bug report sheets. This allowed me to quickly adapt to player feedback following each build.</p>
+    <p class="ld-step-text">Playtests were conducted for each major build of the game — 6 cycles in total. The build was released to the team, and they played the build with no direction or instruction. Then, they would answer targeted questions and fill out bug report sheets. This allowed me to quickly adapt to player feedback following each build. Later, I scaled this up to group playtests with hundreds of players at expos and conventions (below).</p>
     <div class="ld-imgs cols-2">
       <!-- replace srcs with your playtesting screenshot/photo paths -->
       <img class="gallery-img" src="images/ss-06-playtest-a.png" alt="Playtesting session in progress, player at screen">
@@ -277,6 +323,32 @@
     </div>
   </div>
 
+  <div class="ld-sep"></div>
+
+</div>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<!-- EXPOS & CONVENTIONS -->
+<div class="content-wrap">
+  <h2 class="section-title">// EXPOS_&amp;_CONVENTIONS</h2>
+  <p class="ld-step-text">I took Salt Sweeper on the road, running a table at game expos and conventions and putting the game in front of hundreds of players. [EVENT NAMES AND YEARS].</p>
+
+  <div class="ld-sub">
+    <h3 class="ld-step-title">RUNNING THE TABLE</h3>
+    <p class="ld-sub-text">A convention table is a level design problem: people walk past in seconds, so the setup has to pull them in and teach the game before they sit down. I brought salt lamps, designed my own signage, and handed out cards and candy to draw in people!&nbsp;&nbsp;</p>
+    <div class="ld-imgs cols-2">
+      <img class="gallery-img" src="images/ss-09-table.jpg" alt="Corvin at the Salt Sweeper expo table, with the demo title screen, QR code signage, and business cards">
+      <img class="gallery-img" src="images/ss-09-business-cards.jpg" alt="Studio Reborne business cards: logo on the front, mascot and QR code on the back" style="object-fit:contain;background:var(--bg2)">
+    </div>
+  </div>
+
+  <div class="ld-sub">
+    <h3 class="ld-step-title">PLAYTESTING WITH HUNDREDS</h3>
+    <p class="ld-sub-text">I put Salt Sweeper in front of complete strangers with zero instructions — no walkthrough from me, just the game.</p>
+    <p class="ld-sub-text">In under thirty seconds, one player found the move I had never tested. Instead of pressing the retreat button, they simply walked out of combat mid-fight — and the combat UI didn't close. It stacked. Every step opened another layer on top of the last until, by the tenth, we were both staring at a flashing error screen in respectful silence.</p>
+    <p class="ld-sub-text">Nothing teaches you humility like watching someone break your game in a way you didn't know was possible.</p>
+  </div>
 </div>
 
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
@@ -285,12 +357,12 @@
 <div class="content-wrap">
   <h2 class="section-title">// SCREENSHOT_LOG</h2>
   <div class="gallery-grid">
-    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/3a0a67dc-5768-4ea1-a37c-8af5851e6a33/Screenshot+2025-04-25+215456.png" alt="Salt Sweeper hero screenshot" class="gallery-img">
-    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/5b4c0c4e-dcb9-4ec8-8374-10f50eeae5b0/A1Gleg.png" alt="Salt Sweeper world banner" class="gallery-img">
-    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/8bbdd74a-6fd5-41d3-814d-e23c94707338/image_2025-06-03_003406367.png" alt="Salt Sweeper gameplay screenshot 1" class="gallery-img">
-    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/ba6e5629-3a62-4bd1-bac3-2c91cbdb40a6/Screenshot+2025-04-25+215326.png" alt="Salt Sweeper gameplay screenshot 2" class="gallery-img">
-    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/b104456b-189b-4e9e-9dda-1e7433d5431d/image_2025-06-03_194559606.png" alt="Salt Sweeper combat screenshot 1" class="gallery-img">
-    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/d2a90f69-3865-49e2-96fc-ab0072a5123f/image_2025-06-03_015933608.png" alt="Salt Sweeper combat screenshot 2" class="gallery-img">
+    <img src="images/ss-10-tutorial.png" alt="Salt Sweeper tutorial explaining the danger count: how many enemies are within one tile" class="gallery-img">
+    <img src="images/ss-10-freya-town.png" alt="Freya talking to the player in the town of Kaba Kaba" class="gallery-img">
+    <img src="images/ss-10-mako.png" alt="A mysterious character greeting the player mid-floor in the dungeon" class="gallery-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/8bbdd74a-6fd5-41d3-814d-e23c94707338/image_2025-06-03_003406367.png" alt="Salt Sweeper dialogue spreadsheet with indexed lines for each character" class="gallery-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/b104456b-189b-4e9e-9dda-1e7433d5431d/image_2025-06-03_194559606.png" alt="Salt Sweeper GML code open in GameMaker Studio 2" class="gallery-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/d2a90f69-3865-49e2-96fc-ab0072a5123f/image_2025-06-03_015933608.png" alt="Salt Sweeper item data sheet listing weapons, spells, and costs" class="gallery-img">
   </div>
 </div>
 

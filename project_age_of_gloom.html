@@ -52,6 +52,23 @@
   .lightbox-close{position:fixed;top:20px;right:24px;font-family:'Press Start 2P',monospace;font-size:12px;color:var(--green);background:var(--bg);border:2px solid var(--green);padding:6px 14px;cursor:pointer;z-index:10001}
   .lightbox-close:hover{background:var(--green);color:var(--bg)}
   .gallery-img{cursor:zoom-in}
+  /* DESIGN PROCESS BREAKDOWN */
+  .ld-section{margin-bottom:60px}
+  .ld-section:last-child{margin-bottom:0}
+  .ld-step-label{font-family:'Press Start 2P',monospace;font-size:8px;color:var(--cyan);margin-bottom:10px;letter-spacing:.08em}
+  .ld-step-title{font-family:'Press Start 2P',monospace;font-size:clamp(9px,1.5vw,13px);color:var(--green);margin-bottom:20px;line-height:1.7;text-shadow:0 0 8px var(--green)}
+  .ld-step-text{font-size:14px;color:var(--text);line-height:1.9;margin-bottom:28px;max-width:720px}
+  .ld-imgs{display:grid;gap:16px}
+  .ld-imgs.cols-1{grid-template-columns:1fr;max-width:680px}
+  .ld-imgs.cols-2{grid-template-columns:repeat(2,1fr)}
+  .ld-sep{border-top:1px solid var(--bg2);margin:0 0 60px}
+  .ld-sub{margin-bottom:32px}
+  .ld-sub:last-child{margin-bottom:0}
+  .ld-sub-text{font-size:14px;color:var(--text);line-height:1.9;margin-bottom:16px;max-width:720px}
+  @media(max-width:640px){.ld-imgs.cols-2{grid-template-columns:1fr}}
+
+  /* IMAGE SLOT — empty picture frame. Swap for <img class="gallery-img" src="images/..." alt="..."> */
+  .img-slot{width:100%;aspect-ratio:16/9;border:3px dashed var(--magenta);background:var(--bg2);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--magenta);font-family:'Press Start 2P',monospace;font-size:8px;line-height:2}
 </style>
 </head>
 <body>
@@ -65,13 +82,12 @@
   </div>
 </nav>
 <main id="main-content">
-
 <div class="proj-hero">
   <div class="proj-hero-inner">
     <a href="index.html" class="back-btn">&lt;&lt; BACK TO PORTFOLIO</a>
     <h1 class="proj-title">UNDISCLOSED ROGUELIKE</h1>
-    <p class="proj-meta">2022 – 2024 &nbsp;|&nbsp; DESIGNER / DEVELOPER (CONTRACT) &nbsp;|&nbsp; UNREAL ENGINE 5</p>
-    <p class="proj-overview">A gameplay-first world of ruin and strategy — featuring eight unique wagon classes, multi-threaded procedural hex world generation, a custom post-process shader system, and a full art-direction pivot from 3D to 2.5D. A technically ambitious contracted project that pushed the limits of what's possible in Unreal Engine 5 for a small team.</p>
+    <p class="proj-meta">2022 – 2024 &nbsp;|&nbsp; GAME DESIGNER (CONTRACT) &nbsp;|&nbsp; UNREAL ENGINE 5</p>
+    <p class="proj-overview">A Vampire Survivors-style roguelike built by a team of five for an undisclosed client. I designed the wagon leveling system — upgrade paths, combat statistics, passive abilities, and the upgrade economy across 14 unit types — and built the procedural hex world that carried 6 vertical slices through playtests of 10+ players, until the project was sunset due to funding constraints.</p>
   </div>
 </div>
 
@@ -81,24 +97,28 @@
 
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
 
-
 <div class="content-wrap">
   <h2 class="section-title">// KEY_RESPONSIBILITIES</h2>
   <div class="resp-grid">
 
     <div class="resp-card">
-      <div class="resp-card-title">CUSTOM POST-PROCESS SHADER</div>
-      <p>Developed a custom post-process material to visualize the core Gale vs Gloom mechanic — dynamically saturating the environment based on proximity to the player's lantern. The viewport is first globally desaturated; objects tagged as "Gale" are then re-saturated using stencil masking, noise blending, and lerps. The result: a powerful atmospheric tension system that communicates danger without any UI. Built entirely in UE5's material editor, optimized for real-time updates as objects enter and exit the lantern's range.</p>
+      <div class="resp-card-title">WAGON LEVELING SYSTEM</div>
+      <p>Designed the wagon leveling system, balancing upgrade paths, combat statistics, passive abilities, and the upgrade economy across 14 unit types.</p>
     </div>
 
     <div class="resp-card">
       <div class="resp-card-title">PROCEDURAL HEX WORLD GENERATION</div>
-      <p>Built a hex-based procedural world generator that creates a unique map every playthrough. Used UE5 Level Instances to stream hundreds of tile variations in and out without performance impact, and implemented a custom multi-threaded tile loading system so new hexes are ready before the caravan reaches them. Each hex tile pulls from procedural rulesets governing terrain, asset spawning, and encounter points. Hand-designed every core hex variant in collaboration with the book's author.</p>
+      <p>Built a hex-based procedural world generator that creates a unique map every playthrough. Used UE5 Level Instances to stream hundreds of tile variations in and out without performance impact, and implemented a custom multi-threaded tile loading system so new hexes are ready before the caravan reaches them. Each hex tile pulls from procedural rulesets governing terrain, asset spawning, and encounter points.</p>
+    </div>
+
+    <div class="resp-card">
+      <div class="resp-card-title">CUSTOM POST-PROCESS SHADER</div>
+      <p>Developed a custom post-process material to visualize the core Gale vs Gloom mechanic — dynamically saturating the environment based on proximity to the player's lantern. The viewport is first globally desaturated; objects tagged as "Gale" are then re-saturated using stencil masking, noise blending, and lerps — communicating danger without any UI.</p>
     </div>
 
     <div class="resp-card">
       <div class="resp-card-title">2.5D ART DIRECTION &amp; PAPERZD</div>
-      <p>Directed the full shift from 3D to 2.5D to achieve a more defined and readable art style. Built a custom terrain system generating procedural ground planes with a tile-based structure. Using PaperZD and pixel art animation blueprints, created a responsive animation system for wagon attacks and state transitions — retaining spatial depth while gaining the clarity and expressiveness of pixel art.</p>
+      <p>Directed the full shift from 3D to 2.5D to achieve a more defined and readable art style. Built a custom terrain system generating procedural ground planes with a tile-based structure, and used PaperZD pixel art animation blueprints for wagon attacks and state transitions.</p>
     </div>
 
   </div>
@@ -106,16 +126,86 @@
 
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
 
+<!-- DESIGN PROCESS BREAKDOWN -->
+<div class="content-wrap">
+  <h2 class="section-title">// DESIGN_PROCESS</h2>
+
+  <!-- 01 -->
+  <div class="ld-section">
+    <div class="ld-step-label">01 —</div>
+    <h3 class="ld-step-title">14 UNITS, ONE LEVELING SYSTEM</h3>
+    <p class="ld-step-text">Fourteen unit types is a lot of identity to protect. The question I kept asking was [THE QUESTION — e.g. "how does each wagon feel different at level 1 AND at max level?"].</p>
+    <p class="ld-step-text">[HOW YOU STRUCTURED UPGRADE PATHS VS. PASSIVES, AND WHERE YOU LET UNITS BREAK THE RULES].</p>
+    <div class="ld-imgs cols-2">
+      <div class="img-slot">[ IMG: ur-01-unit-roster.png — unit / wagon roster ]</div>
+      <div class="img-slot">[ IMG: ur-01-upgrade-tree.png — upgrade path diagram ]</div>
+    </div>
+  </div>
+
+  <div class="ld-sep"></div>
+
+  <!-- 02 -->
+  <div class="ld-section">
+    <div class="ld-step-label">02 —</div>
+    <h3 class="ld-step-title">BALANCING THE UPGRADE ECONOMY</h3>
+    <p class="ld-step-text">[HOW THE ECONOMY WORKED — WHAT PLAYERS EARN, WHAT THEY SPEND IT ON, AND THE CURVE YOU WERE AIMING FOR]. The spreadsheet caught [A BALANCE PROBLEM], and playtesting caught [ONE THE SHEET MISSED].</p>
+    <div class="ld-imgs cols-1">
+      <div class="img-slot">[ IMG: ur-02-balance-sheet.png — balance spreadsheet ]</div>
+    </div>
+  </div>
+
+  <div class="ld-sep"></div>
+
+  <!-- 03 -->
+  <div class="ld-section">
+    <div class="ld-step-label">03 —</div>
+    <h3 class="ld-step-title">A WORLD THAT BUILDS ITSELF</h3>
+    <p class="ld-step-text">[WHY A PROCEDURAL HEX WORLD WAS THE RIGHT CALL FOR THIS GAME — AND WHAT RULES KEPT RANDOM MAPS FEELING DESIGNED].</p>
+    <div class="ld-imgs cols-2">
+      <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/df81491e-94f7-4d18-a254-e9ba05052a74/Screenshot_2024-08-25_121006.png" alt="Procedural hex map" class="gallery-img">
+      <div class="img-slot">[ IMG: ur-03-hex-rules.png — tile rulesets / generator logic ]</div>
+    </div>
+  </div>
+
+  <div class="ld-sep"></div>
+
+  <!-- 04 -->
+  <div class="ld-section">
+    <div class="ld-step-label">04 —</div>
+    <h3 class="ld-step-title">THE 3D → 2.5D PIVOT</h3>
+    <p class="ld-step-text">[WHAT WASN'T READING IN 3D, WHAT CONVINCED THE TEAM TO PIVOT, AND WHAT IT COST].</p>
+    <div class="ld-imgs cols-2">
+      <div class="img-slot">[ IMG: ur-04-before-3d.png — 3D version ]</div>
+      <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/741c9212-cdd4-4c6c-bcb7-64f3e949a77b/image_2025-07-04_183444805.png" alt="2.5D art style" class="gallery-img">
+    </div>
+  </div>
+
+  <div class="ld-sep"></div>
+
+  <!-- 05 -->
+  <div class="ld-section">
+    <div class="ld-step-label">05 —</div>
+    <h3 class="ld-step-title">6 VERTICAL SLICES, 10+ PLAYTESTERS</h3>
+    <p class="ld-step-text">Across a team of five, I iterated on the GDDs and turned designs into rapid prototypes for 6 vertical slices, each tested with 10+ players. [WHAT ONE PLAYTEST CHANGED YOUR MIND ABOUT].</p>
+    <p class="ld-step-text">The project was sunset due to funding constraints. [WHAT YOU TOOK AWAY FROM IT].</p>
+    <div class="ld-imgs cols-2">
+      <div class="img-slot">[ IMG: ur-05-slice.png — vertical slice build ]</div>
+      <div class="img-slot">[ IMG: ur-05-playtest-notes.png — playtest feedback ]</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
 <div class="content-wrap">
   <h2 class="section-title">// SCREENSHOT_LOG</h2>
   <div class="gallery-grid">
-    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/61357ab9-7a6a-4040-ac50-c664944ce40a/Gloom+3.png" alt="The Age of Gloom hero screenshot" class="gallery-img">
-    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/74a6d96d-a7e1-42e3-9543-0de3ffce74b3/Gloom+1.png" alt="The Age of Gloom world view" class="gallery-img">
-    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/16f7d48e-4ace-4747-a1c4-04dde9730d3e/Gloom+4.png" alt="The Age of Gloom Gale vs Gloom shader" class="gallery-img">
-    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/aa5e9825-9453-4958-887b-ef6c51b1c542/Gloom+6.png" alt="The Age of Gloom shader material graph" class="gallery-img">
-    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/352618f0-897e-47b6-84bf-e72ba0bad93f/Gloom+8.png" alt="The Age of Gloom environment" class="gallery-img">
-    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/df81491e-94f7-4d18-a254-e9ba05052a74/Screenshot_2024-08-25_121006.png" alt="The Age of Gloom hex map" class="gallery-img">
-    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/741c9212-cdd4-4c6c-bcb7-64f3e949a77b/image_2025-07-04_183444805.png" alt="The Age of Gloom 2.5D art style" class="gallery-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/61357ab9-7a6a-4040-ac50-c664944ce40a/Gloom+3.png" alt="Undisclosed roguelike hero screenshot" class="gallery-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/74a6d96d-a7e1-42e3-9543-0de3ffce74b3/Gloom+1.png" alt="Undisclosed roguelike world view" class="gallery-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/16f7d48e-4ace-4747-a1c4-04dde9730d3e/Gloom+4.png" alt="Gale vs Gloom lantern shader" class="gallery-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/aa5e9825-9453-4958-887b-ef6c51b1c542/Gloom+6.png" alt="Lantern shader material graph" class="gallery-img">
+    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/352618f0-897e-47b6-84bf-e72ba0bad93f/Gloom+8.png" alt="Undisclosed roguelike environment" class="gallery-img">
   </div>
 </div>
 

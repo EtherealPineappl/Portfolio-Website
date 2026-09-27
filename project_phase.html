@@ -55,6 +55,23 @@
   .lightbox-close{position:fixed;top:20px;right:24px;font-family:'Press Start 2P',monospace;font-size:12px;color:var(--green);background:var(--bg);border:2px solid var(--green);padding:6px 14px;cursor:pointer;z-index:10001}
   .lightbox-close:hover{background:var(--green);color:var(--bg)}
   .gallery-img{cursor:zoom-in}
+  /* DESIGN PROCESS BREAKDOWN */
+  .ld-section{margin-bottom:60px}
+  .ld-section:last-child{margin-bottom:0}
+  .ld-step-label{font-family:'Press Start 2P',monospace;font-size:8px;color:var(--cyan);margin-bottom:10px;letter-spacing:.08em}
+  .ld-step-title{font-family:'Press Start 2P',monospace;font-size:clamp(9px,1.5vw,13px);color:var(--green);margin-bottom:20px;line-height:1.7;text-shadow:0 0 8px var(--green)}
+  .ld-step-text{font-size:14px;color:var(--text);line-height:1.9;margin-bottom:28px;max-width:720px}
+  .ld-imgs{display:grid;gap:16px}
+  .ld-imgs.cols-1{grid-template-columns:1fr;max-width:680px}
+  .ld-imgs.cols-2{grid-template-columns:repeat(2,1fr)}
+  .ld-sep{border-top:1px solid var(--bg2);margin:0 0 60px}
+  .ld-sub{margin-bottom:32px}
+  .ld-sub:last-child{margin-bottom:0}
+  .ld-sub-text{font-size:14px;color:var(--text);line-height:1.9;margin-bottom:16px;max-width:720px}
+  @media(max-width:640px){.ld-imgs.cols-2{grid-template-columns:1fr}}
+
+  /* IMAGE SLOT — empty picture frame. Swap for <img class="gallery-img" src="images/..." alt="..."> */
+  .img-slot{width:100%;aspect-ratio:16/9;border:3px dashed var(--magenta);background:var(--bg2);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--magenta);font-family:'Press Start 2P',monospace;font-size:8px;line-height:2}
 </style>
 </head>
 <body>
@@ -68,14 +85,13 @@
   </div>
 </nav>
 <main id="main-content">
-
 <div class="proj-hero">
   <div class="proj-hero-inner">
     <a href="index.html" class="back-btn">&lt;&lt; BACK TO PORTFOLIO</a>
     <span class="award-tag" style="display:block;margin-bottom:20px">★ 2ND PLACE NATIONALLY — TSA GAME DESIGN</span>
     <h1 class="proj-title">PHASE</h1>
-    <p class="proj-meta">2021 – 2022 &nbsp;|&nbsp; DESIGNER / DEVELOPER &nbsp;|&nbsp; TSA COMPETITION</p>
-    <p class="proj-overview">A time-bending adventure through paintings — travel between surreal worlds to navigate environmental puzzles and bullet-hell combat sequences. Built for the TSA Game Design Competition where it placed 2nd nationally. An early proof that weird ideas, executed well, win.</p>
+    <p class="proj-meta">2021 – 2022 &nbsp;|&nbsp; GAME DESIGNER &nbsp;|&nbsp; TSA COMPETITION &nbsp;|&nbsp; POINT LINK FORCE</p>
+    <p class="proj-overview">An RPG with cross-functioning genre mechanics: players gain abilities and combine them to solve puzzles of escalating difficulty, travelling through time between surreal painting worlds of environmental puzzles and bullet-hell combat. PHASE placed 2nd nationally at TSA Game Design out of 1,000+ competing teams.</p>
     <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:24px">
       <a href="https://gamejolt.com/games/museumgame/665034" target="_blank" rel="noopener" class="cta-btn">&gt;&gt; PLAY ON GAMEJOLT<span class="sr-only"> (opens in new tab)</span></a>
     </div>
@@ -90,17 +106,10 @@
 
 <div class="content-wrap">
   <h2 class="section-title">// GAMEPLAY_VIDEO</h2>
-  <!--
-    HOW TO ADD YOUR VIDEO:
-    Replace the placeholder div below with:
-    <iframe class="yt-embed" src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
-      title="PHASE gameplay" frameborder="0" allowfullscreen></iframe>
+  <!-- Swap this slot for:
+  <iframe class="yt-embed" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="PHASE gameplay" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   -->
-  <div class="video-placeholder" role="img" aria-label="Video slot — add PHASE gameplay footage here">
-    <p>[ VIDEO SLOT ]</p>
-    <p>Add a gameplay recording or walkthrough of PHASE here.</p>
-    <code>&lt;iframe class="yt-embed" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="PHASE gameplay" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</code>
-  </div>
+  <div class="img-slot">[ VIDEO: PHASE gameplay / walkthrough ]</div>
 </div>
 
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
@@ -110,20 +119,33 @@
   <div class="resp-grid">
 
     <div class="resp-card">
-      <div class="resp-card-title">GAME DESIGN &amp; MECHANICS</div>
-      <p>Designed the core time-bending and painting-travel mechanics from scratch — creating a system where each painting acted as a self-contained world with its own puzzle logic and visual language. [ADD YOUR SPECIFIC DETAILS — what engine you built in, how many paintings/levels, how the time-bending mechanic worked mechanically, how you balanced puzzle difficulty.]</p>
+      <div class="resp-card-title">CROSS-GENRE SYSTEMS DESIGN</div>
+      <p>Designed an ability system where players gain abilities and combine them across genres — the same toolkit solves environmental puzzles and survives bullet-hell combat.</p>
     </div>
 
     <div class="resp-card">
-      <div class="resp-card-title">BULLET-HELL COMBAT DESIGN</div>
-      <p>Designed and implemented bullet-hell combat sequences integrated into the exploration flow — pacing the action against the puzzle sections to create a rhythm of tension and release. [ADD YOUR SPECIFIC DETAILS — how you designed the enemy patterns, difficulty progression, how the combat interacted with the painting theme, and what tools you used to build the bullet patterns.]</p>
+      <div class="resp-card-title">PUZZLE &amp; LEVEL DESIGN</div>
+      <p>Authored the GDD, designed puzzles of escalating difficulty, and blocked out levels for each painting world. Designed a system for organized dialogue.</p>
     </div>
 
     <div class="resp-card">
-      <div class="resp-card-title">COMPETITION DESIGN &amp; SCOPE</div>
-      <p>[ADD YOUR TEXT HERE — describe how you scoped and built the game for a competition context, what the judging criteria were, what you prioritized to reach 2nd nationally, and what you learned from the experience that shaped how you approach projects today.]</p>
+      <div class="resp-card-title">PLAYTESTING &amp; BALANCE</div>
+      <p>Balanced gameplay and conducted group playtesting sessions for each vertical slice ahead of TSA nationals, where PHASE placed 2nd out of 1,000+ teams.</p>
     </div>
 
+  </div>
+</div>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<!-- DESIGN SPOTLIGHT -->
+<div class="content-wrap">
+  <h2 class="section-title">// DESIGN_SPOTLIGHT</h2>
+  <h3 class="ld-step-title">ABILITIES THAT CROSS GENRES</h3>
+  <p class="ld-step-text">Players gain abilities and combine them to solve puzzles of escalating difficulty — and the same abilities carry into the bullet-hell sequences. [AN EXAMPLE ABILITY OR COMBINATION, AND WHAT IT DOES IN A PUZZLE VS. IN COMBAT].</p>
+  <div class="ld-imgs cols-2">
+    <div class="img-slot">[ IMG: ph-01-ability-puzzle.png — ability used in a puzzle ]</div>
+    <div class="img-slot">[ IMG: ph-01-ability-combat.png — same ability in combat ]</div>
   </div>
 </div>
 
@@ -133,8 +155,9 @@
   <h2 class="section-title">// SCREENSHOT_LOG</h2>
   <div class="gallery-grid">
     <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/35fc7c21-ef88-4e36-aff7-1296c78526ce/Phase+4.png" alt="PHASE game screenshot" class="gallery-img">
+    <img src="images/PHASE 1.png" alt="PHASE painting world screenshot" class="gallery-img">
+    <div class="img-slot">[ IMG: ph-02-screenshot-a.png ]</div>
   </div>
-  <p style="color:var(--cyan);font-size:9px;margin-top:20px;font-family:'Press Start 2P',monospace">[ ADD MORE — screenshots from each painting world, combat sequences, puzzle screenshots ]</p>
 </div>
 
 </main>

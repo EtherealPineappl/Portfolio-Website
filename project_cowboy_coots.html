@@ -57,6 +57,23 @@
   .lightbox-img{max-width:95vw;max-height:95vh;object-fit:contain;border:3px solid var(--green);box-shadow:0 0 40px rgba(151,164,166,.3)}
   .lightbox-close{position:fixed;top:20px;right:24px;font-family:'Press Start 2P',monospace;font-size:12px;color:var(--green);background:var(--bg);border:2px solid var(--green);padding:6px 14px;cursor:pointer;z-index:10001}
   .lightbox-close:hover{background:var(--green);color:var(--bg)}
+  /* DESIGN PROCESS BREAKDOWN */
+  .ld-section{margin-bottom:60px}
+  .ld-section:last-child{margin-bottom:0}
+  .ld-step-label{font-family:'Press Start 2P',monospace;font-size:8px;color:var(--cyan);margin-bottom:10px;letter-spacing:.08em}
+  .ld-step-title{font-family:'Press Start 2P',monospace;font-size:clamp(9px,1.5vw,13px);color:var(--green);margin-bottom:20px;line-height:1.7;text-shadow:0 0 8px var(--green)}
+  .ld-step-text{font-size:14px;color:var(--text);line-height:1.9;margin-bottom:28px;max-width:720px}
+  .ld-imgs{display:grid;gap:16px}
+  .ld-imgs.cols-1{grid-template-columns:1fr;max-width:680px}
+  .ld-imgs.cols-2{grid-template-columns:repeat(2,1fr)}
+  .ld-sep{border-top:1px solid var(--bg2);margin:0 0 60px}
+  .ld-sub{margin-bottom:32px}
+  .ld-sub:last-child{margin-bottom:0}
+  .ld-sub-text{font-size:14px;color:var(--text);line-height:1.9;margin-bottom:16px;max-width:720px}
+  @media(max-width:640px){.ld-imgs.cols-2{grid-template-columns:1fr}}
+
+  /* IMAGE SLOT — empty picture frame. Swap for <img class="gallery-img" src="images/..." alt="..."> */
+  .img-slot{width:100%;aspect-ratio:16/9;border:3px dashed var(--magenta);background:var(--bg2);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--magenta);font-family:'Press Start 2P',monospace;font-size:8px;line-height:2}
 </style>
 </head>
 <body>
@@ -71,14 +88,14 @@
 </nav>
 
 <main id="main-content">
-
 <div class="proj-hero">
   <div class="proj-hero-inner">
     <a href="index.html" class="back-btn">&lt;&lt; BACK TO PORTFOLIO</a>
     <span class="award-tag" style="display:block;margin-bottom:20px">★ 1ST PLACE VISUALS — LUDWIG JAM 2023</span>
     <h1 class="proj-title">COWBOY COOTS</h1>
     <p class="proj-meta">2023 &nbsp;|&nbsp; PROGRAMMER / DESIGNER &nbsp;|&nbsp; UNREAL ENGINE 5 &nbsp;|&nbsp; POINT LINK FORCE</p>
-    <p class="proj-overview">An action-adventure rhythm game built for the Ludwig Game Jam 2023. Coots gets trapped in an alternate Wild West dimension after some museum mischief goes sideways — players dodge and weave through a three-stage onslaught of encounters to reunite with Ludwig. Fast-paced top-down action with a Reflex time-slowdown mechanic, pixel art visuals, and a full original soundtrack.</p>
+    <p class="proj-overview">An action-adventure rhythm game built for the Ludwig Game Jam 2023, winning 1st Place Visuals out of 250 entries as a 2-person team. Coots gets trapped in an alternate Wild West dimension after some museum mischief goes sideways — players dodge and weave through a three-stage onslaught of encounters to reunite with Ludwig. Fast-paced top-down action with a Reflex time-slowdown mechanic, pixel art visuals, and a full original soundtrack.</p>
+    <p class="proj-overview" style="margin-top:12px">Corvin Erdos: programming, game design, QA · Benjamin Brown: art, UI, sound, music, concept, scripting · Ellis Brown: additional music</p>
     <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:24px">
       <a href="https://corvinerdos.itch.io/cowboy-coots-ludwig-game-jam-2023" target="_blank" rel="noopener" class="cta-btn">&gt;&gt; PLAY ON ITCH.IO<span class="sr-only"> (opens in new tab)</span></a>
       <a href="https://github.com/EtherealPineappl/CowboyCoots" target="_blank" rel="noopener" class="cta-btn">&gt;&gt; SOURCE CODE<span class="sr-only"> (opens in new tab)</span></a>
@@ -95,10 +112,10 @@
 <!-- VIDEO -->
 <div class="content-wrap">
   <h2 class="section-title">// GAMEPLAY_VIDEO</h2>
-  <div class="video-placeholder">
-    <p>[ ADD GAMEPLAY VIDEO ]</p>
-
-  </div>
+  <!-- Swap this slot for:
+  <iframe class="yt-embed" src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="Cowboy Coots gameplay video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  -->
+  <div class="img-slot">[ VIDEO: Cowboy Coots gameplay — all three stages ]</div>
 </div>
 
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
@@ -115,12 +132,12 @@
 
     <div class="resp-card">
       <div class="resp-card-title">GAME DESIGN</div>
-      <p>Designed the encounter structure and difficulty curve across the three stages, and shaped the rhythm-action gameplay loop alongside the art and music direction from the team. The Reflex mechanic was a core design decision — giving players an active tool to manage the game's pace rather than purely reacting to it.</p>
+      <p>Designed the encounter structure and difficulty curve across the three stages, and shaped the rhythm-action gameplay loop alongside the art and music direction from the team.</p>
     </div>
 
     <div class="resp-card">
       <div class="resp-card-title">JAM PRODUCTION</div>
-      <p>[ADD YOUR TEXT HERE — how the team coordinated during the jam, the timeline, what shipped vs. what got cut, and what the submission process looked like. What was the biggest technical or design challenge you solved under the deadline?]</p>
+      <p>[HOW THE TWO OF YOU SPLIT THE WORK AND THE TIMELINE, AND WHAT SHIPPED VS. WHAT GOT CUT].</p>
     </div>
 
   </div>
@@ -128,22 +145,14 @@
 
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
 
-<!-- TEAM -->
+<!-- DESIGN SPOTLIGHT -->
 <div class="content-wrap">
-  <h2 class="section-title">// TEAM — POINT LINK FORCE</h2>
-  <div class="team-grid">
-    <div class="team-card">
-      <div class="team-name">CORVIN ERDOS</div>
-      <div class="team-role">Programming · Game Design · QA</div>
-    </div>
-    <div class="team-card">
-      <div class="team-name">BENJAMIN BROWN</div>
-      <div class="team-role">Art · UI · Sound · Music · Concept · Scripting</div>
-    </div>
-    <div class="team-card">
-      <div class="team-name">ELLIS BROWN</div>
-      <div class="team-role">Additional Music</div>
-    </div>
+  <h2 class="section-title">// DESIGN_SPOTLIGHT</h2>
+  <h3 class="ld-step-title">THE REFLEX MECHANIC</h3>
+  <p class="ld-step-text">The Reflex mechanic was a core design decision — giving players an active tool to manage the game's pace rather than purely reacting to it. Pressing spacebar slows time for precision dodging. [HOW YOU TUNED IT — DURATION, COOLDOWN, HOW MUCH TIME SLOWS — AND WHAT FELT WRONG BEFORE IT FELT RIGHT].</p>
+  <div class="ld-imgs cols-2">
+    <div class="img-slot">[ IMG: cc-01-reflex-a.png — Reflex active in gameplay ]</div>
+    <div class="img-slot">[ IMG: cc-01-reflex-b.png — Reflex Blueprint / tuning values ]</div>
   </div>
 </div>
 
@@ -153,12 +162,10 @@
 <div class="content-wrap">
   <h2 class="section-title">// SCREENSHOT_LOG</h2>
   <div class="gallery-grid">
-    <!-- ADD SCREENSHOTS — drop image files into the images/ folder and add them here:
-    <img src="images/cowboy_coots_1.png" alt="Cowboy Coots gameplay screenshot" class="gallery-img">
-    <img src="images/cowboy_coots_2.png" alt="Cowboy Coots Wild West encounter" class="gallery-img">
-    -->
+    <img src="images/Cowboy Coots Thumb.png" alt="Cowboy Coots key art" class="gallery-img">
+    <div class="img-slot">[ IMG: cc-02-gameplay-a.png ]</div>
+    <div class="img-slot">[ IMG: cc-02-gameplay-b.png ]</div>
   </div>
-  <p style="color:var(--cyan);font-size:9px;margin-top:20px;font-family:'Press Start 2P',monospace">[ ADD SCREENSHOTS — gameplay, encounter stages, UI, any jam submission screenshots ]</p>
 </div>
 
 </main>
