@@ -87,19 +87,11 @@
   @media(max-width:640px){.ld-imgs.cols-2{grid-template-columns:1fr}}
   /* IMAGE SLOT — empty picture frame. Swap for <img class="gallery-img" src="images/..." alt="..."> */
   .img-slot{width:100%;aspect-ratio:16/9;border:3px dashed var(--magenta);background:var(--bg2);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--magenta);font-family:'Press Start 2P',monospace;font-size:8px;line-height:2}
-  /* SHORTS — vertical videos. Wide screens (>=1560px): pinned in the empty side margins.
-     Narrower: a normal // SHORTS section in the page flow. Same markup either way. */
-  .shorts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;max-width:900px}
+  /* SHORTS — vertical videos in a gallery row */
+  .shorts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px}
   .shorts-rail{display:contents}
   .short{width:100%;aspect-ratio:9/16;border:3px solid var(--green);display:block}
   .img-slot.short-slot{aspect-ratio:9/16}
-  @media(min-width:1560px){
-    .shorts>.divider,.shorts .section-title{display:none}
-    .shorts .content-wrap{padding:0}
-    .shorts-rail{display:flex;flex-direction:column;gap:16px;position:fixed;top:90px;width:calc((100vw - 1100px) / 2 - 48px);max-width:260px;max-height:calc(100vh - 110px);overflow-y:auto;scrollbar-width:thin;z-index:50}
-    .shorts-left{left:24px}
-    .shorts-right{right:24px}
-  }
 </style>
 </head>
 <body>
@@ -164,8 +156,7 @@
 <!-- SHORTS
   Replace each .short-slot with:
   <iframe class="short" src="https://www.youtube.com/embed/SHORT_ID" title="Salt Sweeper short — WHAT IT SHOWS" frameborder="0" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  SHORT_ID is the part after youtube.com/shorts/ . Left rail = shorts 1 and 3, right rail = 2 and 4.
-  Delete slots you don't need; one short per side looks best on most screens.
+  SHORT_ID is the part after youtube.com/shorts/ . They show as one gallery row, in order.
 -->
 <section class="shorts" aria-label="Salt Sweeper shorts">
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
