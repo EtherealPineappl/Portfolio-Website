@@ -290,6 +290,8 @@
     display: block;
     border-bottom: 3px solid var(--magenta);
   }
+  /* Featured row: same cards, taller thumbnails */
+  .featured-grid .project-thumb { height: 230px; }
   /* Empty thumbnail frame. Swap the div for <img src="images/..." alt="..." class="project-thumb"> */
   .thumb-slot {
     background: var(--bg2);
@@ -531,11 +533,25 @@
   <img src="images/sitting.png" alt="" class="sitting" aria-hidden="true">
 </div>
 
-<!-- WORK EXPERIENCE (id stays "projects" so the nav and PRESS START links still land here) -->
+<!-- FEATURED (id "projects" so the nav PORTFOLIO link and PRESS START land here) -->
 <section id="projects">
-<h2 class="section-title">// WORK_EXPERIENCE</h2>
-  <div class="projects-grid">
-	  
+<h2 class="section-title">// FEATURED</h2>
+  <div class="projects-grid featured-grid">
+
+<div class="project-card">
+      <img src="images/ss-05-combat-brinebound.png" alt="Salt Sweeper combat against the Brinebound" class="project-thumb">
+      <div class="project-body">
+        <div class="project-title">SALT SWEEPER</div>
+        <div class="project-meta">2024 – PRESENT &nbsp;|&nbsp; DESIGNER / DEVELOPER&nbsp; | STUDIO REBORNE&nbsp;</div>
+        <p class="project-desc">A minesweeper-inspired roguelike with fantasy roots. <strong style="color:var(--green)">Coming to Steam.</strong></p>
+        <p class="project-desc">Authored GDD, implemented combat mechanics, designed diverse systems, balanced weapons and enemies, and conducted group playtesting sessions.</p>
+<div class="project-actions">
+  <a href="project_salt_sweeper.html" class="btn-view">&gt; VIEW PROJECT</a>
+
+</div>
+      </div>
+    </div>
+
 <div class="project-card">
       <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/492648c6-2e93-4ec6-875b-12897e7f1dc2/wishlist-banner.png" alt="Axima game banner" class="project-thumb">
       <div class="project-body">
@@ -549,21 +565,7 @@
 </div>
       </div>
     </div>
-	  
-    <div class="project-card">
-      <img src="images/ss-thumb.png" alt="Salt Sweeper game screenshot" class="project-thumb">
-      <div class="project-body">
-        <div class="project-title">SALT SWEEPER</div>
-        <div class="project-meta">2024 – PRESENT &nbsp;|&nbsp; DESIGNER / DEVELOPER&nbsp; | STUDIO REBORNE&nbsp;</div>
-        <p class="project-desc">A minesweeper-inspired roguelike with fantasy roots. <strong style="color:var(--green)">Coming to Steam.</strong></p>
-        <p class="project-desc">Authored GDD, implemented combat mechanics, designed diverse systems, balanced weapons and enemies, and conducted group playtesting sessions.</p>
-<div class="project-actions">
-  <a href="project_salt_sweeper.html" class="btn-view">&gt; VIEW PROJECT</a>
 
-</div>
-      </div>
-    </div>
-	  
 	  <div class="project-card">
       <img src="images/MC.jpg" alt="Studio Reborne YouTube channel" class="project-thumb">
       <div class="project-body">
@@ -578,6 +580,15 @@
       </div>
     </div>
 
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<!-- WORK EXPERIENCE -->
+<section id="work">
+<h2 class="section-title">// WORK_EXPERIENCE</h2>
+  <div class="projects-grid">
 	  
 <div class="project-card">
       <img src="images/SNG.jpg" alt="Simple Noise Generators plugin screenshot" class="project-thumb">
@@ -705,7 +716,7 @@
       <div class="project-body">
         <div class="project-title">PHASE</div>
         <div class="project-meta">2021 – 2022 &nbsp;|&nbsp; DESIGNER / DEVELOPER | POINT LINK FORCE</div>
-        <p class="project-desc"><strong style="color:var(--green)">★ 2nd Place Nationals — TSAA 2022</strong></p>
+        <p class="project-desc"><strong style="color:var(--green)">★ 2nd Place Nationals — TSA 2022</strong></p>
         <p class="project-desc">Puzzle-adventure game where players travel though time using paintings.&nbsp;</p>
 <p class="project-desc">Authored GDD, designed puzzles, blocked out levels, balanced gameplay, designed system for organized dialogue, conducted group playtesting sessions for each vertical slice. <strong style="color:var(--green)">&nbsp;</strong></p>
 <div class="project-actions">
