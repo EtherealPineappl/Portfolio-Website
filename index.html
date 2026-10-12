@@ -13,6 +13,7 @@
     --bg: #232526;
     --bg2: #3A3D40;
     --text: #F2F2F2;
+    --gold: #E3B341;
     --border: 3px solid var(--green);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -284,14 +285,23 @@
     transition: border-color 0.2s, box-shadow 0.2s;
   }
   .project-card:hover { border-color: var(--cyan); box-shadow: 0 0 16px rgba(0,255,255,0.2); }
+  /* Featured cards: gold border + corner tag */
+  .project-card.featured { position: relative; border-color: var(--gold); box-shadow: 0 0 12px rgba(227,179,65,0.35); }
+  .project-card.featured:hover { border-color: var(--gold); box-shadow: 0 0 22px rgba(227,179,65,0.6); }
+  .project-card.featured .project-thumb { border-bottom-color: var(--gold); }
+  .featured-tag {
+    position: absolute; top: 10px; left: 10px; z-index: 1;
+    background: var(--gold); color: var(--bg);
+    border: 2px solid var(--bg);
+    font-family: 'Press Start 2P', monospace; font-size: 8px;
+    padding: 6px 8px;
+  }
   .project-thumb {
     width: 100%; height: 180px;
     object-fit: cover;
     display: block;
     border-bottom: 3px solid var(--magenta);
   }
-  /* Featured row: same cards, taller thumbnails */
-  .featured-grid .project-thumb { height: 230px; }
   /* Empty thumbnail frame. Swap the div for <img src="images/..." alt="..." class="project-thumb"> */
   .thumb-slot {
     background: var(--bg2);
@@ -533,12 +543,13 @@
   <img src="images/sitting.png" alt="" class="sitting" aria-hidden="true">
 </div>
 
-<!-- FEATURED (id "projects" so the nav PORTFOLIO link and PRESS START land here) -->
+<!-- WORK EXPERIENCE (id "projects" so the nav PORTFOLIO link and PRESS START land here) -->
 <section id="projects">
-<h2 class="section-title">// FEATURED</h2>
-  <div class="projects-grid featured-grid">
+<h2 class="section-title">// WORK_EXPERIENCE</h2>
+  <div class="projects-grid">
 
-<div class="project-card">
+    <div class="project-card featured">
+      <span class="featured-tag">★ FEATURED</span>
       <img src="images/ss-capsule.png" alt="Salt Sweeper title art: a giant hand reaching over a minesweeper board in a salt cave" class="project-thumb">
       <div class="project-body">
         <div class="project-title">SALT SWEEPER</div>
@@ -552,7 +563,8 @@
       </div>
     </div>
 
-<div class="project-card">
+    <div class="project-card featured">
+      <span class="featured-tag">★ FEATURED</span>
       <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/492648c6-2e93-4ec6-875b-12897e7f1dc2/wishlist-banner.png" alt="Axima game banner" class="project-thumb">
       <div class="project-body">
         <div class="project-title">AXIMA (ZYNDRAX)</div>
@@ -566,46 +578,8 @@
       </div>
     </div>
 
-	  <div class="project-card">
-      <img src="images/MC.jpg" alt="Studio Reborne YouTube channel" class="project-thumb">
-      <div class="project-body">
-        <div class="project-title">STUDIO REBORNE YOUTUBE</div>
-        <div class="project-meta">2022 – PRESENT &nbsp;|&nbsp; WRITER / EDITOR</div>
-        <p class="project-desc">Long-form game design video essays — 7k+ subscribers, 1.6M+ views.&nbsp;</p>
-        <p class="project-desc">Researched, wrote, and edited videos focused on design philosophy, development tricks, and systems design.</p>
-<div class="project-actions">
-  <a href="project_studio_reborne.html" class="btn-view">&gt; VIEW PROJECT</a>
-
-</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
-
-<!-- WORK EXPERIENCE -->
-<section id="work">
-<h2 class="section-title">// WORK_EXPERIENCE</h2>
-  <div class="projects-grid">
 	  
 <div class="project-card">
-      <img src="images/SNG.jpg" alt="Simple Noise Generators plugin screenshot" class="project-thumb">
-      <div class="project-body">
-        <div class="project-title">SIMPLE NOISE GENERATORS</div>
-        <div class="project-meta">2024 &nbsp;|&nbsp; DEVELOPER&nbsp; | STUDIO REBORNE</div>
-        <p class="project-desc">Unreal Engine 5 Plugin with <strong style="color:var(--green)">75,000+ downloads</strong> on Fab. Helping thousands procedurally generate their worlds for free.</p>
-        <p class="project-desc">Built the tool in C++, tested tool reliability, shipped it to fab, managed community discord server, released bug-fixes and updates per community request.</p>
-<div class="project-actions">
-  <a href="project_noise_generators.html" class="btn-view">&gt; VIEW PROJECT</a>
-
-</div>
-      </div>
-    </div>
-  
-
-    <div class="project-card">
       <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/7f479709-68a1-4e15-a5fa-ae480e54412b/HighresScreenshot00000.png" alt="Bravo Media digital human in Unreal Engine" class="project-thumb">
       <div class="project-body">
         <div class="project-title">BRAVO MEDIA</div>
@@ -655,6 +629,61 @@
         <p class="project-desc">Designed wagon classes with distinct mechanical identities, worked with client and team to create a pipeline, designed a procedural hex world, concepted a 2.5D visual style.</p>
 <div class="project-actions">
   <a href="project_age_of_gloom.html" class="btn-view">&gt; VIEW PROJECT</a>
+</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<!-- PERSONAL PROJECTS -->
+<section id="personal">
+<h2 class="section-title">// PERSONAL_PROJECTS</h2>
+  <div class="projects-grid">
+
+    <div class="project-card featured">
+      <span class="featured-tag">★ FEATURED</span>
+      <img src="images/ltm-thumb.jpg" alt="Apex Legends LTM Analysis title slide" class="project-thumb">
+      <div class="project-body">
+        <div class="project-title">APEX LTM ANALYSIS</div>
+        <div class="project-meta">2026 &nbsp;|&nbsp; PERSONAL PROJECT &nbsp;|&nbsp; GAME MODE ANALYSIS &amp; PITCH DECK</div>
+        <p class="project-desc">Why do some live-service modes stay while others disappear? A scored, tiered breakdown of six Apex Legends LTMs.</p>
+        <p class="project-desc">Turned the analysis into Re-Kill, an original LTM concept where kills earn your team respawns, with a test plan and starting metrics.</p>
+<div class="project-actions">
+  <a href="project_ltm_analysis.html" class="btn-view">&gt; VIEW PROJECT</a>
+</div>
+      </div>
+    </div>
+
+
+    <div class="project-card">
+      <img src="images/MC.jpg" alt="Studio Reborne YouTube channel" class="project-thumb">
+      <div class="project-body">
+        <div class="project-title">STUDIO REBORNE YOUTUBE</div>
+        <div class="project-meta">2022 – PRESENT &nbsp;|&nbsp; WRITER / EDITOR</div>
+        <p class="project-desc">Long-form game design video essays — 7k+ subscribers, 1.6M+ views.&nbsp;</p>
+        <p class="project-desc">Researched, wrote, and edited videos focused on design philosophy, development tricks, and systems design.</p>
+<div class="project-actions">
+  <a href="project_studio_reborne.html" class="btn-view">&gt; VIEW PROJECT</a>
+
+</div>
+      </div>
+    </div>
+
+
+    <div class="project-card featured">
+      <span class="featured-tag">★ FEATURED</span>
+      <img src="images/SNG.jpg" alt="Simple Noise Generators plugin screenshot" class="project-thumb">
+      <div class="project-body">
+        <div class="project-title">SIMPLE NOISE GENERATORS</div>
+        <div class="project-meta">2024 &nbsp;|&nbsp; DEVELOPER&nbsp; | STUDIO REBORNE</div>
+        <p class="project-desc">Unreal Engine 5 Plugin with <strong style="color:var(--green)">75,000+ downloads</strong> on Fab. Helping thousands procedurally generate their worlds for free.</p>
+        <p class="project-desc">Built the tool in C++, tested tool reliability, shipped it to fab, managed community discord server, released bug-fixes and updates per community request.</p>
+<div class="project-actions">
+  <a href="project_noise_generators.html" class="btn-view">&gt; VIEW PROJECT</a>
+
 </div>
       </div>
     </div>
