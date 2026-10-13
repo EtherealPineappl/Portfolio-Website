@@ -389,6 +389,25 @@
     #skills, #testimonials { padding: 40px 16px; }
   }
 
+  /* INVITE POPUP (per-application welcome, data in invites.js) */
+  .invite-overlay { display: none; position: fixed; inset: 0; background: rgba(35,37,38,0.92); z-index: 9000; align-items: center; justify-content: center; padding: 16px; }
+  .invite-overlay.active { display: flex; }
+  .invite-box { position: relative; width: 100%; max-width: 640px; max-height: calc(100vh - 32px); overflow-y: auto; background: var(--bg); border: 3px solid var(--gold); padding: 28px; }
+  .invite-tag { font-family: 'Press Start 2P', monospace; font-size: 9px; color: var(--gold); margin-bottom: 18px; padding-right: 64px; line-height: 1.8; }
+  .invite-title { font-family: 'Press Start 2P', monospace; font-size: clamp(12px, 2.4vw, 16px); color: var(--cyan); line-height: 1.6; margin-bottom: 8px; text-shadow: 0 0 10px var(--cyan); }
+  .invite-team { font-family: 'Press Start 2P', monospace; font-size: 9px; color: var(--magenta); line-height: 1.8; margin-bottom: 18px; }
+  .invite-intro { font-size: 13px; color: var(--text); margin-bottom: 20px; line-height: 1.7; }
+  .invite-picks { list-style: none; margin: 0 0 24px; padding: 0; display: grid; gap: 12px; }
+  .invite-pick { border: 2px solid var(--green); padding: 14px 16px; }
+  .invite-pick-title { font-family: 'Press Start 2P', monospace; font-size: 10px; color: var(--green); margin-bottom: 8px; line-height: 1.6; }
+  .invite-pick-why { font-size: 12px; color: var(--text); line-height: 1.7; margin-bottom: 10px; }
+  .invite-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .invite-close { position: absolute; top: 10px; right: 10px; font-family: 'Press Start 2P', monospace; font-size: 10px; color: var(--green); background: var(--bg); border: 2px solid var(--green); padding: 6px 10px; cursor: pointer; }
+  .invite-close:hover { background: var(--green); color: var(--bg); }
+  .invite-continue { font-family: 'Press Start 2P', monospace; font-size: 10px; color: var(--bg); background: var(--gold); border: 2px solid var(--gold); padding: 10px 14px; cursor: pointer; }
+  .invite-continue:hover { background: transparent; color: var(--gold); }
+  @media (max-width: 640px) { .invite-box { padding: 22px 16px; } }
+
   /* LIGHTBOX */
   .lightbox-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:10000;align-items:center;justify-content:center;cursor:zoom-out}
   .lightbox-overlay.active{display:flex}
@@ -854,6 +873,54 @@
     if(e.shiftKey){if(document.activeElement===first){e.preventDefault();last.focus();}}
     else{if(document.activeElement===last){e.preventDefault();first.focus();}}
   });
+})();
+</script>
+<!-- INVITE POPUP: shown when the URL has ?r=CODE matching an entry in invites.js -->
+<div class="invite-overlay" id="invite" role="dialog" aria-modal="true" aria-labelledby="inviteTitle">
+  <div class="invite-box">
+    <button class="invite-close" id="inviteClose" aria-label="Close welcome message">[ X ]</button>
+    <p class="invite-tag">▶ A NEW CHALLENGER APPROACHES</p>
+    <h2 class="invite-title" id="inviteTitle"></h2>
+    <p class="invite-team" id="inviteTeam"></p>
+    <p class="invite-intro" id="inviteIntro"></p>
+    <ol class="invite-picks" id="invitePicks"></ol>
+    <div class="invite-actions">
+      <button class="invite-continue" id="inviteContinue">&gt;&gt; SEE FULL PORTFOLIO &lt;&lt;</button>
+    </div>
+  </div>
+</div>
+<script src="invites.js"></script>
+<script>
+(function(){
+  var code=new URLSearchParams(location.search).get('r');
+  var data=code&&window.INVITES&&window.INVITES[code.toLowerCase()];
+  if(!data)return;
+  var ov=document.getElementById('invite');
+  document.getElementById('inviteTitle').textContent='WELCOME, '+data.company.toUpperCase()+'!';
+  document.getElementById('inviteTeam').textContent=data.team.toUpperCase();
+  document.getElementById('inviteIntro').textContent='Thanks for checking out my portfolio for the '+data.role+' role. Here are the three projects most relevant to your team:';
+  var list=document.getElementById('invitePicks');
+  data.picks.slice(0,3).forEach(function(p,i){
+    var li=document.createElement('li');li.className='invite-pick';
+    var t=document.createElement('div');t.className='invite-pick-title';t.textContent=(i+1)+'. '+p.title.toUpperCase();
+    var w=document.createElement('p');w.className='invite-pick-why';w.textContent=p.why;
+    var a=document.createElement('a');a.className='btn-view';a.href=p.href;a.textContent='> VIEW PROJECT';
+    li.appendChild(t);li.appendChild(w);li.appendChild(a);list.appendChild(li);
+  });
+  var lastFocus=document.activeElement;
+  function close(){ov.classList.remove('active');document.body.style.overflow='';if(lastFocus&&lastFocus.focus)lastFocus.focus();}
+  ov.classList.add('active');document.body.style.overflow='hidden';
+  document.getElementById('inviteClose').addEventListener('click',close);
+  document.getElementById('inviteContinue').addEventListener('click',close);
+  ov.addEventListener('click',function(e){if(e.target===ov)close();});
+  ov.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){close();return;}
+    if(e.key!=='Tab')return;
+    var f=ov.querySelectorAll('button,a');var first=f[0],last=f[f.length-1];
+    if(e.shiftKey){if(document.activeElement===first){e.preventDefault();last.focus();}}
+    else{if(document.activeElement===last){e.preventDefault();first.focus();}}
+  });
+  document.getElementById('inviteContinue').focus();
 })();
 </script>
 </body>
