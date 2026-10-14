@@ -69,6 +69,13 @@
 
   /* IMAGE SLOT — empty picture frame. Swap for <img class="gallery-img" src="images/..." alt="..."> */
   .img-slot{width:100%;aspect-ratio:16/9;border:3px dashed var(--magenta);background:var(--bg2);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--magenta);font-family:'Press Start 2P',monospace;font-size:8px;line-height:2}
+  /* SYSTEMS TABLE (page-specific) */
+  .sys-table-wrap{overflow-x:auto;margin-bottom:28px;max-width:900px}
+  .sys-table{border-collapse:collapse;width:100%;min-width:620px;font-size:13px;color:var(--text)}
+  .sys-table th{font-family:'Press Start 2P',monospace;font-size:8px;color:var(--bg);background:var(--green);text-align:left;padding:10px 12px;line-height:1.6}
+  .sys-table td{border-bottom:1px solid var(--bg2);padding:10px 12px;vertical-align:top;line-height:1.6}
+  .sys-table td:first-child{color:var(--cyan);white-space:nowrap}
+  .sys-table .hi{color:var(--gold)}
 </style>
 </head>
 <body>
@@ -87,13 +94,10 @@
     <a href="index.html" class="back-btn">&lt;&lt; BACK TO PORTFOLIO</a>
     <h1 class="proj-title">UNDISCLOSED ROGUELIKE</h1>
     <p class="proj-meta">2022 – 2024 &nbsp;|&nbsp; GAME DESIGNER (CONTRACT) &nbsp;|&nbsp; UNREAL ENGINE 5</p>
-    <p class="proj-overview">A Snake x Civilization roguelike with Vampire Survivors-style combat, built by a team of five for an undisclosed client. I designed the wagon leveling system — upgrade paths, combat statistics, passive abilities, and the upgrade economy across 14 unit types — and built the procedural hex world that carried 6 vertical slices through playtests of 10+ players, until the project was sunset due to funding constraints.</p>
+    <p class="proj-overview">A Snake x Civilization roguelike with Vampire Survivors-style combat, built by a team of five for an undisclosed client. I designed the wagon leveling system — upgrade paths, combat statistics, passive abilities, and the upgrade economy across 10 wagon types and 14 perks — and built the procedural hex world that carried 6 vertical slices through playtests of 10+ players, until the project was sunset due to funding constraints.</p>
   </div>
 </div>
 
-<div style="background:var(--bg2);border-left:4px solid var(--magenta);color:var(--magenta);font-family:'Press Start 2P',monospace;font-size:9px;line-height:2;padding:16px 32px">
-  ▌ PAGE UNDER CONSTRUCTION &nbsp;—&nbsp; feel free to <a href="index.html#contact" style="color:var(--cyan);text-decoration:underline">reach out</a> for more info about this project.
-</div>
 
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
 
@@ -103,7 +107,7 @@
 
     <div class="resp-card">
       <div class="resp-card-title">WAGON LEVELING SYSTEM</div>
-      <p>Designed the wagon leveling system, balancing upgrade paths, combat statistics, passive abilities, and the upgrade economy across 14 unit types.</p>
+      <p>Designed the wagon leveling system, balancing upgrade paths, combat statistics, passive abilities, and the upgrade economy across 10 wagon types and 14 perks.</p>
     </div>
 
     <div class="resp-card">
@@ -126,15 +130,71 @@
 
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
 
+<!-- SYSTEMS DESIGN -->
+<div class="content-wrap">
+  <h2 class="section-title">// SYSTEMS_DESIGN</h2>
+
+  <h3 class="ld-step-title">THE LOOP</h3>
+  <p class="ld-step-text">You lead a caravan of wagons across a procedural hex world. Killing Shadowmen and trading goods at villages earns XP, and every level-up asks one question: add a new wagon to the line, or upgrade one you already have? Each wagon has five upgrade levels, and 14 perks change how the whole caravan plays, like Wheel Pedals (+50% caravan speed) or Lockboxes (Shadowmen steal half as much).</p>
+  <div class="ld-imgs cols-1">
+    <img class="gallery-img" src="images/ur-05-hex-map.png" alt="2.5D version: the caravan on the hex grid, lit by the Gale, with wood, food and Galefuel meters in the corner">
+  </div>
+
+  <h3 class="ld-step-title" style="margin-top:48px">EVERY RESOURCE FEEDS THE CARAVAN</h3>
+  <p class="ld-step-text">Most hex types yield one resource, and each resource powers a different part of the caravan. Refugees, rescued from ruins, make your wagons work faster: cooldowns scale down to half at full capacity, but refugees need food from the plains or they starve. Galefuel from mountains and colonies sets the size of the Gale, the light around the caravan that damages enemies inside it; run low and the Shadowmen get through. Wood heals 25% of your health for 25 wood, and goods trade for XP.</p>
+  <div class="ld-imgs cols-1">
+    <img class="gallery-img" src="images/ur-02-lantern-shader.png" alt="Original 3D version: the Gale restores color around the wagon while the Gloom stays grey">
+  </div>
+
+  <h3 class="ld-step-title" style="margin-top:48px">THE WAGON ROSTER</h3>
+  <p class="ld-step-text">Ten wagons: six that fight and four that support. Every wagon alternates two upgrade types and ends on a level 5 capstone, so each one levels toward a clear identity. The last column comes from the 2026 rebuild below.</p>
+  <div class="sys-table-wrap">
+    <table class="sys-table">
+      <thead><tr><th scope="col">Wagon</th><th scope="col">Role</th><th scope="col">Base</th><th scope="col">Upgrades, L1 to L5</th><th scope="col">L5 DPS vs L0</th></tr></thead>
+      <tbody>
+        <tr><td>Celestial</td><td>Gale burn</td><td>0.2 dmg / s</td><td>Faster cooldown x4, then double damage</td><td>2.0x</td></tr>
+        <tr><td>Arrow</td><td>Projectile</td><td>1 dmg / 1 s</td><td>+1 projectile, faster cooldown, +1 projectile, faster cooldown, double damage</td><td class="hi">8.3x</td></tr>
+        <tr><td>Ballista</td><td>Piercing</td><td>1 dmg / 2 s</td><td>+1 pierce, faster cooldown (x2), double damage</td><td>2.8x</td></tr>
+        <tr><td>Catapult</td><td>Area blast</td><td>2 dmg / 5 s</td><td>+50% area, faster cooldown (x2), double damage</td><td>3.1x</td></tr>
+        <tr><td>Brewmaster</td><td>Damage pools</td><td>0.2 dmg / 0.5 s</td><td>+50% area, faster ticks (x2), double damage</td><td>2.9x</td></tr>
+        <tr><td>Scythed</td><td>Contact</td><td>0.25 dmg / 1 s</td><td>Faster cooldown, +25% size (x2), double damage</td><td>3.6x</td></tr>
+        <tr><td>Observatory</td><td>Line of sight</td><td>n/a</td><td>+15% sight (x3), camera pan, pointer to nearest colony</td><td>n/a</td></tr>
+        <tr><td>Garden</td><td>Food</td><td>0.3 food / 5 s</td><td>Faster generation, more food per tick (x2), double production</td><td>n/a</td></tr>
+        <tr><td>Storage</td><td>Storage</td><td>n/a</td><td>+50% food, water, wood and Galefuel storage, more goods storage</td><td>n/a</td></tr>
+        <tr><td>Bunk</td><td>Refugee capacity</td><td>+15%</td><td>Slow arrows, +15% capacity, faster arrows, +15%, double bonus</td><td>n/a</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="ld-step-title" style="margin-top:48px">THE HARDEST BALANCE PROBLEM: TILE COUNTS</h3>
+  <p class="ld-step-text">The biggest balancing problem was how many of each tile the map should hold: villages, lakes, mountains, plains. Tile counts decide how much of every resource exists. With too few plains, refugees starved and died. With too few mountains, the Gale ran out and the Shadowmen could kill you far more easily. The map had to always hold enough of each resource, but never so much that managing them stopped mattering.</p>
+  <div class="ld-imgs cols-1">
+    <img class="gallery-img" src="images/ur-01-hero.png" alt="Procedurally generated hex world from above: snow, farmland, forest, lake and village tiles">
+  </div>
+
+  <h3 class="ld-step-title" style="margin-top:48px">FROM 3D TO 2.5D</h3>
+  <p class="ld-step-text">The first version was fully 3D. We couldn't find a 3D art style that stayed consistent, so the game moved to 2.5D: pixel-art sprites animated with PaperZD on top of the procedural terrain.</p>
+  <div class="ld-imgs cols-2">
+    <img class="gallery-img" src="images/ur-04-environment.png" alt="Original 3D version: the wagon convoy restoring color to a desaturated hex world">
+    <img class="gallery-img" src="images/ur-06-2-5d-style.png" alt="2.5D version: pixel-art windmills, trees and hay bales on the procedural terrain">
+  </div>
+
+  <h3 class="ld-step-title" style="margin-top:48px">REBUILDING THE SHEET IN 2026</h3>
+  <p class="ld-step-text">I designed these systems before I knew how to build a data-driven balance sheet. Values like "1 Second" or "10% Faster Cooldown" were written as text, so none of it could go straight into Unreal. I rebuilt the whole sheet the way I build them now: one value per cell, units in the column names, one row per upgrade so every table imports as a DataTable, a metrics tab of live formulas, and a list of every gap or ambiguity in the original instead of guessed numbers.</p>
+  <p class="ld-step-text">The formulas surfaced something I never saw in the original. Arrow's single-target DPS grows 8.3x from level 0 to level 5, while every other combat wagon grows 2 to 3.6x: two +1 projectile upgrades stack with two cooldown cuts and the Double Damage capstone. That is exactly the kind of outlier a formula-driven sheet is built to catch.</p>
+</div>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
 <div class="content-wrap">
   <h2 class="section-title">// SCREENSHOT_LOG</h2>
   <div class="gallery-grid">
     <img src="images/ur-01-hero.png" alt="Procedurally generated hex world with snow, farmland, forest, lake, and village tiles" class="gallery-img">
     <img src="images/ur-02-lantern-shader.png" alt="Gale vs Gloom lantern shader" class="gallery-img">
     <img src="images/ur-03-shader-graph.png" alt="Lantern shader material graph" class="gallery-img">
-    <img src="images/ur-04-environment.png" alt="Wagon convoy restoring color to a desaturated hex world" class="gallery-img">
-    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/df81491e-94f7-4d18-a254-e9ba05052a74/Screenshot_2024-08-25_121006.png" alt="Procedural hex map" class="gallery-img">
-    <img src="https://images.squarespace-cdn.com/content/v1/683deee7a675487836cdbfcf/741c9212-cdd4-4c6c-bcb7-64f3e949a77b/image_2025-07-04_183444805.png" alt="2.5D art style" class="gallery-img">
+    <img src="images/ur-04-environment.png" alt="Original 3D version: the wagon convoy restoring color to a desaturated hex world" class="gallery-img">
+    <img src="images/ur-05-hex-map.png" alt="2.5D version: the caravan on the hex grid, lit by the Gale, with wood, food and Galefuel meters in the corner" class="gallery-img">
+    <img src="images/ur-06-2-5d-style.png" alt="2.5D version: pixel-art windmills, trees and hay bales on the procedural terrain" class="gallery-img">
   </div>
 </div>
 

@@ -14,7 +14,7 @@ window.INVITES = {
       { title: "Apex LTM Analysis", href: "project_ltm_analysis.html",
         why: "Battle royale mode analysis: what keeps a mode in rotation, and an original mode built from the findings." },
       { title: "Alabastard", href: "project_alabastard.html",
-        why: "Kitbasher Award at Unreal MegaJam 2022: a full UE game in one week, with levels blocked out and puzzles designed." }
+        why: "Kitbasher Award at Unreal MegaJam 2022: a full UE game in one week, using a Kitbash3D city kit, with physics puzzles I designed and tuned." }
     ]
   },
   "yhcbb": {
@@ -27,7 +27,7 @@ window.INVITES = {
       { title: "Apex LTM Analysis", href: "project_ltm_analysis.html",
         why: "Battle royale and multiplayer design analysis, turned into an original mode with a test plan." },
       { title: "Alabastard", href: "project_alabastard.html",
-        why: "Kitbasher Award at Unreal MegaJam 2022: level blockout and puzzle design under a one-week deadline." }
+        why: "Kitbasher Award at Unreal MegaJam 2022: levels dressed with a Kitbash3D city kit and physics puzzles, in one week." }
     ]
   },
   "650k6": {
@@ -64,7 +64,7 @@ window.INVITES = {
       { title: "Salt Sweeper", href: "project_salt_sweeper.html",
         why: "Balance spreadsheets, loot tables and an in-game economy, iterated across 6 playtest cycles." },
       { title: "Undisclosed Roguelike", href: "project_undisclosed_roguelike.html",
-        why: "Designed the upgrade paths and upgrade economy across 14 unit types." },
+        why: "Designed the upgrade paths and upgrade economy across 10 wagon types and 14 perks." },
       { title: "Apex LTM Analysis", href: "project_ltm_analysis.html",
         why: "Live-game analysis: what keeps players coming back to a mode, scored on a rubric." }
     ]
