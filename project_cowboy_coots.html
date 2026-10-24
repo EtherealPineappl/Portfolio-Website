@@ -132,9 +132,9 @@
 
   <h3 class="ld-step-title">BULLET PATTERNS WRITTEN AS DATA, SYNCED TO THE BEAT</h3>
   <p class="ld-step-text">I wrote every bullet pattern as data and synced it to the BPM of the music, so each encounter plays like a song. The side an attack comes from is always the same in the sequence, but where along that side it spawns is randomized each run. Players can learn the rhythm of a stage without memorizing exact positions.</p>
-  <p class="ld-step-text">Two classes split the job. The bullet controller owns timing: it runs the timer, stays on the beat, and steps through the sequence. The bullet generator owns placement: where each bullet spawns, which way it travels, and how fast. Each beat in the sequence is one entry, like "Up+Up+Up" for a volley from the top or an empty entry for a rest, and the controller calls the matching generator function by name.</p>
+  <p class="ld-step-text">Two classes split the job. The bullet controller owns timing: it runs the timer, stays on the beat, and steps through the sequence. The bullet generator owns placement: where each bullet spawns, which way it travels, and how fast. Each beat in the sequence is one entry, like "Up+Up+Up" for a volley from the top, "Right*+Right*" where the asterisk marks a stronger bullet, or an empty entry for a rest, and the controller calls the matching generator function by name.</p>
   <div class="ld-imgs cols-1">
-    <img class="gallery-img" src="images/cc-08-pattern-data.png" alt="The bullet pattern sequence: one entry per beat, such as Up+Up+Up or Right+Right+Right, with empty entries as rests">
+    <img class="gallery-img" src="images/cc-08-pattern-data.png" alt="The bullet pattern sequence: one entry per beat, such as Up+Up+Up or Right*+Right* (asterisk = stronger bullet), with empty entries as rests">
   </div>
 
   <h3 class="ld-step-title" style="margin-top:48px">ONE-BEAT TELEGRAPHS</h3>
