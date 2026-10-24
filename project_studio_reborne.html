@@ -78,6 +78,9 @@
   .shorts-rail{display:contents}
   .short{width:100%;aspect-ratio:9/16;border:3px solid var(--green);display:block}
   .img-slot.short-slot{aspect-ratio:9/16}
+  .proj-hero.has-banner{background-image:linear-gradient(90deg,rgba(35,37,38,.97) 0%,rgba(35,37,38,.9) 42%,rgba(35,37,38,.55) 72%,rgba(35,37,38,.3) 100%),var(--hero-img);background-size:cover;background-position:center;min-height:400px;display:flex;align-items:center}
+  .proj-hero.has-banner .proj-hero-inner{width:100%}
+  @media(max-width:640px){.proj-hero.has-banner{min-height:0;background-image:linear-gradient(rgba(35,37,38,.9),rgba(35,37,38,.9)),var(--hero-img)}}
 </style>
 </head>
 <body>
@@ -91,7 +94,7 @@
   </div>
 </nav>
 <main id="main-content">
-<div class="proj-hero">
+<div class="proj-hero has-banner" style="--hero-img:url('images/hero-studio_reborne.jpg')">
   <div class="proj-hero-inner">
     <a href="index.html" class="back-btn">&lt;&lt; BACK TO PORTFOLIO</a>
     <h1 class="proj-title">STUDIO REBORNE</h1>

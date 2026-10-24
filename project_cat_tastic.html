@@ -72,6 +72,9 @@
 
   /* IMAGE SLOT — empty picture frame. Swap for <img class="gallery-img" src="images/..." alt="..."> */
   .img-slot{width:100%;aspect-ratio:16/9;border:3px dashed var(--magenta);background:var(--bg2);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--magenta);font-family:'Press Start 2P',monospace;font-size:8px;line-height:2}
+  .proj-hero.has-banner{background-image:linear-gradient(90deg,rgba(35,37,38,.97) 0%,rgba(35,37,38,.9) 42%,rgba(35,37,38,.55) 72%,rgba(35,37,38,.3) 100%),var(--hero-img);background-size:cover;background-position:center;min-height:400px;display:flex;align-items:center}
+  .proj-hero.has-banner .proj-hero-inner{width:100%}
+  @media(max-width:640px){.proj-hero.has-banner{min-height:0;background-image:linear-gradient(rgba(35,37,38,.9),rgba(35,37,38,.9)),var(--hero-img)}}
 </style>
 </head>
 <body>
@@ -85,18 +88,23 @@
   </div>
 </nav>
 <main id="main-content">
-<div class="proj-hero">
+<div class="proj-hero has-banner" style="--hero-img:url('images/hero-cat_tastic.jpg')">
   <div class="proj-hero-inner">
     <a href="index.html" class="back-btn">&lt;&lt; BACK TO PORTFOLIO</a>
-    <span class="award-tag" style="display:block;margin-bottom:20px">★ 7TH PLACE — 49TH GM(48) GAME JAM</span>
+    <span class="award-tag" style="display:table;margin-bottom:20px">★ 7TH PLACE — 49TH GM(48) GAME JAM</span>
     <h1 class="proj-title">CAT-TASTIC</h1>
     <p class="proj-meta">2026 &nbsp;|&nbsp; TEAM LEAD / DESIGNER / DEVELOPER &nbsp;|&nbsp; GAMEMAKER &nbsp;|&nbsp; 48-HOUR JAM &nbsp;|&nbsp; STUDIO REBORNE</p>
-    <p class="proj-overview">Two-player couch co-op. One cat can see. One man cannot. A bullet-hell x rhythm game made in 48 hours for the "Total Darkness" themed gm(48). Cat detective Mr. Dubois and his cat Coco fall into a realm of sentient birds, one player dodging bullet-hell attacks while the other plays a rhythm game to fire spells.</p>
-    <p class="proj-overview" style="margin-top:12px">Team of 3 — design &amp; development: Corvin Erdos · art: Tango · music: Crispy</p>
+    <p class="proj-overview">Couch co-op bullet-hell x rhythm, made in 48 hours. One cat can see. One man cannot.</p>
     <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:24px">
       <a href="https://gm48.net/game-jams/total-darkness/games/cat-tastic" target="_blank" rel="noopener" class="cta-btn">&gt;&gt; PLAY ON GM48<span class="sr-only"> (opens in new tab)</span></a>
     </div>
   </div>
+</div>
+
+<div class="content-wrap">
+  <h2 class="section-title">// OVERVIEW</h2>
+  <p class="proj-overview">Two-player couch co-op. One cat can see. One man cannot. A bullet-hell x rhythm game made in 48 hours for the "Total Darkness" themed gm(48). Cat detective Mr. Dubois and his cat Coco fall into a realm of sentient birds, one player dodging bullet-hell attacks while the other plays a rhythm game to fire spells.</p>
+  <p class="proj-overview">Team of 3 — design &amp; development: Corvin Erdos · art: Tango · music: Crispy</p>
 </div>
 
 <!-- RESPONSIBILITIES -->

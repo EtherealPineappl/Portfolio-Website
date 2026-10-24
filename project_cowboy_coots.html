@@ -74,6 +74,9 @@
 
   /* IMAGE SLOT — empty picture frame. Swap for <img class="gallery-img" src="images/..." alt="..."> */
   .img-slot{width:100%;aspect-ratio:16/9;border:3px dashed var(--magenta);background:var(--bg2);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--magenta);font-family:'Press Start 2P',monospace;font-size:8px;line-height:2}
+  .proj-hero.has-banner{background-image:linear-gradient(90deg,rgba(35,37,38,.97) 0%,rgba(35,37,38,.9) 42%,rgba(35,37,38,.55) 72%,rgba(35,37,38,.3) 100%),var(--hero-img);background-size:cover;background-position:center;min-height:400px;display:flex;align-items:center}
+  .proj-hero.has-banner .proj-hero-inner{width:100%}
+  @media(max-width:640px){.proj-hero.has-banner{min-height:0;background-image:linear-gradient(rgba(35,37,38,.9),rgba(35,37,38,.9)),var(--hero-img)}}
 </style>
 </head>
 <body>
@@ -88,19 +91,24 @@
 </nav>
 
 <main id="main-content">
-<div class="proj-hero">
+<div class="proj-hero has-banner" style="--hero-img:url('images/hero-cowboy_coots.jpg')">
   <div class="proj-hero-inner">
     <a href="index.html" class="back-btn">&lt;&lt; BACK TO PORTFOLIO</a>
-    <span class="award-tag" style="display:block;margin-bottom:20px">★ 1ST PLACE VISUALS — LUDWIG JAM 2023</span>
+    <span class="award-tag" style="display:table;margin-bottom:20px">★ 1ST PLACE VISUALS — LUDWIG JAM 2023</span>
     <h1 class="proj-title">COWBOY COOTS</h1>
     <p class="proj-meta">2023 &nbsp;|&nbsp; DESIGNER / DEVELOPER &nbsp;|&nbsp; UNREAL ENGINE 5 &nbsp;|&nbsp; POINT LINK FORCE</p>
-    <p class="proj-overview">An action-adventure bullet-hell built for the Ludwig Game Jam 2023, winning 1st Place Visuals out of 250 entries as a 2-person team. Coots gets trapped in an alternate Wild West dimension after some museum mischief goes sideways — players dodge and weave through a three-stage onslaught of encounters to reunite with Ludwig. Fast-paced top-down action with a Reflex time-slowdown mechanic, pixel art visuals, and a full original soundtrack.</p>
-    <p class="proj-overview" style="margin-top:12px">Corvin Erdos: game design, programming, dialogue engine, 2D-to-3D art integration, QA · Benjamin Brown: art, UI, sound, music, concept, scripting · Ellis Brown: additional music</p>
+    <p class="proj-overview">A beat-synced bullet-hell built in UE5 for Ludwig Game Jam 2023 by a team of two.</p>
     <div style="display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:24px">
       <a href="https://corvinerdos.itch.io/cowboy-coots-ludwig-game-jam-2023" target="_blank" rel="noopener" class="cta-btn">&gt;&gt; PLAY ON ITCH.IO<span class="sr-only"> (opens in new tab)</span></a>
       <a href="https://github.com/EtherealPineappl/CowboyCoots" target="_blank" rel="noopener" class="cta-btn">&gt;&gt; SOURCE CODE<span class="sr-only"> (opens in new tab)</span></a>
     </div>
   </div>
+</div>
+
+<div class="content-wrap">
+  <h2 class="section-title">// OVERVIEW</h2>
+  <p class="proj-overview">An action-adventure bullet-hell built for the Ludwig Game Jam 2023, winning 1st Place Visuals out of 250 entries as a 2-person team. Coots gets trapped in an alternate Wild West dimension after some museum mischief goes sideways — players dodge and weave through a three-stage onslaught of encounters to reunite with Ludwig. Fast-paced top-down action with a Reflex time-slowdown mechanic, pixel art visuals, and a full original soundtrack.</p>
+  <p class="proj-overview">Corvin Erdos: game design, programming, dialogue engine, 2D-to-3D art integration, QA · Benjamin Brown: art, UI, sound, music, concept, scripting · Ellis Brown: additional music</p>
 </div>
 
 

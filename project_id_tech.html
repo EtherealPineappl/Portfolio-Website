@@ -72,6 +72,9 @@
 
   /* IMAGE SLOT — empty picture frame. Swap for <img class="gallery-img" src="images/..." alt="..."> */
   .img-slot{width:100%;aspect-ratio:16/9;border:3px dashed var(--magenta);background:var(--bg2);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--magenta);font-family:'Press Start 2P',monospace;font-size:8px;line-height:2}
+  .proj-hero.has-banner{background-image:linear-gradient(90deg,rgba(35,37,38,.97) 0%,rgba(35,37,38,.9) 42%,rgba(35,37,38,.55) 72%,rgba(35,37,38,.3) 100%),var(--hero-img);background-size:cover;background-position:center;min-height:400px;display:flex;align-items:center}
+  .proj-hero.has-banner .proj-hero-inner{width:100%}
+  @media(max-width:640px){.proj-hero.has-banner{min-height:0;background-image:linear-gradient(rgba(35,37,38,.9),rgba(35,37,38,.9)),var(--hero-img)}}
 </style>
 </head>
 <body>
@@ -85,13 +88,18 @@
   </div>
 </nav>
 <main id="main-content">
-<div class="proj-hero">
+<div class="proj-hero has-banner" style="--hero-img:url('images/hero-id_tech.jpg')">
   <div class="proj-hero-inner">
     <a href="index.html" class="back-btn">&lt;&lt; BACK TO PORTFOLIO</a>
     <h1 class="proj-title">iD TECH</h1>
     <p class="proj-meta">2026 &nbsp;|&nbsp; GAME DESIGN INSTRUCTOR &nbsp;|&nbsp; GAMEMAKER · UNREAL ENGINE · UNITY &nbsp;|&nbsp; DENVER, CO</p>
-    <p class="proj-overview">Taught weekly classes of 6–12 students over 7 weeks, taking them from zero experience in coding and design to a fully playable multi-level game in their choice of GameMaker, Unreal Engine, or Unity. Wrote and delivered the curriculum: game design theory, greyboxing, design document authoring, player psychology, and engine fundamentals.</p>
+    <p class="proj-overview">Took classes of students from zero experience to a playable multi-level game in 7 weeks.</p>
   </div>
+</div>
+
+<div class="content-wrap">
+  <h2 class="section-title">// OVERVIEW</h2>
+  <p class="proj-overview">Taught weekly classes of 6–12 students over 7 weeks, taking them from zero experience in coding and design to a fully playable multi-level game in their choice of GameMaker, Unreal Engine, or Unity. Wrote and delivered the curriculum: game design theory, greyboxing, design document authoring, player psychology, and engine fundamentals.</p>
 </div>
 
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>

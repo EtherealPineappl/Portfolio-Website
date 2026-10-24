@@ -72,6 +72,9 @@
 
   /* IMAGE SLOT — empty picture frame. Swap for <img class="gallery-img" src="images/..." alt="..."> */
   .img-slot{width:100%;aspect-ratio:16/9;border:3px dashed var(--magenta);background:var(--bg2);display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;color:var(--magenta);font-family:'Press Start 2P',monospace;font-size:8px;line-height:2}
+  .proj-hero.has-banner{background-image:linear-gradient(90deg,rgba(35,37,38,.97) 0%,rgba(35,37,38,.9) 42%,rgba(35,37,38,.55) 72%,rgba(35,37,38,.3) 100%),var(--hero-img);background-size:cover;background-position:center;min-height:400px;display:flex;align-items:center}
+  .proj-hero.has-banner .proj-hero-inner{width:100%}
+  @media(max-width:640px){.proj-hero.has-banner{min-height:0;background-image:linear-gradient(rgba(35,37,38,.9),rgba(35,37,38,.9)),var(--hero-img)}}
 </style>
 </head>
 <body>
@@ -85,14 +88,19 @@
   </div>
 </nav>
 <main id="main-content">
-<div class="proj-hero">
+<div class="proj-hero has-banner" style="--hero-img:url('images/hero-ltm_analysis.jpg')">
   <div class="proj-hero-inner">
     <a href="index.html" class="back-btn">&lt;&lt; BACK TO PORTFOLIO</a>
     <h1 class="proj-title">APEX LEGENDS LTM ANALYSIS</h1>
     <p class="proj-meta">2026 &nbsp;|&nbsp; PERSONAL PROJECT &nbsp;|&nbsp; BATTLE ROYALE MODE ANALYSIS &amp; LTM CONCEPT &nbsp;|&nbsp; RESEARCH &amp; PITCH DECK</p>
-    <p class="proj-overview">I don't just play live-service games. I study why their modes succeed or disappear. This deck scores six Apex Legends limited-time modes on permanence, return frequency, developer signals, and community demand, sorts them into tiers, and pulls out what the winners have in common. Then it puts that analysis to work in an original LTM concept, Re-Kill, where kills earn your team respawns.</p>
-    <p class="proj-overview" style="margin-top:12px;font-size:12px;opacity:.8">Fan analysis and concept, not affiliated with Respawn or EA.</p>
+    <p class="proj-overview">Why do some Apex Legends modes stay while others disappear? Six LTMs scored, plus an original mode.</p>
   </div>
+</div>
+
+<div class="content-wrap">
+  <h2 class="section-title">// OVERVIEW</h2>
+  <p class="proj-overview">I don't just play live-service games. I study why their modes succeed or disappear. This deck scores six Apex Legends limited-time modes on permanence, return frequency, developer signals, and community demand, sorts them into tiers, and pulls out what the winners have in common. Then it puts that analysis to work in an original LTM concept, Re-Kill, where kills earn your team respawns.</p>
+  <p class="proj-overview" style="margin-top:12px;font-size:12px;opacity:.8">Fan analysis and concept, not affiliated with Respawn or EA.</p>
 </div>
 
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>

@@ -67,6 +67,9 @@
   .ld-imgs.cols-3{grid-template-columns:repeat(3,1fr)}
   .ld-sep{border-top:1px solid var(--bg2);margin:0 0 60px}
   @media(max-width:640px){.ld-imgs.cols-2,.ld-imgs.cols-3{grid-template-columns:1fr}}
+  .proj-hero.has-banner{background-image:linear-gradient(90deg,rgba(35,37,38,.97) 0%,rgba(35,37,38,.9) 42%,rgba(35,37,38,.55) 72%,rgba(35,37,38,.3) 100%),var(--hero-img);background-size:cover;background-position:center;min-height:400px;display:flex;align-items:center}
+  .proj-hero.has-banner .proj-hero-inner{width:100%}
+  @media(max-width:640px){.proj-hero.has-banner{min-height:0;background-image:linear-gradient(rgba(35,37,38,.9),rgba(35,37,38,.9)),var(--hero-img)}}
 </style>
 </head>
 <body>
@@ -81,16 +84,21 @@
 </nav>
 <main id="main-content">
 
-<div class="proj-hero">
+<div class="proj-hero has-banner" style="--hero-img:url('images/hero-axima.jpg')">
   <div class="proj-hero-inner">
     <a href="index.html" class="back-btn">&lt;&lt; BACK TO PORTFOLIO</a>
     <h1 class="proj-title">AXIMA (ZYNDRAX)</h1>
     <p class="proj-meta">2025 – 2026 |&nbsp; CONTRACTED LEVEL DESIGNER &nbsp;|&nbsp; UNREAL ENGINE 5</p>
-    <p class="proj-overview">Contracted level design on Axima — a fast-paced open-world monster tamer with 100+ creatures and multiplayer. </p>
-    <p class="proj-overview">Blocked out levels in greybox, designed puzzles, handled all prop placement, set dressing, and lighting using modular kits from Fab, worked with dev team to integrate current gameplay, developed level design tools.&nbsp;</p>
+    <p class="proj-overview">Contracted level design on Axima, an open-world UE5 monster tamer with 100+ creatures.</p>
 <a href="https://store.steampowered.com/app/2058000/Axima/" target="_blank" rel="noopener" class="cta-btn">&gt;&gt; WISHLIST ON STEAM<span class="sr-only"> (opens in new tab)</span></a>
 	  <a href="https://aximagame.com" target="_blank" rel="noopener" class="cta-btn">&gt;&gt; VISIT THE WEBSITE<span class="sr-only"> (opens in new tab)</span></a>
   </div>
+</div>
+
+<div class="content-wrap">
+  <h2 class="section-title">// OVERVIEW</h2>
+  <p class="proj-overview">Contracted level design on Axima — a fast-paced open-world monster tamer with 100+ creatures and multiplayer. </p>
+  <p class="proj-overview">Blocked out levels in greybox, designed puzzles, handled all prop placement, set dressing, and lighting using modular kits from Fab, worked with dev team to integrate current gameplay, developed level design tools.&nbsp;</p>
 </div>
 
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>

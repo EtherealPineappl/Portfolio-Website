@@ -76,6 +76,9 @@
   .sys-table td{border-bottom:1px solid var(--bg2);padding:10px 12px;vertical-align:top;line-height:1.6}
   .sys-table td:first-child{color:var(--cyan);white-space:nowrap}
   .sys-table .hi{color:var(--gold)}
+  .proj-hero.has-banner{background-image:linear-gradient(90deg,rgba(35,37,38,.97) 0%,rgba(35,37,38,.9) 42%,rgba(35,37,38,.55) 72%,rgba(35,37,38,.3) 100%),var(--hero-img);background-size:cover;background-position:center;min-height:400px;display:flex;align-items:center}
+  .proj-hero.has-banner .proj-hero-inner{width:100%}
+  @media(max-width:640px){.proj-hero.has-banner{min-height:0;background-image:linear-gradient(rgba(35,37,38,.9),rgba(35,37,38,.9)),var(--hero-img)}}
 </style>
 </head>
 <body>
@@ -89,13 +92,18 @@
   </div>
 </nav>
 <main id="main-content">
-<div class="proj-hero">
+<div class="proj-hero has-banner" style="--hero-img:url('images/hero-undisclosed_roguelike.jpg')">
   <div class="proj-hero-inner">
     <a href="index.html" class="back-btn">&lt;&lt; BACK TO PORTFOLIO</a>
     <h1 class="proj-title">UNDISCLOSED ROGUELIKE</h1>
     <p class="proj-meta">2022 – 2024 &nbsp;|&nbsp; GAME DESIGNER (CONTRACT) &nbsp;|&nbsp; UNREAL ENGINE 5</p>
-    <p class="proj-overview">A Snake x Civilization roguelike with Vampire Survivors-style combat, built by a team of five for an undisclosed client. I designed the wagon leveling system — upgrade paths, combat statistics, passive abilities, and the upgrade economy across 10 wagon types and 14 perks — and built the procedural hex world that carried 6 vertical slices through playtests of 10+ players, until the project was sunset due to funding constraints.</p>
+    <p class="proj-overview">A Snake x Civilization roguelike with Vampire Survivors-style combat, made for an undisclosed client.</p>
   </div>
+</div>
+
+<div class="content-wrap">
+  <h2 class="section-title">// OVERVIEW</h2>
+  <p class="proj-overview">A Snake x Civilization roguelike with Vampire Survivors-style combat, built by a team of five for an undisclosed client. I designed the wagon leveling system — upgrade paths, combat statistics, passive abilities, and the upgrade economy across 10 wagon types and 14 perks — and built the procedural hex world that carried 6 vertical slices through playtests of 10+ players, until the project was sunset due to funding constraints.</p>
 </div>
 
 
