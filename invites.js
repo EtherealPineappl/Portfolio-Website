@@ -74,10 +74,10 @@ window.INVITES = {
     team: "Game Design",
     role: "Game Design Intern (R-125858)",
     picks: [
-      { title: "Cowboy Coots", href: "project_cowboy_coots.html",
-        why: "Combat setups: sole UE5 programmer on a three-stage encounter loop and difficulty curve, plus a Reflex time-slow dodge. 1st Place Visuals of 250." },
       { title: "Axima (Zyndrax)", href: "project_axima.html",
         why: "World authoring in UE5: design markup to blockout to my own dressing and lighting, with puzzle rooms cued by light instead of tutorials." },
+      { title: "Cowboy Coots", href: "project_cowboy_coots.html",
+        why: "Combat setups: sole UE5 programmer on a three-stage encounter loop and difficulty curve, plus a Reflex time-slow dodge. 1st Place Visuals of 250." },
       { title: "Alabastard", href: "project_alabastard.html",
         why: "A one-week story game in Unreal: physics puzzles, cinematics, mocap and MetaHumans. Won Epic's Kitbasher Award." }
     ]
