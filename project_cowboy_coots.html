@@ -132,6 +132,10 @@
 
   <h3 class="ld-step-title">BULLET PATTERNS WRITTEN AS DATA, SYNCED TO THE BEAT</h3>
   <p class="ld-step-text">I wrote every bullet pattern as data and synced it to the BPM of the music, so each encounter plays like a song. The side an attack comes from is always the same in the sequence, but where along that side it spawns is randomized each run. Players can learn the rhythm of a stage without memorizing exact positions.</p>
+  <p class="ld-step-text">Two classes split the job. The bullet controller owns timing: it runs the timer, stays on the beat, and steps through the sequence. The bullet generator owns placement: where each bullet spawns, which way it travels, and how fast. Each beat in the sequence is one entry, like "Up+Up+Up" for a volley from the top or an empty entry for a rest, and the controller calls the matching generator function by name.</p>
+  <div class="ld-imgs cols-1">
+    <img class="gallery-img" src="images/cc-08-pattern-data.png" alt="The bullet pattern sequence: one entry per beat, such as Up+Up+Up or Right+Right+Right, with empty entries as rests">
+  </div>
 
   <h3 class="ld-step-title" style="margin-top:48px">ONE-BEAT TELEGRAPHS</h3>
   <p class="ld-step-text">Every bullet gets a warning exactly one beat before it fires. Tying the telegraph to the beat instead of a fixed time meant that when the tempo rose, the warnings sped up with it, so the game stays readable as it gets harder.</p>
@@ -140,23 +144,31 @@
   </div>
 
   <h3 class="ld-step-title" style="margin-top:48px">REFLEX: SLOW THE BULLETS, NOT THE PLAYER</h3>
-  <p class="ld-step-text">Holding Reflex slows the bullets down while Coots keeps moving at full speed. It feels like slowing time, but the player never loses control speed, so it turns a panicked moment into a precise dodge.</p>
+  <p class="ld-step-text">Holding Reflex sets global time dilation to 0.5, slows the music, and raises Coots' walk speed to make up for it, so the world slows down while Coots keeps moving at full speed. A meter drains while Reflex is held; when it empties, Reflex cancels and goes on cooldown. It turns a panicked moment into a precise dodge.</p>
+  <div class="ld-imgs cols-1">
+    <img class="gallery-img" src="images/cc-09-reflex-graph.webp" alt="Reflex Blueprint: the meter interpolates down each frame; while it is above zero, global time dilation drops to 0.5, the music slows and Coots' walk speed rises; at zero, Reflex cancels and starts its cooldown">
+  </div>
 
   <h3 class="ld-step-title" style="margin-top:48px">THREE STAGES OF ESCALATION</h3>
   <p class="ld-step-text">Each stage raises the BPM, adds stronger bullets that deal more damage, and introduces volleys from multiple directions at once. Because patterns and warnings are both tied to the beat, raising the tempo raises the difficulty without breaking the telegraphs.</p>
 
   <h3 class="ld-step-title" style="margin-top:48px">DIALOGUE ENGINE</h3>
-  <p class="ld-step-text">Dialogue lives in a DataTable, so lines can be written and reordered without touching the Blueprint logic. Each line shows with its speaker's portrait.</p>
-  <div class="ld-imgs cols-1">
+  <p class="ld-step-text">Dialogue lives in a DataTable, so lines can be written and reordered without touching the Blueprint logic. Each line shows with its speaker's portrait and types out at a set text speed. Pressing interact mid-line finishes it instantly; pressing again loads the next line, and after the last one the widget removes itself and tells the engine the conversation is finished.</p>
+  <div class="ld-imgs cols-2">
     <img class="gallery-img" src="images/cc-02.jpg" alt="Coots and Doggor in a dialogue scene">
+    <img class="gallery-img" src="images/cc-12-dialogue-graph.webp" alt="Dialogue Blueprint: on interact, either skip to the end of the current line or load the next line and start the typewriter timer; remove the widget when the last line is done">
   </div>
 
   <h3 class="ld-step-title" style="margin-top:48px">2D ART IN A 3D WORLD</h3>
   <p class="ld-step-text">All of the 2D art runs through Paper2D and PaperZD in a 3D Unreal scene. The camera angle is fixed, and the sprite materials are lit with shadows enabled, so the pixel art sits in real light next to 3D props.</p>
+  <div class="ld-imgs cols-1">
+    <img class="gallery-img" src="images/cc-10-sprite-in-3d.webp" alt="Coots' PaperZD sprite in the 3D test level, casting a real shadow beside a 3D rock">
+  </div>
 
   <h3 class="ld-step-title" style="margin-top:48px">CINEMATICS</h3>
   <p class="ld-step-text">I built the cutscenes in Unreal's Level Sequencer, putting together Ben's animations and staging the shots.</p>
-  <div class="ld-imgs cols-1">
+  <div class="ld-imgs cols-2">
+    <img class="gallery-img" src="images/cc-11-sequencer.webp" alt="Level Sequencer timeline for the opening cutscene: flipbook and transform tracks for Coots and Doggor, with sound cues for the fall, splat and roll">
     <img class="gallery-img" src="images/cc-03.png" alt="Phone screen cutscene: The plan is simple.">
   </div>
 
