@@ -103,9 +103,6 @@
   </div>
 </div>
 
-<div style="background:var(--bg2);border-left:4px solid var(--magenta);color:var(--magenta);font-family:'Press Start 2P',monospace;font-size:9px;line-height:2;padding:16px 32px">
-  ▌ PAGE UNDER CONSTRUCTION &nbsp;—&nbsp; feel free to <a href="index.html#contact" style="color:var(--cyan);text-decoration:underline">reach out</a> for more info about this project.
-</div>
 
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
 
@@ -116,15 +113,55 @@
 
     <div class="resp-card">
       <div class="resp-card-title">SYSTEMS PROGRAMMING</div>
-      <p>Sole programmer on the project in UE5. Built the WASD movement system, the Reflex mechanic — a time-slowdown ability triggered by spacebar for precision dodging — the three-stage encounter loop, and the dialogue engine. Integrated the 2D art into the 3D Unreal Engine scenes. Also handled QA across the full build, catching edge cases under the jam's compressed timeline.</p>
+      <p>Sole programmer on the project in UE5. Built the WASD movement system, the Reflex mechanic — a time-slowdown ability triggered by spacebar for precision dodging — the three-stage encounter loop, and a DataTable-driven dialogue engine. Integrated the 2D art into the 3D Unreal Engine scenes. Also handled QA across the full build, catching edge cases under the jam's compressed timeline.</p>
     </div>
 
     <div class="resp-card">
       <div class="resp-card-title">GAME DESIGN</div>
-      <p>Designed the encounter structure and difficulty curve across the three stages, and shaped the bullet-hell gameplay loop alongside the art and music direction from the team.</p>
+      <p>Wrote every bullet pattern, synced to the music's BPM, and designed the three-stage difficulty curve. Built the cutscenes in Level Sequencer from Ben's animations.</p>
     </div>
 
   </div>
+</div>
+
+<div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
+
+<!-- DESIGN NOTES -->
+<div class="content-wrap">
+  <h2 class="section-title">// DESIGN_NOTES</h2>
+
+  <h3 class="ld-step-title">BULLET PATTERNS WRITTEN AS DATA, SYNCED TO THE BEAT</h3>
+  <p class="ld-step-text">I wrote every bullet pattern as data and synced it to the BPM of the music, so each encounter plays like a song. The side an attack comes from is always the same in the sequence, but where along that side it spawns is randomized each run. Players can learn the rhythm of a stage without memorizing exact positions.</p>
+
+  <h3 class="ld-step-title" style="margin-top:48px">ONE-BEAT TELEGRAPHS</h3>
+  <p class="ld-step-text">Every bullet gets a warning exactly one beat before it fires. Tying the telegraph to the beat instead of a fixed time meant that when the tempo rose, the warnings sped up with it, so the game stays readable as it gets harder.</p>
+  <div class="ld-imgs cols-1">
+    <img class="gallery-img" src="images/cc-01.jpg" alt="Gameplay: warning triangles flash one beat before bullets fire, with the Reflex meter in the corner and lit pixel sprites casting shadows beside 3D rocks and crates">
+  </div>
+
+  <h3 class="ld-step-title" style="margin-top:48px">REFLEX: SLOW THE BULLETS, NOT THE PLAYER</h3>
+  <p class="ld-step-text">Holding Reflex slows the bullets down while Coots keeps moving at full speed. It feels like slowing time, but the player never loses control speed, so it turns a panicked moment into a precise dodge.</p>
+
+  <h3 class="ld-step-title" style="margin-top:48px">THREE STAGES OF ESCALATION</h3>
+  <p class="ld-step-text">Each stage raises the BPM, adds stronger bullets that deal more damage, and introduces volleys from multiple directions at once. Because patterns and warnings are both tied to the beat, raising the tempo raises the difficulty without breaking the telegraphs.</p>
+
+  <h3 class="ld-step-title" style="margin-top:48px">DIALOGUE ENGINE</h3>
+  <p class="ld-step-text">Dialogue lives in a DataTable, so lines can be written and reordered without touching the Blueprint logic. Each line shows with its speaker's portrait.</p>
+  <div class="ld-imgs cols-1">
+    <img class="gallery-img" src="images/cc-02.jpg" alt="Coots and Doggor in a dialogue scene">
+  </div>
+
+  <h3 class="ld-step-title" style="margin-top:48px">2D ART IN A 3D WORLD</h3>
+  <p class="ld-step-text">All of the 2D art runs through Paper2D and PaperZD in a 3D Unreal scene. The camera angle is fixed, and the sprite materials are lit with shadows enabled, so the pixel art sits in real light next to 3D props.</p>
+
+  <h3 class="ld-step-title" style="margin-top:48px">CINEMATICS</h3>
+  <p class="ld-step-text">I built the cutscenes in Unreal's Level Sequencer, putting together Ben's animations and staging the shots.</p>
+  <div class="ld-imgs cols-1">
+    <img class="gallery-img" src="images/cc-03.png" alt="Phone screen cutscene: The plan is simple.">
+  </div>
+
+  <h3 class="ld-step-title" style="margin-top:48px">WHAT I'D DO DIFFERENTLY NOW</h3>
+  <p class="ld-step-text">The bullets were timed on tick, so on slower machines the patterns drifted out of sync with the music. Scaling by delta time is an easy fix. More broadly, we made the game in a couple of days, so a lot of the logic ran on tick and never got optimized. I now build classes optimized from the start instead of planning to clean them up later.</p>
 </div>
 
 <div class="divider" aria-hidden="true">▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓</div>
